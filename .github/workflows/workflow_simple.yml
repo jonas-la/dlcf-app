@@ -1,5 +1,5 @@
 env:
-  RUBY_VERSION: 2.7.0
+  RUBY_VERSION: 3.0.2
   POSTGRES_USER: postgres
   POSTGRES_PASSWORD: password
   DATABASE_USER: postgres
@@ -37,8 +37,5 @@ jobs:
       - uses: borales/actions-yarn@v3.0.0
         with:
           cmd: install
-      -uses: borales/actions-yarn@v2.3.0
-       	 with:
-         		cmd: install
       - name: Run tests
         run: bundler exec rspec .
