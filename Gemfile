@@ -74,4 +74,4 @@ group :test do
 end
 
 gem "brakeman"
-gem "rubucop"
+gem "rubocop"
