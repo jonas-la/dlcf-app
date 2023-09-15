@@ -31,6 +31,10 @@ gem 'devise'
 gem 'omniauth', '~>1.9.1'
 gem 'omniauth-google-oauth2'
 
+group :development do
+  gem 'brakeman'
+end
+
 # Use Redis adapter to run Action Cable in production
 # gem "redis", "~> 4.0"
 
