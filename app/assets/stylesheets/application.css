@@ -19,6 +19,22 @@
     color: white;
  }
 
+ .primary-color{
+   background-color: #053B50;
+ }
+
+ .secondary-color{
+   background-color: #176B87;
+ }
+
+ .tertiary-color{
+   background-color: #64CCC5;
+ }
+
+ .text-color{
+   color: #EEEEEE;
+ }
+
  .center {
     margin: auto;
     width: 50%;
