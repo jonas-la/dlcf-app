@@ -10,6 +10,16 @@
 
 <div class="center">
 <h2>You're Logged out! Log in to the Admin Dashboard</h2>
-<%= button_to "Sign in with Google", admin_google_oauth2_omniauth_authorize_path %>
+<%
+=begin%>
+ <div class="link-?button"> 
+<%
+=end%>
+<%= button_to "Sign in with Google", admin_google_oauth2_omniauth_authorize_path , class: "link-button"%>
+<%
+=begin%>
+ </div> 
+<%
+=end%>
 </div>
 </body>
