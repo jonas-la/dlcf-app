@@ -12,14 +12,13 @@
 <div class="center text-tile">
 <h2>You're Logged into the Officer Dashboard</h2>
 
-<%
-=begin%>
- <%= link_to "Members", member_url , class: "link-button"%>
-<%= link_to "Events", event_url , class: "link-button"%>
-<%= link_to "Attendance Tracking", attendance_url , class: "link-button"%>
-<%= link_to "Org Info", orgininfo_url , class: "link-button"%> 
-<%
-=end%>
+<%= link_to "Members", members_path , class: "link-button"%>
+<%= link_to "Events", events_url , class: "link-button"%>
+<%= link_to "Attendance Tracking", attendances_url , class: "link-button"%>
+<%= link_to "Org Info", orginfos_url , class: "link-button"%> 
+<%= link_to "Feedback", feedbacks_url , class: "link-button"%> 
+<%= link_to "Sign Out", destroy_admin_session_path , class: "link-button"%>
+
 
 
 </div>
