@@ -20,7 +20,13 @@ class Admins::OmniauthCallbacksController < Devise::OmniauthCallbacksController
     end
   
     def after_sign_in_path_for(resource_or_scope)
-      stored_location_for(resource_or_scope) || root_path
+      # TODO add check for all the admins from member table
+      if auth.info.email == "jonasaustinland@tamu.edu"
+        officer_dashboard_index_path
+      else
+        member_dashboard_index_path
+      end
+      # stored_location_for(resource_or_scope) || root_path
     end
   
     private
