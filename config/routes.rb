@@ -9,11 +9,11 @@ Rails.application.routes.draw do
 
   resources :officer_dashboard
   resources :member_dashboard
-  resources :attendance
-  resources :event
-  resources :feedback
-  resources :member 
-  resources :orginfo
+  resources :attendances
+  resources :events
+  resources :feedbacks
+  resources :members 
+  resources :orginfos
 
   devise_for :admins, controllers: { omniauth_callbacks: 'admins/omniauth_callbacks' }
     devise_scope :admin do
