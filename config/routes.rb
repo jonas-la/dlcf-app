@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :attendances
   get 'main/index'
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
@@ -8,6 +9,11 @@ Rails.application.routes.draw do
 
   resources :officer_dashboard
   resources :member_dashboard
+  resources :attendance
+  resources :event
+  resources :feedback
+  resources :member 
+  resources :orginfo
 
   devise_for :admins, controllers: { omniauth_callbacks: 'admins/omniauth_callbacks' }
     devise_scope :admin do
