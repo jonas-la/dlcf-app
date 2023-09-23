@@ -1,0 +1,2 @@
+class Orginfo < ApplicationRecord
+end

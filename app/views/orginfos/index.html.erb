@@ -1,0 +1,14 @@
+<p style="color: green"><%= notice %></p>
+
+<h1>Orginfos</h1>
+
+<div id="orginfos">
+  <% @orginfos.each do |orginfo| %>
+    <%= render orginfo %>
+    <p>
+      <%= link_to "Show this orginfo", orginfo %>
+    </p>
+  <% end %>
+</div>
+
+<%= link_to "New orginfo", new_orginfo_path %>
