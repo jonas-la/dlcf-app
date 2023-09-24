@@ -11,11 +11,9 @@
 
 <div class="center text-tile">
 <h2>You're Logged into the Member Dashboard</h2>
-<%= link_to "Members", members_path , class: "link-button"%>
-<%= link_to "Events", events_url , class: "link-button"%>
-<%= link_to "Attendance Tracking", attendances_url , class: "link-button"%>
-<%= link_to "Org Info", orginfos_url , class: "link-button"%> 
-<%= link_to "Feedback", feedbacks_url , class: "link-button"%> 
+
+<%= link_to "Events", member_index_events_path , class: "link-button"%>
+
 
 <%= link_to "Sign Out", destroy_admin_session_path , class: "link-button"%>
 

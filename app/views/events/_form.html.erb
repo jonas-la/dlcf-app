@@ -12,31 +12,31 @@
   <% end %>
 
   <div>
-    <%= form.label :event_name, style: "display: block" %>
-    <%= form.text_field :event_name %>
+    <%= form.label :event_name, style: "display: block", class:"input-label" %>
+    <%= form.text_field :event_name, class:"form-input" %>
   </div>
 
   <div>
-    <%= form.label :location, style: "display: block" %>
-    <%= form.text_field :location %>
+    <%= form.label :location, style: "display: block", class:"input-label" %>
+    <%= form.text_field :location, class:"form-input" %>
   </div>
 
   <div>
-    <%= form.label :start_time, style: "display: block" %>
-    <%= form.datetime_field :start_time %>
+    <%= form.label :start_time, style: "display: block", class:"input-label" %>
+    <%= form.datetime_field :start_time, class:"form-input" %>
   </div>
 
   <div>
-    <%= form.label :end_time, style: "display: block" %>
-    <%= form.datetime_field :end_time %>
+    <%= form.label :end_time, style: "display: block", class:"input-label" %>
+    <%= form.datetime_field :end_time, class:"form-input" %>
   </div>
 
   <div>
-    <%= form.label :description, style: "display: block" %>
-    <%= form.text_field :description %>
+    <%= form.label :description, style: "display: block", class:"input-label" %>
+    <%= form.text_field :description, class:"form-input" %>
   </div>
 
-  <div>
-    <%= form.submit %>
+  <div class="submit-form-button">
+    <%= form.submit "Submit", class:"link-button" %>
   </div>
 <% end %>
