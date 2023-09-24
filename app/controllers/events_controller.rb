@@ -10,6 +10,15 @@ class EventsController < ApplicationController
   def show
   end
 
+  def member_index
+    # render("member_index")
+    @events = Event.all
+  end
+
+  def member_show
+    @event = Event.find(params[:id])
+  end
+
   # GET /events/new
   def new
     @event = Event.new

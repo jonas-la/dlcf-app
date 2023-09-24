@@ -1,0 +1,26 @@
+<p style="color: green"><%= notice %></p>
+
+
+<div class="center text-tile">
+<h1>Events</h1>
+</div>
+
+
+
+  <% @events.each do |event| %>
+  
+  <div class="center text-tile list-tile">
+    <%= render event %>
+    
+    <p>
+      <%= link_to "Show this event", member_show_event_path(event), class: "link-button" %>
+    </p>
+    </div>
+  <% end %>
+  
+
+  <div class="center bottom-navigation">
+
+  <%= link_to 'Back to Dashboard', member_dashboard_index_path , class: "link-button" %>
+
+  </div>
