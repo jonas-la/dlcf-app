@@ -5,19 +5,15 @@
 =end%>
 
 <%= render @event %>
+<p style="color: green"><%= notice %></p>
 
-<div>
-  <%
-=begin%>
- <%= link_to "Edit this event", edit_event_path(@event) %> | 
-<%
-=end%>
- <%= link_to "Back to events", member_index_events_path %> 
+<div class="center text-tile list-tile">
+<%= render @event %>
 
 
-  <%
-=begin%>
- <%= button_to "Destroy this event", @event, method: :delete %> 
-<%
-=end%>
+</div>
+
+<div class="center bottom-navigation">
+  <%= link_to "Back to events", member_index_events_path , class: "link-button"%>
+
 </div>
