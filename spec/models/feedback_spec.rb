@@ -5,7 +5,12 @@ require 'rails_helper'
 RSpec.describe Feedback, type: :model do
   # Ensure that the Feedback model is valid with valid attributes
   it "is valid with valid attributes" do
-    member = Member.create(name: "John Doe") # Assuming you have a Member model
+    member = Member.new(
+        first_name: "John",
+        last_name: "Doe",
+        email: "john@example.com",
+        # Other attributes
+    )
     feedback = Feedback.new(
       satisfaction: 5,
       critiques: "Constructive feedback here",
