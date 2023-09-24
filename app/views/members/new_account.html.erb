@@ -1,9 +1,10 @@
-<h1>New member</h1>
 
+<div class="center text-tile list-tile">
 <%= render "newmemberform", member: @member %>
 
-<br>
+</div>
 
-<div>
-  <%= link_to "Back to members", members_path %>
+<div class="center bottom-navigation">
+  <%= link_to "Back to events", member_index_events_path , class: "link-button"%>
+
 </div>
