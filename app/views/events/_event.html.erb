@@ -11,12 +11,18 @@
 
   <p>
     <strong>Start time:</strong>
-    <%= event.start_time %>
+    <%
+=begin%>
+ <%= event.start_time  %> 
+<%
+=end%>
+<%= event.start_time.strftime("%B %d, %Y %I:%M %p") %>
+
   </p>
 
   <p>
     <strong>End time:</strong>
-    <%= event.end_time %>
+    <%= event.end_time.strftime("%B %d, %Y %I:%M %p") %>
   </p>
 
   <p>
