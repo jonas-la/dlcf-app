@@ -1,0 +1,17 @@
+<p style="color: green"><%= notice %></p>
+
+<h1>Events - Member View</h1>
+
+<div id="events">
+  <% @events.each do |event| %>
+    <%= render event %>
+    <p>
+      <%= link_to 'View Event', member_show_event_path(event) %>
+
+    </p>
+  <% end %>
+</div>
+
+<%= link_to 'Back to dashboard', member_dashboard_index_path %>
+
+
