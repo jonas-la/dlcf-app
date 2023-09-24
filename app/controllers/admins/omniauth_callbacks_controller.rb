@@ -21,7 +21,7 @@ class Admins::OmniauthCallbacksController < Devise::OmniauthCallbacksController
   
     def after_sign_in_path_for(resource_or_scope)
       # TODO add check for all the admins from member table
-      if auth.info.email == "jonasaustinland@tamu.edu"
+      if ["jonasaustinland@tamu.edu", "adampinto@tamu.edu", "daniel14676@tamu.edu", "isabelle.grimesey@tamu.edu", "markbaca42@tamu.edu"].include?(auth.info.email)
         officer_dashboard_index_path
       else
         member_dashboard_index_path
