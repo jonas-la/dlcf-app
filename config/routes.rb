@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :attendances
   get 'main/index'
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
@@ -6,12 +7,26 @@ Rails.application.routes.draw do
   # root "main#index"
   root 'dashboards#show'
 
-  Rails.application.routes.draw do
-    # root to: 'dashboards#show'
-    devise_for :admins, controllers: { omniauth_callbacks: 'admins/omniauth_callbacks' }
+  resources :officer_dashboard
+  resources :member_dashboard
+  resources :attendances
+  resources :events do
+    collection do
+      get 'member_index'
+    end
+    member do
+      get 'member_show'
+    end
+  end
+  resources :feedbacks
+  resources :members 
+  resources :orginfos
+
+  get '', to: 'custom_pages#show'
+
+  devise_for :admins, controllers: { omniauth_callbacks: 'admins/omniauth_callbacks' }
     devise_scope :admin do
       get 'admins/sign_in', to: 'admins/sessions#new', as: :new_admin_session
       get 'admins/sign_out', to: 'admins/sessions#destroy', as: :destroy_admin_session
     end
-  end
 end
