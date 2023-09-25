@@ -3,7 +3,23 @@ class MembersController < ApplicationController
 
   # GET /members or /members.json
   def index
-    @members = Member.all
+    @members = Member.all   
+
+    if params[:sort_by] == 'first_name'
+      @members = @members.order(:first_name)
+    end
+    if params[:sort_by] == 'preferred_name'
+      @members = @members.order(:preferred_name)
+    end
+    if params[:sort_by] == 'last_name'
+      @members = @members.order(:last_name)
+    end
+    if params[:sort_by] == 'email'
+      @members = @members.order(:email)
+    end
+    if params[:sort_by] == 'role'
+      @members = @members.order(:role)
+    end
   end
 
   # GET /members/1 or /members/1.json
