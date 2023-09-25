@@ -4,15 +4,21 @@ class FeedbacksController < ApplicationController
   # GET /feedbacks or /feedbacks.json
   def index
     @feedbacks = Feedback.all
+    user_email = current_admin.email
+    @user = Member.find_by(email: user_email)
   end
 
   # GET /feedbacks/1 or /feedbacks/1.json
   def show
+    user_email = current_admin.email
+    @user = Member.find_by(email: user_email)
   end
 
   # GET /feedbacks/new
   def new
     @feedback = Feedback.new
+    user_email = current_admin.email
+    @user = Member.find_by(email: user_email)
   end
 
   # GET /feedbacks/1/edit
@@ -22,7 +28,6 @@ class FeedbacksController < ApplicationController
   # POST /feedbacks or /feedbacks.json
   def create
     @feedback = Feedback.new(feedback_params)
-
     respond_to do |format|
       if @feedback.save
         format.html { redirect_to feedback_url(@feedback), notice: "Feedback was successfully created." }
