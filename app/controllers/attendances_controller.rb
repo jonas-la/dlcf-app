@@ -13,6 +13,9 @@ class AttendancesController < ApplicationController
   # GET /attendances/new
   def new
     @attendance = Attendance.new
+    user_email = current_admin.email
+    @user = Member.find_by(email: user_email)
+    # @event = Event.find(params[:event_id])
   end
 
   # GET /attendances/1/edit
@@ -65,6 +68,6 @@ class AttendancesController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def attendance_params
-      params.require(:attendance).permit(:member_id, :event_id, :attended)
+      params.require(:attendance).permit(:member_id, :event_id)
     end
 end

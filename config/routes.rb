@@ -11,6 +11,7 @@ Rails.application.routes.draw do
   resources :member_dashboard
   resources :attendances
   resources :events do
+    resources :attendances, only: [:new, :create]
     collection do
       get 'member_index'
     end
