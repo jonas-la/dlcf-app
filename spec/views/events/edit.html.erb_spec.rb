@@ -5,7 +5,9 @@ RSpec.describe "events/edit", type: :view do
     Event.create!(
       event_name: "MyString",
       location: "MyString",
-      description: "MyString"
+      description: "MyString", 
+      start_time: DateTime.now,
+      end_time: DateTime.now
     )
   }
 
@@ -23,6 +25,11 @@ RSpec.describe "events/edit", type: :view do
       assert_select "input[name=?]", "event[location]"
 
       assert_select "input[name=?]", "event[description]"
+
+      assert_select "input[name=?]", "event[start_time]"
+
+      assert_select "input[name=?]", "event[end_time]"
+
     end
   end
 end

@@ -6,7 +6,7 @@ RSpec.describe "members/show", type: :view do
       first_name: "First Name",
       preferred_name: "Preferred Name",
       last_name: "Last Name",
-      email: "Email",
+      email: "Email@gmail.com",
       is_member: false,
       is_admin: false,
       bio: "MyText",
@@ -21,7 +21,7 @@ RSpec.describe "members/show", type: :view do
     expect(rendered).to match(/First Name/)
     expect(rendered).to match(/Preferred Name/)
     expect(rendered).to match(/Last Name/)
-    expect(rendered).to match(/Email/)
+    expect(rendered).to match(/Email@gmail.com/)
     expect(rendered).to match(/false/)
     expect(rendered).to match(/false/)
     expect(rendered).to match(/MyText/)

@@ -6,7 +6,7 @@ RSpec.describe "members/edit", type: :view do
       first_name: "MyString",
       preferred_name: "MyString",
       last_name: "MyString",
-      email: "MyString",
+      email: "MyString@gmail.com",
       is_member: false,
       is_admin: false,
       bio: "MyText",
