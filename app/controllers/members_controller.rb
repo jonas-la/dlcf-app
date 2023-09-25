@@ -31,6 +31,25 @@ class MembersController < ApplicationController
     @member = Member.new
   end
 
+  def new_account
+    @member = Member.new
+  end
+
+  def create_account
+    @member = Member.new(member_params)
+
+    respond_to do |format|
+      if @member.save
+        format.html { redirect_to root_path, notice: "Member was successfully created." }
+        format.json { render :show, status: :created, location: @member }
+      else
+        format.html { render :new, status: :unprocessable_entity }
+        format.json { render json: @member.errors, status: :unprocessable_entity }
+      end
+    end
+
+  end
+
   # GET /members/1/edit
   def edit
   end

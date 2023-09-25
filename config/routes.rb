@@ -20,7 +20,12 @@ Rails.application.routes.draw do
     end
   end
   resources :feedbacks
-  resources :members 
+  resources :members do
+    collection do
+      get 'new_account'
+      post 'create_account' # Add this line
+    end
+  end
   resources :orginfos
 
   get '', to: 'custom_pages#show'
