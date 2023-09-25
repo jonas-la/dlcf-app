@@ -13,18 +13,14 @@
 
   <div>
     <%= form.label :member_id, style: "display: block" %>
-    <%= form.text_field :member_id %>
+    <%= form.hidden_field :member_id, value: @user.id %>
   </div>
 
   <div>
     <%= form.label :event_id, style: "display: block" %>
-    <%= form.text_field :event_id %>
-  </div>
-
-  <div>
-    <%= form.label :attended, style: "display: block" %>
-    <%= form.check_box :attended %>
-  </div>
+    <%= form.hidden_field :event_id, value: params[:event_id] %>
+    <%="Sign into this event?"%>
+  </div> 
 
   <div>
     <%= form.submit %>

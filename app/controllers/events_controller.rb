@@ -8,6 +8,14 @@ class EventsController < ApplicationController
 
   # GET /events/1 or /events/1.json
   def show
+    @attendees_raw = Attendance.where(event_id: params[:id])
+    
+    @attendees_main = []
+    @attendees_raw.each do |attendee|
+      attendee_name = Member.find_by(id: attendee.member_id.to_i)
+      @attendees_main << attendee_name
+    end
+
   end
 
   def member_index
