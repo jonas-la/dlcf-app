@@ -28,10 +28,16 @@ class AttendancesController < ApplicationController
 
     respond_to do |format|
       if @attendance.save
-        format.html { redirect_to member_dashboard_index_path(@attendance), notice: "Attendance was successfully created." }
+        format.html { redirect_to member_index_events_path, notice: "Successfully signed in." }
+    
+        # format.html { redirect_to member_dashboard_index_path(@attendance), notice: "Attendance was successfully created." }
         format.json { render :show, status: :created, location: @attendance }
       else
-        format.html { render :new, status: :unprocessable_entity }
+
+        format.html { redirect_to member_index_events_path, notice: "Error signing in." }
+    
+        # format.html { render :new, status: :unprocessable_entity }
+
         format.json { render json: @attendance.errors, status: :unprocessable_entity }
       end
     end
