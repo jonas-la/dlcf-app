@@ -1,0 +1,16 @@
+{
+  "ExpandedNodes": [
+    "",
+    "\\.github",
+    "\\.github\\workflows",
+    "\\app\\controllers",
+    "\\app\\controllers\\admins",
+    "\\app\\models",
+    "\\spec\\helpers",
+    "\\spec\\models",
+    "\\test\\channels",
+    "\\test\\channels\\application_cable"
+  ],
+  "SelectedNode": "\\.rubocop.yml",
+  "PreviewInSolutionExplorer": false
+}

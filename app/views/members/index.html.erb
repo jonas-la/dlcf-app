@@ -1,0 +1,71 @@
+<p style="color: green"><%= notice %></p>
+
+<h1>Current Members</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th> <%= link_to 'First Name', members_path(sort_by: 'first_name') %> </th>
+      <th> <%= link_to 'preferred name', members_path(sort_by: 'preferred_name') %> </th>
+      <th> <%= link_to 'Last Name', members_path(sort_by: 'last_name') %> </th>
+      <th> <%= link_to 'Email', members_path(sort_by: 'email') %> </th>
+      <th> <%= link_to 'Role', members_path(sort_by: 'role') %> </th>
+      <th>Details</th>
+      <!-- Add more table headers for additional member attributes -->
+    </tr>
+  </thead>
+  <tbody>
+    <% @members.each do |member| %>
+      <% if member.is_member %>
+        <tr>
+          <td><%= member.first_name %></td>
+          <td><%= member.preferred_name %></td>
+          <td><%= member.last_name %></td>
+          <td><%= member.email %></td>
+          <td><%= member.role %></td>
+          <td><%= link_to "More info", member %></td>
+          <!-- Add more table cells for additional member attributes -->
+        </tr>
+      <% end %>
+    <% end %>
+  </tbody>
+</table>
+
+<%= link_to "New member", new_member_path %>
+
+<h1>Former Members</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th> <%= link_to 'First Name', members_path(sort_by: 'first_name') %> </th>
+      <th> <%= link_to 'preferred name', members_path(sort_by: 'preferred_name') %> </th>
+      <th> <%= link_to 'Last Name', members_path(sort_by: 'last_name') %> </th>
+      <th> <%= link_to 'Email', members_path(sort_by: 'email') %> </th>
+      <th> <%= link_to 'Role', members_path(sort_by: 'role') %> </th>
+      <th>Details</th>
+      <!-- Add more table headers for additional member attributes -->
+    </tr>
+  </thead>
+  <tbody>
+    <% @members.each do |member| %>
+      <% unless  member.is_member %>
+        <tr>
+          <td><%= member.first_name %></td>
+          <td><%= member.preferred_name %></td>
+          <td><%= member.last_name %></td>
+          <td><%= member.email %></td>
+          <td><%= member.role %></td>
+          <td><%= link_to "More info", member %></td>
+          <!-- Add more table cells for additional member attributes -->
+        </tr>
+      <% end %>
+    <% end %>
+  </tbody>
+</table>
+
+<div class="center bottom-navigation">
+
+  <%= link_to 'Back to Dashboard', officer_dashboard_index_path , class: "link-button" %>
+
+  </div>

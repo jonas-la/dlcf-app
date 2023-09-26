@@ -10,17 +10,49 @@
 
 
 <div class="center text-tile">
-<h2>You're Logged out! Log in to the Admin Dashboard</h2>
-<%
-=begin%>
- <div class="link-?button"> 
-<%
-=end%>
+<h1>Deeper Life Campus Fellowship</h1>
+
 <%= button_to "Sign in with Google", admin_google_oauth2_omniauth_authorize_path , class: "link-button"%>
-<%
-=begin%>
- </div> 
-<%
-=end%>
+
+<%= link_to "Create account", new_account_members_path , class: "link-button"%>
+
+<div class="center text-tile">
+
+<span class="info-title"><%= @org_info.title%></span>
+
+<br>
+
+<div class="list-tile">
+<span class="info-text"><%= @org_info.description %></span>
 </div>
+
+</div>
+
+<p class="info-text officer-title info-title ">Club Officers</p>
+
+<% @officers.each do |officer| %>
+    <div class="center text-tile">
+    <div class="list-tile">
+        <span class="info-title"><%= officer.preferred_name%> <%= officer.last_name%></span>
+    </div>
+    <br>
+
+    <div class="list-tile">
+    <span class="info-text"><%= officer.bio %></span>
+    </div>
+
+    </div>
+
+    </div>
+<% end %>
+
+</div>
+
+
+
+
+
+
+
+
 </body>

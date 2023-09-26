@@ -1,0 +1,13 @@
+<p style="color: green"><%= notice %></p>
+
+<%= render @feedback %>
+
+<div>
+  <% if @user.is_admin %>
+    <%= link_to "Back to feedback", feedbacks_url %> \
+    <%= link_to "Back to dashboard", officer_dashboard_index_path %> 
+    <%= button_to "Destroy this feedback", @feedback, method: :delete %>
+  <% else %>
+    <%= link_to "Back to dashboard", member_dashboard_index_path %> 
+  <% end %>
+</div>

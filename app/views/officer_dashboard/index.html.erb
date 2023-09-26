@@ -1,0 +1,56 @@
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Deeper Life Campus Fellowship</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+
+<div class="center text-tile">
+<h2>You're Logged into the Officer Dashboard</h2>
+
+<%= link_to "Events", events_url , class: "link-button"%>
+<%= link_to "Members", members_path , class: "link-button"%>
+<%= link_to "Attendance Tracking", attendances_url , class: "link-button"%>
+<%= link_to "Org Info", orginfos_url , class: "link-button"%> 
+<%= link_to "Feedback", feedbacks_url , class: "link-button"%> 
+<%= link_to "Sign Out", destroy_admin_session_path , class: "link-button"%>
+
+
+
+<div class="center text-tile">
+
+<span class="info-title"><%= @org_info.title%></span>
+
+<br>
+
+<div class="list-tile">
+<span class="info-text"><%= @org_info.description %></span>
+</div>
+
+</div>
+
+<p class="info-text officer-title info-title ">Club Officers</p>
+
+<% @officers.each do |officer| %>
+    <div class="center text-tile">
+    <div class="list-tile">
+        <span class="info-title"><%= officer.preferred_name%> <%= officer.last_name%></span>
+    </div>
+    <br>
+
+    <div class="list-tile">
+    <span class="info-text"><%= officer.bio %></span>
+    </div>
+
+    </div>
+
+    </div>
+<% end %>
+
+
+</div>
+</body>

@@ -20,7 +20,21 @@ class Admins::OmniauthCallbacksController < Devise::OmniauthCallbacksController
     end
   
     def after_sign_in_path_for(resource_or_scope)
-      stored_location_for(resource_or_scope) || root_path
+      # TODO add check for all the admins from member table
+      current_member = Member.find_by(email: auth.info.email)
+      if current_member.present?
+        
+        if current_member.is_admin == true
+          officer_dashboard_index_path
+        else
+          member_dashboard_index_path
+        end
+
+      else
+        sign_out_all_scopes
+        new_admin_session_path
+      end
+      # stored_location_for(resource_or_scope) || root_path
     end
   
     private

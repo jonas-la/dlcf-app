@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_09_15_134341) do
+ActiveRecord::Schema[7.0].define(version: 2023_09_23_223043) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -24,10 +24,65 @@ ActiveRecord::Schema[7.0].define(version: 2023_09_15_134341) do
     t.index ["email"], name: "index_admins_on_email", unique: true
   end
 
+  create_table "attendances", force: :cascade do |t|
+    t.bigint "member_id", null: false
+    t.bigint "event_id", null: false
+    t.boolean "attended"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["event_id"], name: "index_attendances_on_event_id"
+    t.index ["member_id"], name: "index_attendances_on_member_id"
+  end
+
   create_table "books", force: :cascade do |t|
     t.string "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
+  create_table "events", force: :cascade do |t|
+    t.string "event_name"
+    t.string "location"
+    t.datetime "start_time"
+    t.datetime "end_time"
+    t.string "description"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "feedbacks", force: :cascade do |t|
+    t.integer "satisfaction"
+    t.string "critiques"
+    t.string "new_ideas"
+    t.bigint "member_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["member_id"], name: "index_feedbacks_on_member_id"
+  end
+
+  create_table "members", force: :cascade do |t|
+    t.string "first_name"
+    t.string "preferred_name"
+    t.string "last_name"
+    t.string "email"
+    t.boolean "is_member"
+    t.boolean "is_admin"
+    t.text "bio"
+    t.string "contact"
+    t.string "photo_file_name"
+    t.string "role"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "orginfos", force: :cascade do |t|
+    t.string "title"
+    t.text "description"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_foreign_key "attendances", "events"
+  add_foreign_key "attendances", "members"
+  add_foreign_key "feedbacks", "members"
 end
