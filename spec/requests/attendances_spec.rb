@@ -17,12 +17,33 @@ RSpec.describe "/attendances", type: :request do
   # This should return the minimal set of attributes required to create a valid
   # Attendance. As you add validations to Attendance, be sure to
   # adjust the attributes here as well.
+  let(:member) { Member.create(
+    first_name: 'John',
+    preferred_name: 'Johnny',
+    last_name: 'Doe',
+    email: 'john@example.com',
+    is_member: true,
+    is_admin: false,
+    bio: 'A passionate programmer',
+    contact: '123-456-7890',
+    photo_file_name: 'john.jpg',
+    role: 'Developer'
+  )}
+
+  let(:event) { Event.create(
+    event_name: 'Tech Conference',
+    location: 'Conference Center',
+    start_time: DateTime.now,
+    end_time: DateTime.now + 2.hours,
+    description: 'An exciting tech conference'
+  )}
+
   let(:valid_attributes) {
-    skip("Add a hash of attributes valid for your model")
+    { member_id: 1, event_id: 1, attended: true }
   }
 
   let(:invalid_attributes) {
-    skip("Add a hash of attributes invalid for your model")
+    { member_id: nil, event_id: 2, attended: true }
   }
 
   describe "GET /index" do

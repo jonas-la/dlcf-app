@@ -15,7 +15,42 @@
 <%= link_to "Events", member_index_events_path , class: "link-button"%>
 
 
+<%= link_to "Create Feedback", new_feedback_path,  class: "link-button" %>
+
 <%= link_to "Sign Out", destroy_admin_session_path , class: "link-button"%>
+
+
+<div class="center text-tile">
+
+<span class="info-title"><%= @org_info.title%></span>
+
+<br>
+
+<div class="list-tile">
+<span class="info-text"><%= @org_info.description %></span>
+</div>
+
+</div>
+
+<p class="info-text officer-title info-title ">Club Officers</p>
+
+<% @officers.each do |officer| %>
+    <div class="center text-tile">
+    <div class="list-tile">
+        <span class="info-title"><%= officer.preferred_name%> <%= officer.last_name%></span>
+    </div>
+    <br>
+
+    <div class="list-tile">
+    <span class="info-text"><%= officer.bio %></span>
+    </div>
+
+    </div>
+
+    </div>
+<% end %>
+
+
 
 </div>
 </body>

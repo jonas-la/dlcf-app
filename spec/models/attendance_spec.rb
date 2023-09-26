@@ -1,9 +1,26 @@
 require 'rails_helper'
 
 RSpec.describe Attendance, type: :model do
-  # Create some test data using FactoryBot
-  let(:member) { FactoryBot.create(:member) }
-  let(:event) { FactoryBot.create(:event) }
+    let(:member) { Member.create(
+      first_name: 'John',
+      preferred_name: 'Johnny',
+      last_name: 'Doe',
+      email: 'john@example.com',
+      is_member: true,
+      is_admin: false,
+      bio: 'A passionate programmer',
+      contact: '123-456-7890',
+      photo_file_name: 'john.jpg',
+      role: 'Developer'
+    )}
+
+    let(:event) { Event.create(
+      event_name: 'Tech Conference',
+      location: 'Conference Center',
+      start_time: DateTime.now,
+      end_time: DateTime.now + 2.hours,
+      description: 'An exciting tech conference'
+    )}
 
   # Example test cases
   it "is valid with valid attributes" do

@@ -5,7 +5,9 @@ RSpec.describe "events/show", type: :view do
     assign(:event, Event.create!(
       event_name: "Event Name",
       location: "Location",
-      description: "Description"
+      description: "Description",
+      start_time: DateTime.now,
+      end_time: DateTime.now
     ))
   end
 
@@ -14,5 +16,6 @@ RSpec.describe "events/show", type: :view do
     expect(rendered).to match(/Event Name/)
     expect(rendered).to match(/Location/)
     expect(rendered).to match(/Description/)
+    
   end
 end

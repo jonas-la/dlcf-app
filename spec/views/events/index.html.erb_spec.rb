@@ -6,12 +6,16 @@ RSpec.describe "events/index", type: :view do
       Event.create!(
         event_name: "Event Name",
         location: "Location",
-        description: "Description"
+        description: "Description",
+        start_time: DateTime.now,
+        end_time: DateTime.now
       ),
       Event.create!(
         event_name: "Event Name",
         location: "Location",
-        description: "Description"
+        description: "Description",
+        start_time: DateTime.now,
+        end_time: DateTime.now
       )
     ])
   end

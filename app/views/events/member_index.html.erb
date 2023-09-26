@@ -3,6 +3,7 @@
 
 <div class="center text-tile">
 <h1>Events</h1>
+
 </div>
 
 
@@ -14,6 +15,14 @@
     
     <p>
       <%= link_to "Show this event", member_show_event_path(event), class: "link-button" %>
+
+      
+      <% if Attendance.find_by(event_id: event.id, member_id: @user.id) %> 
+      <div>Signed in</div>
+      <% else %>
+      <%= link_to 'Sign In', new_attendance_path(event_id: event.id), class: "link-button" %>
+      <% end %>
+      
     </p>
     </div>
   <% end %>

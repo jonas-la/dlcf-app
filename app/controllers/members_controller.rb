@@ -3,7 +3,23 @@ class MembersController < ApplicationController
 
   # GET /members or /members.json
   def index
-    @members = Member.all
+    @members = Member.all   
+
+    if params[:sort_by] == 'first_name'
+      @members = @members.order(:first_name)
+    end
+    if params[:sort_by] == 'preferred_name'
+      @members = @members.order(:preferred_name)
+    end
+    if params[:sort_by] == 'last_name'
+      @members = @members.order(:last_name)
+    end
+    if params[:sort_by] == 'email'
+      @members = @members.order(:email)
+    end
+    if params[:sort_by] == 'role'
+      @members = @members.order(:role)
+    end
   end
 
   # GET /members/1 or /members/1.json
@@ -13,6 +29,25 @@ class MembersController < ApplicationController
   # GET /members/new
   def new
     @member = Member.new
+  end
+
+  def new_account
+    @member = Member.new
+  end
+
+  def create_account
+    @member = Member.new(member_params)
+
+    respond_to do |format|
+      if @member.save
+        format.html { redirect_to root_path, notice: "Member was successfully created." }
+        format.json { render :show, status: :created, location: @member }
+      else
+        format.html { render :new_account, status: :unprocessable_entity }
+        format.json { render json: @member.errors, status: :unprocessable_entity }
+      end
+    end
+
   end
 
   # GET /members/1/edit

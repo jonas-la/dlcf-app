@@ -11,6 +11,7 @@ Rails.application.routes.draw do
   resources :member_dashboard
   resources :attendances
   resources :events do
+    resources :attendances, only: [:new, :create]
     collection do
       get 'member_index'
     end
@@ -19,7 +20,12 @@ Rails.application.routes.draw do
     end
   end
   resources :feedbacks
-  resources :members 
+  resources :members do
+    collection do
+      get 'new_account'
+      post 'create_account' # Add this line
+    end
+  end
   resources :orginfos
 
   get '', to: 'custom_pages#show'

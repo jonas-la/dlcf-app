@@ -7,7 +7,7 @@ RSpec.describe "members/index", type: :view do
         first_name: "First Name",
         preferred_name: "Preferred Name",
         last_name: "Last Name",
-        email: "Email",
+        email: "Email@gmail.com",
         is_member: false,
         is_admin: false,
         bio: "MyText",
@@ -19,7 +19,7 @@ RSpec.describe "members/index", type: :view do
         first_name: "First Name",
         preferred_name: "Preferred Name",
         last_name: "Last Name",
-        email: "Email",
+        email: "Email2@gmail.com",
         is_member: false,
         is_admin: false,
         bio: "MyText",
@@ -36,7 +36,7 @@ RSpec.describe "members/index", type: :view do
     assert_select cell_selector, text: Regexp.new("First Name".to_s), count: 2
     assert_select cell_selector, text: Regexp.new("Preferred Name".to_s), count: 2
     assert_select cell_selector, text: Regexp.new("Last Name".to_s), count: 2
-    assert_select cell_selector, text: Regexp.new("Email".to_s), count: 2
+    assert_select cell_selector, text: Regexp.new("Email@gmail.com".to_s), count: 2
     assert_select cell_selector, text: Regexp.new(false.to_s), count: 2
     assert_select cell_selector, text: Regexp.new(false.to_s), count: 2
     assert_select cell_selector, text: Regexp.new("MyText".to_s), count: 2
