@@ -21,6 +21,10 @@ class EventsController < ApplicationController
   def member_index
     # render("member_index")
     @events = Event.all
+
+    user_email = current_admin.email
+    @user = Member.find_by(email: user_email)
+
   end
 
   def member_show
