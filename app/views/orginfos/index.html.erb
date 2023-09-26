@@ -1,14 +1,20 @@
 <p style="color: green"><%= notice %></p>
 
-<h1>Orginfos</h1>
-
-<div id="orginfos">
+<div class="center text-tile">
+<h1>Information</h1>
+</div>
+<div id="orginfos" class="center text-tile">
   <% @orginfos.each do |orginfo| %>
     <%= render orginfo %>
     <p>
-      <%= link_to "Show this orginfo", orginfo %>
+      <%= link_to "View this", orginfo , class: "link-button" %>
     </p>
   <% end %>
 </div>
 
-<%= link_to "New orginfo", new_orginfo_path %>
+ <div class="center bottom-navigation">
+
+  <%= link_to 'Back to Dashboard', officer_dashboard_index_path , class: "link-button" %>
+
+  </div>
+
