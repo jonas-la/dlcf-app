@@ -48,6 +48,19 @@
   margin-top: 15px;
  }
 
+ .info-title{
+  font-size: 1.35em;
+ }
+
+ .info-text{
+  margin-top: 15px;
+ }
+
+ .officer-title{
+  font-size: 1.8em;
+  margin-top: 40px;
+ }
+
  .form-input {
   margin: 8px;
   display: inline-block;

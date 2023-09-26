@@ -43,7 +43,7 @@ class MembersController < ApplicationController
         format.html { redirect_to root_path, notice: "Member was successfully created." }
         format.json { render :show, status: :created, location: @member }
       else
-        format.html { render :new, status: :unprocessable_entity }
+        format.html { render :new_account, status: :unprocessable_entity }
         format.json { render json: @member.errors, status: :unprocessable_entity }
       end
     end

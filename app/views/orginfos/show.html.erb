@@ -1,10 +1,12 @@
 <p style="color: green"><%= notice %></p>
 
+<div class="center text-tile">
 <%= render @orginfo %>
 
-<div>
-  <%= link_to "Edit this orginfo", edit_orginfo_path(@orginfo) %> |
-  <%= link_to "Back to orginfos", orginfos_path %>
+<div class="center bottom-navigation">
+  <%= link_to "Edit", edit_orginfo_path(@orginfo) , class: "link-button" %>
+  <%= link_to "Back", orginfos_path , class: "link-button" %>
 
-  <%= button_to "Destroy this orginfo", @orginfo, method: :delete %>
+</div>
+
 </div>
