@@ -11,10 +11,19 @@
     </div>
   <% end %>
 
+
   <div>
+    <label for="satisfaction-dropdown">Satisfaction:</label>
+     <%= form.select :satisfaction, options_for_select([5, 4,3,2,1], @feedback.satisfaction), {}, id: "satisfaction-dropdown" %>
+  </div>
+  <%
+=begin%>
+ <div>
     <%= form.label :satisfaction, style: "display: block" %>
     <%= form.number_field :satisfaction %>
-  </div>
+  </div> 
+<%
+=end%>
 
   <div>
     <%= form.label :critiques, style: "display: block" %>
