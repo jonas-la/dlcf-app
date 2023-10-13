@@ -1,5 +1,8 @@
 require 'rails_helper'
 
 RSpec.describe "member_dashboard/index.html.erb", type: :view do
-  pending "add some examples to (or delete) #{__FILE__}"
+  it "displays member dashboard" do
+    render
+    expect(rendered).to have_content("About us")
+  end
 end
