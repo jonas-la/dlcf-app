@@ -32,7 +32,7 @@ end
 
 
 org_info_data = [
-  { title: 'About us', description: 'The DLCF has a divine mandate and mission to impact, build, and engage interested students and employees of Texas A&M University to be their best for Jesus Christ.' },
+  { title: 'About Us', description: 'The DLCF has a divine mandate and mission to impact, build, and engage interested students and employees of Texas A&M University to be their best for Jesus Christ.' },
  
   # Add more member data here as needed
 ]
