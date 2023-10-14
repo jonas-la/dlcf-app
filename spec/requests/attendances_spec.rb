@@ -53,7 +53,7 @@ RSpec.describe "/attendances", type: :request do
     it "renders a successful response" do
       # puts "Member ID: #{member.id}, Event ID: #{event.id}, valid_attributes: #{valid_attributes}" # Debugging line
       # puts "attendances_url: #{attendances_url}" # Debugging line
-      Attendance.create!( member_id: member.id, event_id: event.id, attended: true )
+      Attendance.create!( valid_attributes )
       get attendances_url
       expect(response).to be_successful
     end
