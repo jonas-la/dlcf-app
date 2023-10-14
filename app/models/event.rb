@@ -2,6 +2,7 @@ class Event < ApplicationRecord
   validates :event_name, presence: true
   validates :start_time, presence: true
   validates :end_time, presence: true
+  validates :password, presence: true
   
   # Custom validation to check if start_time is before end_time
   validate :start_time_before_end_time

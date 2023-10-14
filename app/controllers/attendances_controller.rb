@@ -8,6 +8,8 @@ class AttendancesController < ApplicationController
 
   # GET /attendances/1 or /attendances/1.json
   def show
+    #@user = Member.find_by(id: @attendance.member_id)
+    #@event = Event.find_by(id: @attendance.event_id)
   end
 
   # GET /attendances/new
@@ -15,7 +17,7 @@ class AttendancesController < ApplicationController
     @attendance = Attendance.new
     user_email = current_admin.email
     @user = Member.find_by(email: user_email)
-    # @event = Event.find(params[:event_id])
+    #@event = Event.find(params[:event_id])
   end
 
   # GET /attendances/1/edit
@@ -24,7 +26,15 @@ class AttendancesController < ApplicationController
 
   # POST /attendances or /attendances.json
   def create
-    @attendance = Attendance.new(attendance_params)
+    @event = Event.find(attendance_params[:event_id])
+    if attendance_params[:password] == @event.password
+      @attendance = Attendance.new(
+        member_id: attendance_params[:member_id], 
+        event_id: attendance_params[:event_id], 
+        attended: attendance_params[:attended])
+    else 
+      @attendance = Attendance.new()
+    end
 
     respond_to do |format|
       if @attendance.save
@@ -34,7 +44,7 @@ class AttendancesController < ApplicationController
         format.json { render :show, status: :created, location: @attendance }
       else
 
-        format.html { redirect_to member_index_events_path, notice: "Error signing in." }
+        format.html { redirect_to member_index_events_path, notice: "Error signing in. not valid" }
     
         # format.html { render :new, status: :unprocessable_entity }
 
@@ -74,6 +84,6 @@ class AttendancesController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def attendance_params
-      params.require(:attendance).permit(:member_id, :event_id)
+      params.require(:attendance).permit(:member_id, :event_id, :attended, :password)
     end
 end
