@@ -264,6 +264,9 @@ Metrics/BlockLength:
         - "**/*.rake"
         - "**/factories/**/*"
         - "**/config/routes.rb"
+        - config/**/*
+        - spec/**/*
+
 
 Metrics/ClassLength:
     CountAsOne: ["array", "hash"]
@@ -289,6 +292,10 @@ Metrics/ParameterLists:
 Metrics/PerceivedComplexity:
     Max: 10
 
+Metrics/LineLength:
+    Max: 100
+
+
 ###########################################################
 ######################## Naming ###########################
 ###########################################################
@@ -301,6 +308,14 @@ Naming/InclusiveLanguage: # (new in 1.18)
 
 Naming/PredicateName:
   Enabled: true
+
+Naming/MethodName:
+  Enabled: true
+  EnforcedStyle: snake_case #default
+
+Naming/ClassAndModuleCamelCase:
+  EnforcedStyle: always
+
 
 ###########################################################
 ######################## Style ############################

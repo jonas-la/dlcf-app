@@ -6,7 +6,6 @@ class CreateEvents < ActiveRecord::Migration[7.0]
       t.datetime :start_time
       t.datetime :end_time
       t.string :description
-
       t.timestamps
     end
   end

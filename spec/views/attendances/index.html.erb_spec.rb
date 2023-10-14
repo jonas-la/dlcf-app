@@ -21,6 +21,7 @@ RSpec.describe "attendances/index", type: :view do
           location: "MyString",
           description: "MyString", 
           start_time: DateTime.now,
+          password: "test123",
           end_time: DateTime.now
         ),
         attended: true
@@ -43,6 +44,7 @@ RSpec.describe "attendances/index", type: :view do
           location: "MyString",
           description: "MyString", 
           start_time: DateTime.now,
+          password: "test123",
           end_time: DateTime.now
         ),
         attended: true
