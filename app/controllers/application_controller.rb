@@ -11,9 +11,14 @@ class ApplicationController < ActionController::Base
 
     # This will allow the user to skip authentication for certain pages
     def skip_authentication?
-      return true #TODO remove me when Rspec can do this
+
+      #Does not authenticate if running tests
+      if OmniAuth.config.test_mode
+        return true
+      end
+      # return true #TODO remove me when Rspec can do this
       # This is the list of routes to not authenticate for
-      skip_auth_paths = [new_account_members_path, create_account_members_path]
+      skip_auth_paths = [new_account_members_path, create_account_members_path, attendances_url]
       skip_auth_paths.each do |route|
         if request.path == route
           return true
