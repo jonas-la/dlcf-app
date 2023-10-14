@@ -34,7 +34,7 @@ class AttendancesController < ApplicationController
         format.json { render :show, status: :created, location: @attendance }
       else
 
-        format.html { redirect_to member_index_events_path, notice: "Error signing in." }
+        format.html { redirect_to member_index_events_path, notice: "Error signing in. not valid3, #{attendance_params}" }
     
         # format.html { render :new, status: :unprocessable_entity }
 
@@ -74,6 +74,6 @@ class AttendancesController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def attendance_params
-      params.require(:attendance).permit(:member_id, :event_id)
+      params.require(:attendance).permit(:member_id, :event_id, :attended)
     end
 end

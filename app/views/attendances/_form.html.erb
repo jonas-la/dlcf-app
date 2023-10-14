@@ -40,6 +40,10 @@
   </div> 
 
   <div>
+    <%= form.hidden_field :attended, value: true %>
+  </div> 
+
+  <div>
     <%= form.submit "Sign in", class:"link-button" %>
   </div>
 <% end %>
