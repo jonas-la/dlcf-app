@@ -8,6 +8,7 @@ RSpec.describe "events/index", type: :view do
         location: "Location",
         description: "Description",
         start_time: DateTime.now,
+        password: "test123",
         end_time: DateTime.now
       ),
       Event.create!(
@@ -15,6 +16,7 @@ RSpec.describe "events/index", type: :view do
         location: "Location",
         description: "Description",
         start_time: DateTime.now,
+        password: "test123",
         end_time: DateTime.now
       )
     ])

@@ -6,6 +6,7 @@ RSpec.describe Event, type: :model do
       event_name: "Sample Event",
       location: "Sample Location",
       start_time: Time.now,
+      password: "test123",
       end_time: Time.now + 1.hour,
       description: "A sample event description."
     )
@@ -58,6 +59,7 @@ RSpec.describe Event, type: :model do
       event_name: "Sample Event",
       location: "Sample Location",
       start_time: Time.now,
+      password: "test123",
       end_time: Time.now + 1.hour,
       description: "A" * 1000  # Assuming a maximum length of 1000 characters
     )
