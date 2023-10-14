@@ -20,6 +20,11 @@
 
   <br>
 
+  <div>
+    <%= form.label :password, style: "display: block", class:"input-label" %>
+    <%= form.text_field :password, class:"form-input" %>
+  </div>
+
   <div> 
     <%= form.hidden_field :member_id, value: @user.id %>
   </div>
