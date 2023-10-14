@@ -20,6 +20,7 @@ RSpec.describe "attendances/show", type: :view do
         location: "MyString",
         description: "MyString", 
         start_time: DateTime.now,
+        password: "test123",
         end_time: DateTime.now
       ),
       attended: true
