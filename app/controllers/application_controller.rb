@@ -4,7 +4,7 @@ class ApplicationController < ActionController::Base
     private
   
     def skip_authentication?
-      # return true
+      return true
       if (request.path == new_account_members_path) || (request.path == create_account_members_path)
         return true  
       else
