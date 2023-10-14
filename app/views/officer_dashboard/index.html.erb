@@ -12,7 +12,7 @@
             <h2>You're Logged into the Officer Dashboard</h2>
 
             <div>
-                <%= image_tag(@org_info.logo_path, style: "width: 200px; height: 200px; margin: 20px") %>
+                <%= image_tag(@org_info.image, style: "width: 200px; height: 200px; margin: 20px") %>
             </div>
         </div>
         
@@ -34,7 +34,7 @@
             </div>
 
             <div>
-                <%= link_to "Download Charter", asset_path(@org_info.charter_path), download: 'dlcf_charter.pdf', class: "link-button", style: "margin: 20px" %>
+                <%= link_to "View Charter", @org_info.file, target: "_blank", class: "link-button", style: "margin: 20px" %>
             </div>
         </div>
 
