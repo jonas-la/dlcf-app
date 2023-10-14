@@ -1,15 +1,4 @@
 <%= form_with(model: attendance) do |form| %>
-  <% if attendance.errors.any? %>
-    <div style="color: red">
-      <h2><%= pluralize(attendance.errors.count, "error") %> prohibited this attendance from being saved:</h2>
-
-      <ul>
-        <% attendance.errors.each do |error| %>
-          <li><%= error.full_message %></li>
-        <% end %>
-      </ul>
-    </div>
-  <% end %>
 
   <div class="info-text"> Name: <%= Event.find(params[:event_id]).event_name %> </div>
 
@@ -31,12 +20,21 @@
 
   <br>
 
+  <div>
+    <%= form.label :password, style: "display: block", class:"input-label" %>
+    <%= form.text_field :password, class:"form-input" %>
+  </div>
+
   <div> 
     <%= form.hidden_field :member_id, value: @user.id %>
   </div>
 
   <div>
     <%= form.hidden_field :event_id, value: params[:event_id] %>
+  </div> 
+
+  <div>
+    <%= form.hidden_field :attended, value: true %>
   </div> 
 
   <div>

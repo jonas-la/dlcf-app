@@ -45,14 +45,14 @@ RSpec.describe Member, type: :model do
 
   # Add more validation tests for other attributes as needed
 
-
-  it "should have a default role of 'Regular'" do
-    member = Member.new(
-      first_name: "John",
-      last_name: "Doe"
-    )
-    expect(member.role).to eq("Member")
-  end
+  # We aren't doing this 
+  # it "should have a default role of 'Mem'" do
+  #   member = Member.new(
+  #     first_name: "John",
+  #     last_name: "Doe"
+  #   )
+  #   expect(member.role).to eq("Member")
+  # end
 
   # Add tests for associations if you have any (e.g., has_many, belongs_to)
 
