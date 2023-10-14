@@ -13,6 +13,7 @@
 
 
   <div>
+  
      <%= form.label "Satisfaction", style: "display: block", class:"input-label" %>
      <%= form.select :satisfaction, options_for_select([5, 4,3,2,1], @feedback.satisfaction), {}, id: "satisfaction-dropdown" %>
   </div>
@@ -36,7 +37,9 @@
   </div>
 
   <div>
+    <% if  OmniAuth.config.test_mode == false%>
     <%= form.hidden_field :member_id, value: @user.id %>
+    <% end %>
   </div>
 
   <div>
