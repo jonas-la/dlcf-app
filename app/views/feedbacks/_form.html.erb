@@ -13,7 +13,7 @@
 
 
   <div>
-    <label for="satisfaction-dropdown">Satisfaction:</label>
+     <%= form.label "Satisfaction", style: "display: block", class:"input-label" %>
      <%= form.select :satisfaction, options_for_select([5, 4,3,2,1], @feedback.satisfaction), {}, id: "satisfaction-dropdown" %>
   </div>
   <%
@@ -26,13 +26,13 @@
 =end%>
 
   <div>
-    <%= form.label :critiques, style: "display: block" %>
-    <%= form.text_field :critiques %>
+    <%= form.label :critiques, style: "display: block", class:"input-label" %>
+    <%= form.text_field :critiques, class:"form-input"%>
   </div>
 
   <div>
-    <%= form.label :new_ideas, style: "display: block" %>
-    <%= form.text_field :new_ideas %>
+    <%= form.label :new_ideas, style: "display: block", class:"input-label" %>
+    <%= form.text_field :new_ideas, class:"form-input" %>
   </div>
 
   <div>
@@ -40,6 +40,6 @@
   </div>
 
   <div>
-    <%= form.submit %>
+    <%= form.submit "Submit", class: "link-button" %>
   </div>
 <% end %>

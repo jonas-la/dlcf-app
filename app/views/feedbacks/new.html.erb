@@ -1,9 +1,14 @@
+<div class="center text-tile">
+
 <h1>New feedback</h1>
 
 <%= render "form", feedback: @feedback %>
 
 <br>
 
-<div>
-  <%= link_to "Back to dashboard", member_dashboard_index_path %>
+<div class="center bottom-navigation">
+  <%= link_to "Back to dashboard", member_dashboard_index_path, class: "link-button" %>
+</div>
+
+
 </div>
