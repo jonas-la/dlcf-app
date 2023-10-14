@@ -27,6 +27,8 @@ class FeedbacksController < ApplicationController
 
   # POST /feedbacks or /feedbacks.json
   def create
+    user_email = current_admin.email
+    @user = Member.find_by(email: user_email)
     @feedback = Feedback.new(feedback_params)
     respond_to do |format|
       if @feedback.save
