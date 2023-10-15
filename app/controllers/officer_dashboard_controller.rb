@@ -5,5 +5,7 @@ class OfficerDashboardController < ApplicationController
     @officers = Member.where(is_admin: true).where.not(email: officers_to_ignore).all
     user_email = current_admin.email
     @user = Member.find_by(email: user_email)
+    @pendingCount = PendingMember.count 
+
   end
 end
