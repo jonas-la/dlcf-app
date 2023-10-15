@@ -22,6 +22,7 @@
             <%= link_to "Attendance Tracking", attendances_url , class: "link-button"%>
             <%= link_to "Org Info", orginfos_url , class: "link-button"%> 
             <%= link_to "Feedback", feedbacks_url , class: "link-button"%> 
+            <%= link_to "Edit Profile", edit_member_path(@user) , class: "link-button"%> 
             <%= link_to "Sign Out", destroy_admin_session_path , class: "link-button"%>
         </div>
         
