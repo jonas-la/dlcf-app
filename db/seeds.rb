@@ -51,8 +51,7 @@ end
 
 
 org_info_data = [
-  { title: 'About Us', description: 'The DLCF has a divine mandate and mission to impact, build, and engage interested students and employees of Texas A&M University to be their best for Jesus Christ.' },
- 
+  { title: 'About Us', description: 'The DLCF has a divine mandate and mission to impact, build, and engage interested students and employees of Texas A&M University to be their best for Jesus Christ.'}
   # Add more member data here as needed
 ]
 
@@ -60,3 +59,8 @@ org_info_data = [
 org_info_data.each do |data|
   Orginfo.create(data)
 end
+
+# seed database with default image and charter
+org_info = Orginfo.find(1)
+org_info.image.attach(io: File.open('app/assets/images/dlcf_logo.jpg'), filename: 'dlcf_logo.jpg', content_type: 'image/jpg')
+org_info.file.attach(io: File.open('app/assets/pdfs/dlcf_charter.pdf'), filename: 'dlcf_charter.pdf', content_type: 'application/pdf')

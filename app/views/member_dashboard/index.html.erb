@@ -10,6 +10,10 @@
     <div class="center text-tile mobile-container">
         <div class="grid-item">
             <h2>You're Logged into the Member Dashboard</h2>
+
+            <div>
+                <%= image_tag(@org_info.image, style: "width: 200px; height: 200px; margin: 20px") %>
+            </div>
         </div>
         
         <div class="grid-item">
@@ -23,6 +27,10 @@
 
             <div class="list-tile">
                 <span class="info-text"><%= @org_info.description %></span>
+            </div>
+
+            <div>
+                <%= link_to "View Charter", @org_info.file, target: "_blank", class: "link-button", style: "margin: 20px" %>
             </div>
         </div>
 
