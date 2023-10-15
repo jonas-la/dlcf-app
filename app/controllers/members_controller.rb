@@ -29,10 +29,13 @@ class MembersController < ApplicationController
   # GET /members/new
   def new
     @member = Member.new
+
   end
 
   def new_account
     @member = Member.new
+    @pending_member = PendingMember.find(params[:p_id])
+
   end
 
   def create_account
@@ -40,8 +43,10 @@ class MembersController < ApplicationController
 
     respond_to do |format|
       if @member.save
-        format.html { redirect_to root_path, notice: "Member was successfully created." }
+        format.html { redirect_to pending_members_path, notice: "Member was successfully created." }
         format.json { render :show, status: :created, location: @member }
+        to_delete = PendingMember.find_by(email: member_params[:email])
+        to_delete.destroy
       else
         format.html { render :new_account, status: :unprocessable_entity }
         format.json { render json: @member.errors, status: :unprocessable_entity }

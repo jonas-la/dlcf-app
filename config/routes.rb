@@ -26,6 +26,13 @@ Rails.application.routes.draw do
       post 'create_account' # Add this line
     end
   end
+  resources :pending_members do
+    collection do
+      get 'new_account'
+      post 'create_account' # Add this line
+    end
+  end
+
   resources :orginfos
 
   get '', to: 'custom_pages#show'
