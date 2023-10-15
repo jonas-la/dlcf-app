@@ -69,7 +69,7 @@ class ApplicationController < ActionController::Base
 
 
         # list of string for paths members CAN access
-        member_legal_partial_paths = ["member", "new_feedback_path", "attendances/new", "/feedbacks/new", "googleoauth2", "/attendances", "/feedbacks"]
+        member_legal_partial_paths = ["member", "new_feedback_path", "attendances/new", "/feedbacks/new", "googleoauth2", "/attendances", "/feedbacks", "/event_schedule", "/schedule_show"]
         @legal_substring_found = false
         member_legal_partial_paths.each do |substring|
           if (path_string.include?(substring))

@@ -1,0 +1,31 @@
+.main-body-container {
+    display: grid;
+    grid-template-rows: auto auto;
+}
+
+.body-item {
+    margin: 20px;
+}
+
+.header-container {
+    border-style: solid;
+    text-align: center;
+}
+
+.event-container {
+    border-style: solid;
+}
+
+.event-item {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    margin: 20px;
+}
+
+.event-list {
+    list-style-type: none;
+}
+
+.back-button {
+    text-align: center;
+}
