@@ -1,0 +1,2 @@
+class PendingMember < ApplicationRecord
+end
