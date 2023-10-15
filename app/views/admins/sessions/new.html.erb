@@ -12,7 +12,9 @@
             <h1>Deeper Life Campus Fellowship</h1>
 
             <div>
+                <% if  OmniAuth.config.test_mode == false%>
                 <%= image_tag(@org_info.image, alt:"TEST", style: "width: 200px; height: 200px; margin: 20px") %>
+                <% end %>
             </div>
         </div>
 
@@ -30,7 +32,9 @@
             </div>
 
             <div>
+                <% if  OmniAuth.config.test_mode == false%>
                 <%= link_to "View Charter", @org_info.file, target: "_blank", class: "link-button", style: "margin: 20px" %>
+                <% end %>
             </div>
         </div>
 
