@@ -10,11 +10,11 @@ class EventsController < ApplicationController
   def show
     @attendees_raw = Attendance.where(event_id: params[:id])
     
-    @attendees_main = []
-    @attendees_raw.each do |attendee|
-      attendee_name = Member.find_by(id: attendee.member_id.to_i)
-      @attendees_main << attendee_name
-    end
+    # @attendees_main = []
+    # @attendees_raw.each do |attendee|
+    #   attendee_name = Member.find_by(id: attendee.member_id.to_i)
+    #   @attendees_main << attendee_name
+    # end
 
   end
 

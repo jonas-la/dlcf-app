@@ -15,9 +15,14 @@
     <div class="center text-tile list-tile grid-item">
       <%= render @event %>
 
-      <h3>Attendees</h3>
-      <% @attendees_main.each do |attendee| %>
-        <p><%= attendee.first_name + " " + attendee.last_name%></p>
+      <h3>Attendees</h3>  
+      <%= link_to "Create New Attendance", ne2w_attendances_path(event: @event), class: "link-button"  %>
+
+      <% @attendees_raw.each do |attendee| %>
+          <p>
+            <%= Member.find_by(id: attendee.member_id).first_name + " " + Member.find_by(id: attendee.member_id).last_name + " " %> 
+            <%= link_to 'Delete?', attendance_path(attendee) %>
+          </p>
         <!-- Access other attributes of the attendee as needed -->
       <% end %>
     </div>

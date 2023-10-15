@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  resources :attendances
+  # resources :attendances
   get 'main/index'
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
@@ -9,7 +9,10 @@ Rails.application.routes.draw do
 
   resources :officer_dashboard
   resources :member_dashboard
-  resources :attendances
+  resources :attendances  do
+    get 'ne2w', on: :collection
+    post 'create2', on: :collection
+  end
   resources :events do
     resources :attendances, only: [:new, :create]
     collection do
