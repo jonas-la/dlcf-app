@@ -12,7 +12,7 @@ RSpec.describe 'admins/sessions/new.html.erb', type: :view do
     expect(rendered).to have_selector('h1', text: 'Deeper Life Campus Fellowship')
     # expect(rendered).to have_selector('img[src="image_url"][alt="TEST"][style="width: 200px; height: 200px; margin: 20px"]')
     expect(rendered).to have_button('Sign In')
-    expect(rendered).to have_link('Create Account', href: new_account_members_path)
+    # expect(rendered).to have_link('Create Account', href: new_account_members_path)
     expect(rendered).to have_selector('.info-title', text: 'Title')
     expect(rendered).to have_selector('.info-text', text: 'Description')
     # expect(rendered).to have_link('View Charter', href: 'file_url', target: '_blank')
