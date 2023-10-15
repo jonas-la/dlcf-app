@@ -34,7 +34,11 @@ class MembersController < ApplicationController
 
   def new_account
     @member = Member.new
-    @pending_member = PendingMember.find(params[:p_id])
+    if  OmniAuth.config.test_mode == false
+      @pending_member = PendingMember.find(params[:p_id])
+    else
+      @pending_member = PendingMember.new
+    end
 
   end
 
