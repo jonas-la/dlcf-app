@@ -31,6 +31,14 @@ class EventsController < ApplicationController
     @event = Event.find(params[:id])
   end
 
+  def schedule_show
+    @event = Event.find(params[:id])
+  end
+
+  def event_schedule
+    @events = Event.where('start_time > ?', DateTime.now).limit(10)
+  end
+
   # GET /events/new
   def new
     @event = Event.new

@@ -17,6 +17,7 @@ Rails.application.routes.draw do
     end
     member do
       get 'member_show'
+      get 'schedule_show'
     end
   end
   resources :feedbacks
@@ -36,6 +37,7 @@ Rails.application.routes.draw do
   resources :orginfos
 
   get '', to: 'custom_pages#show'
+  get '/event_schedule', to: 'events#event_schedule', as: "event_schedule"
 
   devise_for :admins, controllers: { omniauth_callbacks: 'admins/omniauth_callbacks' }
     devise_scope :admin do
