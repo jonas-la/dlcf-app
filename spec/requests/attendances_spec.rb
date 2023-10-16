@@ -12,6 +12,12 @@ require 'rails_helper'
 # of tools you can use to make these specs even more expressive, but we're
 # sticking to rails and rspec-rails APIs to keep things simple and stable.
 
+# def login_with_oauth(service = :google_oauth2)
+#   visit "/auth/#{service}"
+# end
+
+
+
 RSpec.describe "/attendances", type: :request do
   
   # This should return the minimal set of attributes required to create a valid
@@ -53,6 +59,9 @@ RSpec.describe "/attendances", type: :request do
     it "renders a successful response" do
       # puts "Member ID: #{member.id}, Event ID: #{event.id}, valid_attributes: #{valid_attributes}" # Debugging line
       # puts "attendances_url: #{attendances_url}" # Debugging line
+      # login_with_oauth
+      # request.env["omniauth.auth"] = OmniAuth.config.mock_auth[:google_oauth2] 
+
       Attendance.create!( member_id: member.id, event_id: event.id, attended: true )
       get attendances_url
       expect(response).to be_successful

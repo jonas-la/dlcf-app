@@ -1,0 +1,18 @@
+<p style="color: green"><%= notice %></p>
+
+<h1>Pending members</h1>
+
+<div id="pending_members">
+  <% @pending_members.each do |pending_member| %>
+    <%= render pending_member %>
+    <p>
+      <%= link_to "Approve", new_account_members_path(p_id: pending_member.id) %>
+      <%= button_to "Ignore", pending_member, method: :delete %>
+    </p>
+  <% end %>
+</div>
+
+<%= link_to "New pending member", new_pending_member_path %>
+<br>
+<%= link_to "Officer Dashboard", officer_dashboard_index_path%>
+

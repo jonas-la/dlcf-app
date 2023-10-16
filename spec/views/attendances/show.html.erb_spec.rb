@@ -23,7 +23,7 @@ RSpec.describe "attendances/show", type: :view do
         password: "test123",
         end_time: DateTime.now
       ),
-      attended: true
+      # attended: true
     ))
   end
 

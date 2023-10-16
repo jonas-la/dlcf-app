@@ -16,9 +16,11 @@
       <%= render @event %>
 
       <h3>Attendees</h3>
+      <% if  OmniAuth.config.test_mode == false %>
       <% @attendees_main.each do |attendee| %>
         <p><%= attendee.first_name + " " + attendee.last_name%></p>
         <!-- Access other attributes of the attendee as needed -->
+      <% end %>
       <% end %>
     </div>
 

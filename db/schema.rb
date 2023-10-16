@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_10_14_215109) do
+ActiveRecord::Schema[7.0].define(version: 2023_10_15_170828) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -55,6 +55,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_10_14_215109) do
   create_table "attendances", force: :cascade do |t|
     t.bigint "member_id", null: false
     t.bigint "event_id", null: false
+    t.boolean "attended"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["event_id"], name: "index_attendances_on_event_id"
@@ -106,6 +107,15 @@ ActiveRecord::Schema[7.0].define(version: 2023_10_14_215109) do
   create_table "orginfos", force: :cascade do |t|
     t.string "title"
     t.text "description"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "pending_members", force: :cascade do |t|
+    t.string "first_name"
+    t.string "preferred_name"
+    t.string "last_name"
+    t.string "email"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

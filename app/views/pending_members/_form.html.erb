@@ -1,0 +1,37 @@
+<%= form_with(model: pending_member) do |form| %>
+  <% if pending_member.errors.any? %>
+    <div style="color: red">
+      <h2><%= pluralize(pending_member.errors.count, "error") %> prohibited this pending_member from being saved:</h2>
+
+      <ul>
+        <% pending_member.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div>
+    <%= form.label :first_name, style: "display: block" %>
+    <%= form.text_field :first_name %>
+  </div>
+
+  <div>
+    <%= form.label :preferred_name, style: "display: block" %>
+    <%= form.text_field :preferred_name %>
+  </div>
+
+  <div>
+    <%= form.label :last_name, style: "display: block" %>
+    <%= form.text_field :last_name %>
+  </div>
+
+  <div>
+    <%= form.label :email, style: "display: block" %>
+    <%= form.text_field :email %>
+  </div>
+
+  <div>
+    <%= form.submit %>
+  </div>
+<% end %>
