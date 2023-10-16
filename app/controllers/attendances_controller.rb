@@ -3,7 +3,7 @@ class AttendancesController < ApplicationController
 
   # GET /attendances or /attendances.json
   def index
-    Rails.logger.debug(" - Debugging: @attendance index")
+    #Rails.logger.debug(" - Debugging: @attendance index")
     @attendances = Attendance.all
     # @sorted_attendance = Attendance.joins(:event).order("events.start_time DESC")
     @attendances = @attendances.includes(:event).order("events.start_time DESC")
@@ -12,7 +12,7 @@ class AttendancesController < ApplicationController
 
   # GET /attendances/1 or /attendances/1.json
   def show
-    Rails.logger.debug(" - Dbugging: @attendance show")
+    #Rails.logger.debug(" - Dbugging: @attendance show")
     @attendance = Attendance.find(params[:id])
     #@user = Member.find_by(id: @attendance.member_id)
     #@event = Event.find_by(id: @attendance.event_id)
@@ -20,7 +20,7 @@ class AttendancesController < ApplicationController
 
   # GET /attendances/new
   def new
-    Rails.logger.debug(" - Debugging: @attendance new")
+    #Rails.logger.debug(" - Debugging: @attendance new")
     @attendance = Attendance.new
     user_email = current_admin.email
     @user = Member.find_by(email: user_email)
@@ -29,7 +29,7 @@ class AttendancesController < ApplicationController
 
   # GET /attendances/ne2w
   def ne2w
-    Rails.logger.debug(" - Debugging: @attendance new2")
+    #Rails.logger.debug(" - Debugging: @attendance new2")
     @event = Event.find(params[:event])
     @attendance = Attendance.new
     #@event = Event.find(params[:event_id])
@@ -37,12 +37,12 @@ class AttendancesController < ApplicationController
 
   # GET /attendances/1/edit
   def edit
-    Rails.logger.debug(" - Debugging: @attendance edit")
+    #Rails.logger.debug(" - Debugging: @attendance edit")
   end
 
   # POST /attendances or /attendances.json
   def create2
-    Rails.logger.debug(" - Debugging: @attendance create2!")
+    #Rails.logger.debug(" - Debugging: @attendance create2!")
   
     # Check if a similar attendance record already exists
     existing_attendance = Attendance.find_by(
@@ -78,7 +78,7 @@ class AttendancesController < ApplicationController
 
   # POST /attendances or /attendances.json
   def create
-    Rails.logger.debug(" - Debugging: @attendance create")
+    #Rails.logger.debug(" - Debugging: @attendance create")
     @event = Event.find(attendance_params[:event_id])
     if attendance_params[:password] == @event.password
       @attendance = Attendance.new(
@@ -108,7 +108,7 @@ class AttendancesController < ApplicationController
 
   # PATCH/PUT /attendances/1 or /attendances/1.json
   def update
-    Rails.logger.debug("Debugging: @attendance update")
+    #Rails.logger.debug("Debugging: @attendance update")
     @attendance = Attendance.find(params[:id])
     respond_to do |format|
       if @attendance.update(attendance_params)
@@ -125,7 +125,7 @@ class AttendancesController < ApplicationController
 
   # DELETE /attendances/1 or /attendances/1.json
   def destroy
-    Rails.logger.debug("Debugging: @attendance destroy")
+    #Rails.logger.debug("Debugging: @attendance destroy")
     @attendance = Attendance.find(params[:id])
     event_id = @attendance.event_id
     @attendance.destroy
