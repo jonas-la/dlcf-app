@@ -1,0 +1,45 @@
+<head>
+  <title>Event Schedule</title>
+  <%= stylesheet_link_tag 'event_schedule', media: 'all' %> <!-- Include the desired stylesheet -->
+</head>
+<body>
+    <div class="main-body-container">
+        <div class="body-item header-container">
+            <h1>Event Schedule</h1>
+        </div>
+        
+        <div class="body-item event-container">
+            <ul class="event-list">
+                <div class="event-item">
+                    <div><h2>Event Name</h2></div>
+                    <div><h2>Event Date</h2></div>
+                    <div><h2>Event Location</h2></div>
+                    <div><h2>View Event</h2></div>
+                </div>
+
+                <% @events.each do |event| %>
+                    <li>
+                        <div class="event-item">
+                            <div><%= event.event_name %></div>
+                            <div><%= event.start_time %></div>
+                            <div><%= event.location %></div>
+                            <div>
+                                <%= link_to "Show this event", schedule_show_event_path(event), class: "link-button" %>
+                            </div>
+                        </div>
+                    </li>
+                <% end %>
+            </ul>
+        </div> 
+
+        <div class="back-button">
+            <% if @user == nil %>
+                <%= link_to "Back", new_admin_session_path, class: "link-button"%> 
+            <% elsif @user.is_admin %>
+                <%= link_to "Back", officer_dashboard_index_path , class: "link-button"%>
+            <% else %> 
+                <%= link_to "Back", member_dashboard_index_path , class: "link-button"%>
+            <% end %>
+        </div>
+    </div>
+</body>
