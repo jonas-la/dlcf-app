@@ -6,7 +6,7 @@
   <thead>
     <tr>
       <th> <%= link_to 'First Name', members_path(sort_by: 'first_name') %> </th>
-      <th> <%= link_to 'preferred name', members_path(sort_by: 'preferred_name') %> </th>
+      <th> <%= link_to 'Preferred Name', members_path(sort_by: 'preferred_name') %> </th>
       <th> <%= link_to 'Last Name', members_path(sort_by: 'last_name') %> </th>
       <th> <%= link_to 'Email', members_path(sort_by: 'email') %> </th>
       <th> <%= link_to 'Role', members_path(sort_by: 'role') %> </th>
@@ -68,4 +68,4 @@
 
   <%= link_to 'Back to Dashboard', officer_dashboard_index_path , class: "link-button" %>
 
-  </div>
+</div>

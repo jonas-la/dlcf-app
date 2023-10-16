@@ -2,17 +2,43 @@
 
 <h1>Attendances</h1>
 
-<div id="attendances">
-  <% @attendances.each do |attendance| %>
-    <%= render attendance %>
-    <p>
-      <%= link_to "Show this attendance", attendance %>
-    </p>
-  <% end %>
-</div>
+<table>
+  <thead>
+    <tr>
+      <th>Nick Name</th>
+      <th>First Name</th>
+      <th>Last Name</th>
+      <th>Email</th>
+      <th>Event Name</th>
+      <th>Delete</th>
+      <!-- Add more table headers for additional member attributes -->
+    </tr>
+  </thead>
+  <tbody>
+    <% @attendances.each do |attendance| %>
+      <tr>
+        <td><%= attendance.member.preferred_name %></td>
+        <td><%= attendance.member.first_name %></td>
+        <td><%= attendance.member.last_name %></td>
+        <td><%= attendance.member.email %></td>
+        <td><%= attendance.event.event_name %></td>
+        <td><%= link_to "Delete?", attendance %></td>
+        <!-- Add more table cells for additional member attributes -->
+      </tr>
+    <% end %>
+  </tbody>
+</table>
 
+
+<div class="center bottom-navigation">  
+
+  <%= link_to "Create New Attendance", ne2w_attendances_path, class: "link-button"  %>
+  <%= link_to "Back to Dashboard", officer_dashboard_index_path , class: "link-button" %>
+
+</div>
 <%
 =begin%>
  <%= link_to "New attendance", new_attendance_path %> 
 <%
 =end%>
+
