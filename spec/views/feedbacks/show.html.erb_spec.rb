@@ -6,7 +6,18 @@ RSpec.describe "feedbacks/show", type: :view do
       satisfaction: 2,
       critiques: "Critiques",
       new_ideas: "New Ideas",
-      member: nil
+      member: Member.create!(
+        first_name: "First Name",
+        preferred_name: "Preferred Name",
+        last_name: "Last Name",
+        email: "Email@gmail.com",
+        is_member: false,
+        is_admin: false,
+        bio: "MyText",
+        contact: "Contact",
+        photo_file_name: "Photo File Name",
+        role: "Role"
+      )
     ))
   end
 

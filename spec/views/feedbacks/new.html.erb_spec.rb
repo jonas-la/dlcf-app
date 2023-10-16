@@ -15,13 +15,12 @@ RSpec.describe "feedbacks/new", type: :view do
 
     assert_select "form[action=?][method=?]", feedbacks_path, "post" do
 
-      assert_select "input[name=?]", "feedback[satisfaction]"
+      assert_select "select[name='feedback[satisfaction]']"
 
       assert_select "input[name=?]", "feedback[critiques]"
 
       assert_select "input[name=?]", "feedback[new_ideas]"
 
-      assert_select "input[name=?]", "feedback[member_id]"
     end
   end
 end

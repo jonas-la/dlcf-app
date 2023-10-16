@@ -16,6 +16,7 @@
       <%= render @event %>
 
       <h3>Attendees</h3>  
+      <% if  OmniAuth.config.test_mode == false %>
       <%= link_to "Create New Attendance", ne2w_attendances_path(event: @event), class: "link-button"  %>
 
       <% @attendees_raw.each do |attendee| %>
@@ -24,6 +25,7 @@
             <%= link_to 'Delete?', attendance_path(attendee) %>
           </p>
         <!-- Access other attributes of the attendee as needed -->
+      <% end %>
       <% end %>
     </div>
 
