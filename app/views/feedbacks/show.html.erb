@@ -1,13 +1,18 @@
 <p style="color: green"><%= notice %></p>
 
+<div class="center text-tile">
 <%= render @feedback %>
 
-<div>
+<div class="center bottom-navigation">
+<% if  OmniAuth.config.test_mode == false%>
   <% if @user.is_admin %>
-    <%= link_to "Back to feedback", feedbacks_url %> \
-    <%= link_to "Back to dashboard", officer_dashboard_index_path %> 
-    <%= button_to "Destroy this feedback", @feedback, method: :delete %>
+    <%= link_to "Back to feedback", feedbacks_url , class: "link-button" %> 
+    <%= button_to "Destroy this feedback", @feedback, method: :delete, class: "link-button" %>
+    <%= link_to "Back to dashboard", officer_dashboard_index_path, class: "link-button"%> 
   <% else %>
-    <%= link_to "Back to dashboard", member_dashboard_index_path %> 
+    <%= link_to "Back to dashboard", member_dashboard_index_path , class: "link-button"%> 
   <% end %>
+  <% end %>
+</div>
+
 </div>

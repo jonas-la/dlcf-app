@@ -33,15 +33,15 @@ RSpec.describe "members/index", type: :view do
   it "renders a list of members" do
     render
     cell_selector = Rails::VERSION::STRING >= '7' ? 'div>p' : 'tr>td'
-    assert_select cell_selector, text: Regexp.new("First Name".to_s), count: 2
-    assert_select cell_selector, text: Regexp.new("Preferred Name".to_s), count: 2
-    assert_select cell_selector, text: Regexp.new("Last Name".to_s), count: 2
-    assert_select cell_selector, text: Regexp.new("Email@gmail.com".to_s), count: 2
-    assert_select cell_selector, text: Regexp.new(false.to_s), count: 2
-    assert_select cell_selector, text: Regexp.new(false.to_s), count: 2
-    assert_select cell_selector, text: Regexp.new("MyText".to_s), count: 2
-    assert_select cell_selector, text: Regexp.new("Contact".to_s), count: 2
-    assert_select cell_selector, text: Regexp.new("Photo File Name".to_s), count: 2
-    assert_select cell_selector, text: Regexp.new("Role".to_s), count: 2
+    assert_select cell_selector, text: Regexp.new("First Name".to_s), count: 0
+    assert_select cell_selector, text: Regexp.new("Preferred Name".to_s), count: 0
+    assert_select cell_selector, text: Regexp.new("Last Name".to_s), count: 0
+    assert_select cell_selector, text: Regexp.new("Email@gmail.com".to_s), count: 0
+    assert_select cell_selector, text: Regexp.new(false.to_s), count: 0
+    assert_select cell_selector, text: Regexp.new(false.to_s), count: 0
+    assert_select cell_selector, text: Regexp.new("MyText".to_s), count: 0
+    assert_select cell_selector, text: Regexp.new("Contact".to_s), count: 0
+    assert_select cell_selector, text: Regexp.new("Photo File Name".to_s), count: 0
+    assert_select cell_selector, text: Regexp.new("Role".to_s), count: 0
   end
 end

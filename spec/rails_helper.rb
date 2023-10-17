@@ -5,6 +5,14 @@ require_relative '../config/environment'
 # Prevent database truncation if the environment is production
 abort("The Rails environment is running in production mode!") if Rails.env.production?
 require 'rspec/rails'
+
+# RSpec.configure do |config|
+#   # ...
+#   config.include IntegrationSpecHelper, :type => :request
+# end
+
+
+
 # Add additional requires below this line. Rails is not loaded until this point!
 
 # Requires supporting ruby files with custom matchers and macros, etc, in
@@ -37,6 +45,18 @@ RSpec.configure do |config|
   # examples within a transaction, remove the following line or assign false
   # instead of true.
   config.use_transactional_fixtures = true
+
+  OmniAuth.config.test_mode = true
+
+  OmniAuth.config.add_mock(:google_oauth2, {
+  provider: 'google_oauth2',
+  uid: '123456',
+  info: {
+    email: 'jonasaustinland@tamu.edu',
+    name: 'John Doe',
+  },})
+
+  
 
   # You can uncomment this line to turn off ActiveRecord support entirely.
   # config.use_active_record = false

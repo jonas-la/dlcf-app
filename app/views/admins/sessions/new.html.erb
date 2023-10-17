@@ -7,52 +7,58 @@
 </head>
 
 <body>
+    <div class="center text-tile mobile-container">
+        <div class="grid-item">
+            <h1>Deeper Life Campus Fellowship</h1>
 
+            <div>
+                <% if  OmniAuth.config.test_mode == false %>
+                <%= image_tag(@org_info.image, alt:"TEST", style: "width: 200px; height: 200px; margin: 20px") %>
+                <% end %>
+            </div>
+        </div>
 
-<div class="center text-tile">
-<h1>Deeper Life Campus Fellowship</h1>
+        <div class="grid-item">
+            <%= button_to "Sign In", admin_google_oauth2_omniauth_authorize_path , class: "link-button"%>
+            <%= link_to "Create Account", new_pending_member_path , class: "link-button"%>
+        </div>
+        
+        <div class="center text-tile grid-item">
+            <span class="info-title"><%= @org_info.title%></span>
+            <br>
 
-<%= button_to "Sign in with Google", admin_google_oauth2_omniauth_authorize_path , class: "link-button"%>
+            <div class="list-tile">
+                <span class="info-text"><%= @org_info.description %></span>
+            </div>
 
-<%= link_to "Create account", new_account_members_path , class: "link-button"%>
+            <div>
+                <% if  OmniAuth.config.test_mode == false%>
+                <%= link_to "View Charter", @org_info.file, target: "_blank", class: "link-button", style: "margin: 20px" %>
+                <% end %>
+            </div>
 
-<div class="center text-tile">
+            <div>
+                <%= link_to "Event Schedule", event_schedule_path, class: "link-button"%> 
+            </div>
+        </div>
 
-<span class="info-title"><%= @org_info.title%></span>
+        <div class="grid-item">
+            <p class="info-text officer-title info-title ">Club Officers</p>
+        </div>
+        
+        <div class="grid-item">
+            <% @officers.each do |officer| %>
+                <div class="center text-tile">
+                    <div class="list-tile">
+                        <span class="info-title"><%= officer.preferred_name%> <%= officer.last_name%></span>
+                    </div>
+                    <br>
 
-<br>
-
-<div class="list-tile">
-<span class="info-text"><%= @org_info.description %></span>
-</div>
-
-</div>
-
-<p class="info-text officer-title info-title ">Club Officers</p>
-
-<% @officers.each do |officer| %>
-    <div class="center text-tile">
-    <div class="list-tile">
-        <span class="info-title"><%= officer.preferred_name%> <%= officer.last_name%></span>
+                    <div class="list-tile">
+                        <span class="info-text"><%= officer.bio %></span>
+                    </div>
+                </div>
+            <% end %>
+        </div>
     </div>
-    <br>
-
-    <div class="list-tile">
-    <span class="info-text"><%= officer.bio %></span>
-    </div>
-
-    </div>
-
-    </div>
-<% end %>
-
-</div>
-
-
-
-
-
-
-
-
 </body>

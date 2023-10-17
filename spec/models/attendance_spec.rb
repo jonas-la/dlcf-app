@@ -19,6 +19,7 @@ RSpec.describe Attendance, type: :model do
       location: 'Conference Center',
       start_time: DateTime.now,
       end_time: DateTime.now + 2.hours,
+      password: "test123",
       description: 'An exciting tech conference'
     )}
 

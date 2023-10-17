@@ -10,11 +10,11 @@ class EventsController < ApplicationController
   def show
     @attendees_raw = Attendance.where(event_id: params[:id])
     
-    @attendees_main = []
-    @attendees_raw.each do |attendee|
-      attendee_name = Member.find_by(id: attendee.member_id.to_i)
-      @attendees_main << attendee_name
-    end
+    # @attendees_main = []
+    # @attendees_raw.each do |attendee|
+    #   attendee_name = Member.find_by(id: attendee.member_id.to_i)
+    #   @attendees_main << attendee_name
+    # end
 
   end
 
@@ -29,6 +29,14 @@ class EventsController < ApplicationController
 
   def member_show
     @event = Event.find(params[:id])
+  end
+
+  def schedule_show
+    @event = Event.find(params[:id])
+  end
+
+  def event_schedule
+    @events = Event.where('start_time > ?', DateTime.now).limit(10)
   end
 
   # GET /events/new
@@ -86,6 +94,6 @@ class EventsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def event_params
-      params.require(:event).permit(:event_name, :location, :start_time, :end_time, :description)
+      params.require(:event).permit(:event_name, :location, :start_time, :end_time, :description, :password)
     end
 end

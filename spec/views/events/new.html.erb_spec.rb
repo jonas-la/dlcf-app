@@ -5,6 +5,7 @@ RSpec.describe "events/new", type: :view do
     assign(:event, Event.new(
       event_name: "MyString",
       location: "MyString",
+      password: "test123",
       description: "MyString"
     ))
   end

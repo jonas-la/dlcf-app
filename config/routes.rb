@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  resources :attendances
+  # resources :attendances
   get 'main/index'
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
@@ -9,7 +9,10 @@ Rails.application.routes.draw do
 
   resources :officer_dashboard
   resources :member_dashboard
-  resources :attendances
+  resources :attendances  do
+    get 'ne2w', on: :collection
+    post 'create2', on: :collection
+  end
   resources :events do
     resources :attendances, only: [:new, :create]
     collection do
@@ -17,6 +20,7 @@ Rails.application.routes.draw do
     end
     member do
       get 'member_show'
+      get 'schedule_show'
     end
   end
   resources :feedbacks
@@ -26,9 +30,17 @@ Rails.application.routes.draw do
       post 'create_account' # Add this line
     end
   end
+  resources :pending_members do
+    collection do
+      get 'new_account'
+      post 'create_account' # Add this line
+    end
+  end
+
   resources :orginfos
 
   get '', to: 'custom_pages#show'
+  get '/event_schedule', to: 'events#event_schedule', as: "event_schedule"
 
   devise_for :admins, controllers: { omniauth_callbacks: 'admins/omniauth_callbacks' }
     devise_scope :admin do

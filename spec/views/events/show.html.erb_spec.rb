@@ -7,6 +7,7 @@ RSpec.describe "events/show", type: :view do
       location: "Location",
       description: "Description",
       start_time: DateTime.now,
+      password: "test123",
       end_time: DateTime.now
     ))
   end
