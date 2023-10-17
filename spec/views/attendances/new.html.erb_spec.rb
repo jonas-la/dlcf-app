@@ -1,13 +1,13 @@
 require 'rails_helper'
 
-RSpec.describe "attendances/new", type: :view do
-  before(:each) do
-    assign(:attendance, Attendance.new(
-      member: nil,
-      event: nil,
-      # attended: false
-    ))
-  end
+  # RSpec.describe("attendances/new", type: :view) do
+  #   before(:each) do
+  #     assign(:attendance, Attendance.new(
+  #       member: nil,
+  #       event: nil
+  #       # attended: false
+  #     ))
+  #   end
 
   # it "renders new attendance form" do
   #   render
@@ -20,5 +20,5 @@ RSpec.describe "attendances/new", type: :view do
 
   #     assert_select "input[name=?]", "attendance[attended]"
   #   end
-  # end
-end
+# end
+# end

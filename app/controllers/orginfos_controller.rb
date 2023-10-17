@@ -25,11 +25,13 @@ class OrginfosController < ApplicationController
 
     respond_to do |format|
       if @orginfo.save
-        format.html { redirect_to orginfo_url(@orginfo), notice: "Orginfo was successfully created." }
-        format.json { render :show, status: :created, location: @orginfo }
+        format.html do
+ redirect_to(orginfo_url(@orginfo), notice: "Orginfo was successfully created.")
+        end
+        format.json { render(:show, status: :created, location: @orginfo) }
       else
-        format.html { render :new, status: :unprocessable_entity }
-        format.json { render json: @orginfo.errors, status: :unprocessable_entity }
+        format.html { render(:new, status: :unprocessable_entity) }
+        format.json { render(json: @orginfo.errors, status: :unprocessable_entity) }
       end
     end
   end
@@ -38,11 +40,13 @@ class OrginfosController < ApplicationController
   def update
     respond_to do |format|
       if @orginfo.update(orginfo_params)
-        format.html { redirect_to orginfo_url(@orginfo), notice: "Orginfo was successfully updated." }
-        format.json { render :show, status: :ok, location: @orginfo }
+        format.html do
+ redirect_to(orginfo_url(@orginfo), notice: "Orginfo was successfully updated.")
+        end
+        format.json { render(:show, status: :ok, location: @orginfo) }
       else
-        format.html { render :edit, status: :unprocessable_entity }
-        format.json { render json: @orginfo.errors, status: :unprocessable_entity }
+        format.html { render(:edit, status: :unprocessable_entity) }
+        format.json { render(json: @orginfo.errors, status: :unprocessable_entity) }
       end
     end
   end
@@ -52,8 +56,8 @@ class OrginfosController < ApplicationController
     @orginfo.destroy
 
     respond_to do |format|
-      format.html { redirect_to orginfos_url, notice: "Orginfo was successfully destroyed." }
-      format.json { head :no_content }
+      format.html { redirect_to(orginfos_url, notice: "Orginfo was successfully destroyed.") }
+      format.json { head(:no_content) }
     end
   end
 

@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe "events/index", type: :view do
+RSpec.describe("events/index", type: :view) do
   before(:each) do
     assign(:events, [
       Event.create!(
@@ -23,7 +23,7 @@ RSpec.describe "events/index", type: :view do
   end
 
   it "renders a list of events" do
-    current_admin = Admin.new()
+    current_admin = Admin.new
     current_admin.email = "test@email.com"
     puts current_admin.email
     render

@@ -12,7 +12,7 @@ require 'rails_helper'
 # of tools you can use to make these specs even more expressive, but we're
 # sticking to rails and rspec-rails APIs to keep things simple and stable.
 
-RSpec.describe "/feedbacks", type: :request do
+RSpec.describe("/feedbacks", type: :request) do
   
   # This should return the minimal set of attributes required to create a valid
   # Feedback. As you add validations to Feedback, be sure to
@@ -27,17 +27,17 @@ RSpec.describe "/feedbacks", type: :request do
 
   describe "GET /index" do
     it "renders a successful response" do
-      Feedback.create! valid_attributes
+      Feedback.create!(valid_attributes)
       get feedbacks_url
-      expect(response).to be_successful
+      expect(response).to(be_successful)
     end
   end
 
   describe "GET /show" do
     it "renders a successful response" do
-      feedback = Feedback.create! valid_attributes
+      feedback = Feedback.create!(valid_attributes)
       get feedback_url(feedback)
-      expect(response).to be_successful
+      expect(response).to(be_successful)
     end
   end
 
@@ -51,9 +51,9 @@ RSpec.describe "/feedbacks", type: :request do
 
   describe "GET /edit" do
     it "renders a successful response" do
-      feedback = Feedback.create! valid_attributes
+      feedback = Feedback.create!(valid_attributes)
       get edit_feedback_url(feedback)
-      expect(response).to be_successful
+      expect(response).to(be_successful)
     end
   end
 
@@ -61,27 +61,27 @@ RSpec.describe "/feedbacks", type: :request do
     context "with valid parameters" do
       it "creates a new Feedback" do
         expect {
-          post feedbacks_url, params: { feedback: valid_attributes }
-        }.to change(Feedback, :count).by(1)
+          post(feedbacks_url, params: { feedback: valid_attributes })
+        }.to(change(Feedback, :count).by(1))
       end
 
       it "redirects to the created feedback" do
         post feedbacks_url, params: { feedback: valid_attributes }
-        expect(response).to redirect_to(feedback_url(Feedback.last))
+        expect(response).to(redirect_to(feedback_url(Feedback.last)))
       end
     end
 
     context "with invalid parameters" do
       it "does not create a new Feedback" do
         expect {
-          post feedbacks_url, params: { feedback: invalid_attributes }
-        }.to change(Feedback, :count).by(0)
+          post(feedbacks_url, params: { feedback: invalid_attributes })
+        }.to(change(Feedback, :count).by(0))
       end
 
     
       it "renders a response with 422 status (i.e. to display the 'new' template)" do
         post feedbacks_url, params: { feedback: invalid_attributes }
-        expect(response).to have_http_status(:unprocessable_entity)
+        expect(response).to(have_http_status(:unprocessable_entity))
       end
     
     end
@@ -94,26 +94,26 @@ RSpec.describe "/feedbacks", type: :request do
       }
 
       it "updates the requested feedback" do
-        feedback = Feedback.create! valid_attributes
+        feedback = Feedback.create!(valid_attributes)
         patch feedback_url(feedback), params: { feedback: new_attributes }
         feedback.reload
         skip("Add assertions for updated state")
       end
 
       it "redirects to the feedback" do
-        feedback = Feedback.create! valid_attributes
+        feedback = Feedback.create!(valid_attributes)
         patch feedback_url(feedback), params: { feedback: new_attributes }
         feedback.reload
-        expect(response).to redirect_to(feedback_url(feedback))
+        expect(response).to(redirect_to(feedback_url(feedback)))
       end
     end
 
     context "with invalid parameters" do
     
       it "renders a response with 422 status (i.e. to display the 'edit' template)" do
-        feedback = Feedback.create! valid_attributes
+        feedback = Feedback.create!(valid_attributes)
         patch feedback_url(feedback), params: { feedback: invalid_attributes }
-        expect(response).to have_http_status(:unprocessable_entity)
+        expect(response).to(have_http_status(:unprocessable_entity))
       end
     
     end
@@ -121,16 +121,16 @@ RSpec.describe "/feedbacks", type: :request do
 
   describe "DELETE /destroy" do
     it "destroys the requested feedback" do
-      feedback = Feedback.create! valid_attributes
+      feedback = Feedback.create!(valid_attributes)
       expect {
-        delete feedback_url(feedback)
-      }.to change(Feedback, :count).by(-1)
+        delete(feedback_url(feedback))
+      }.to(change(Feedback, :count).by(-1))
     end
 
     it "redirects to the feedbacks list" do
-      feedback = Feedback.create! valid_attributes
+      feedback = Feedback.create!(valid_attributes)
       delete feedback_url(feedback)
-      expect(response).to redirect_to(feedbacks_url)
+      expect(response).to(redirect_to(feedbacks_url))
     end
   end
 end

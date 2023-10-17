@@ -32,11 +32,13 @@ class FeedbacksController < ApplicationController
     @feedback = Feedback.new(feedback_params)
     respond_to do |format|
       if @feedback.save
-        format.html { redirect_to feedback_url(@feedback), notice: "Feedback was successfully created." }
-        format.json { render :show, status: :created, location: @feedback }
+        format.html do
+ redirect_to(feedback_url(@feedback), notice: "Feedback was successfully created.")
+        end
+        format.json { render(:show, status: :created, location: @feedback) }
       else
-        format.html { render :new, status: :unprocessable_entity }
-        format.json { render json: @feedback.errors, status: :unprocessable_entity }
+        format.html { render(:new, status: :unprocessable_entity) }
+        format.json { render(json: @feedback.errors, status: :unprocessable_entity) }
       end
     end
   end
@@ -45,11 +47,13 @@ class FeedbacksController < ApplicationController
   def update
     respond_to do |format|
       if @feedback.update(feedback_params)
-        format.html { redirect_to feedback_url(@feedback), notice: "Feedback was successfully updated." }
-        format.json { render :show, status: :ok, location: @feedback }
+        format.html do
+ redirect_to(feedback_url(@feedback), notice: "Feedback was successfully updated.")
+        end
+        format.json { render(:show, status: :ok, location: @feedback) }
       else
-        format.html { render :edit, status: :unprocessable_entity }
-        format.json { render json: @feedback.errors, status: :unprocessable_entity }
+        format.html { render(:edit, status: :unprocessable_entity) }
+        format.json { render(json: @feedback.errors, status: :unprocessable_entity) }
       end
     end
   end
@@ -59,8 +63,8 @@ class FeedbacksController < ApplicationController
     @feedback.destroy
 
     respond_to do |format|
-      format.html { redirect_to feedbacks_url, notice: "Feedback was successfully destroyed." }
-      format.json { head :no_content }
+      format.html { redirect_to(feedbacks_url, notice: "Feedback was successfully destroyed.") }
+      format.json { head(:no_content) }
     end
   end
 

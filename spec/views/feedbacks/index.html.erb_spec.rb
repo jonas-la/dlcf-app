@@ -1,8 +1,6 @@
-
 require 'rails_helper'
 
-
-RSpec.describe "feedbacks/index", type: :view do
+RSpec.describe("feedbacks/index", type: :view) do
   before(:each) do
     assign(:feedbacks, [
       Feedback.create!(

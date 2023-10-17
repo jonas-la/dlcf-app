@@ -1,10 +1,10 @@
 require 'rails_helper'
 
-RSpec.describe ApplicationController, type: :controller do
+RSpec.describe(Application_Controller, type: :controller) do
   describe '#skip_authentication?' do
     it 'returns true when in test mode' do
-      allow(OmniAuth.config).to receive(:test_mode).and_return(true)
-      expect(controller.is_skipped?).to be true
+      allow(OmniAuth.config).to(receive(:test_mode).and_return(true))
+      expect(controller.is_skipped?).to(be(true))
     end
   end
 

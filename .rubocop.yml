@@ -307,7 +307,7 @@ Naming/InclusiveLanguage: # (new in 1.18)
   Enabled: true
 
 Naming/PredicateName:
-  Enabled: true
+  Enabled: false
 
 Naming/MethodName:
   Enabled: true

@@ -34,11 +34,11 @@ class MembersController < ApplicationController
 
   def new_account
     @member = Member.new
-    if  OmniAuth.config.test_mode == false
-      @pending_member = PendingMember.find(params[:p_id])
-    else
-      @pending_member = PendingMember.new
-    end
+    @pending_member = if OmniAuth.config.test_mode == false
+      PendingMember.find(params[:p_id])
+                      else
+      PendingMember.new
+                      end
 
   end
 
@@ -47,13 +47,15 @@ class MembersController < ApplicationController
 
     respond_to do |format|
       if @member.save
-        format.html { redirect_to pending_members_path, notice: "Member was successfully created." }
-        format.json { render :show, status: :created, location: @member }
+        format.html do
+ redirect_to(pending_members_path, notice: "Member was successfully created.")
+        end
+        format.json { render(:show, status: :created, location: @member) }
         to_delete = PendingMember.find_by(email: member_params[:email])
         to_delete.destroy
       else
-        format.html { render :new_account, status: :unprocessable_entity }
-        format.json { render json: @member.errors, status: :unprocessable_entity }
+        format.html { render(:new_account, status: :unprocessable_entity) }
+        format.json { render(json: @member.errors, status: :unprocessable_entity) }
       end
     end
 
@@ -69,11 +71,11 @@ class MembersController < ApplicationController
 
     respond_to do |format|
       if @member.save
-        format.html { redirect_to member_url(@member), notice: "Member was successfully created." }
-        format.json { render :show, status: :created, location: @member }
+        format.html { redirect_to(member_url(@member), notice: "Member was successfully created.") }
+        format.json { render(:show, status: :created, location: @member) }
       else
-        format.html { render :new, status: :unprocessable_entity }
-        format.json { render json: @member.errors, status: :unprocessable_entity }
+        format.html { render(:new, status: :unprocessable_entity) }
+        format.json { render(json: @member.errors, status: :unprocessable_entity) }
       end
     end
   end
@@ -82,11 +84,11 @@ class MembersController < ApplicationController
   def update
     respond_to do |format|
       if @member.update(member_params)
-        format.html { redirect_to member_url(@member), notice: "Member was successfully updated." }
-        format.json { render :show, status: :ok, location: @member }
+        format.html { redirect_to(member_url(@member), notice: "Member was successfully updated.") }
+        format.json { render(:show, status: :ok, location: @member) }
       else
-        format.html { render :edit, status: :unprocessable_entity }
-        format.json { render json: @member.errors, status: :unprocessable_entity }
+        format.html { render(:edit, status: :unprocessable_entity) }
+        format.json { render(json: @member.errors, status: :unprocessable_entity) }
       end
     end
   end
@@ -96,8 +98,8 @@ class MembersController < ApplicationController
     @member.destroy
 
     respond_to do |format|
-      format.html { redirect_to members_url, notice: "Member was successfully destroyed." }
-      format.json { head :no_content }
+      format.html { redirect_to(members_url, notice: "Member was successfully destroyed.") }
+      format.json { head(:no_content) }
     end
   end
 
@@ -109,6 +111,8 @@ class MembersController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def member_params
-      params.require(:member).permit(:first_name, :preferred_name, :last_name, :email, :is_member, :is_admin, :bio, :contact, :photo_file_name, :role)
+      params.require(:member).permit(:first_name, :preferred_name, :last_name, :email, :is_member, 
+                                     :is_admin, :bio, :contact, :photo_file_name, :role
+      )
     end
 end
