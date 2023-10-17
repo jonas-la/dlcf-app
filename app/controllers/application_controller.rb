@@ -51,23 +51,28 @@ class ApplicationController < ActionController::Base
       else
         handle_member_access(path_string)
       end
-    end
-    
-    private
+    end    
     
     def handle_admin_access(path_string)
-      illegal_paths = ["member_dashboard", "new_feedback_path", "attendances/new", "/feedbacks/new", "member_index", "member_show"]
+      illegal_paths = [
+        "member_dashboard", "new_feedback_path", "attendances/new", 
+        "/feedbacks/new", "member_index", "member_show"
+      ]
       
-      if contains_illegal_path?(path_string, illegal_paths)
-        sign_out_and_redirect
-      end
+      sign_out_and_redirect if contains_illegal_path?(path_string, illegal_paths)
     end
     
     def handle_member_access(path_string)
-      legal_paths = ["member", "new_feedback_path", "attendances/new", "/feedbacks/new", "googleoauth2", "/attendances", "/feedbacks", "/event_schedule", "/schedule_show"]
-      illegal_paths = ["edit", "delete"]
+      legal_paths = [
+        "member", "new_feedback_path", "attendances/new", "/feedbacks/new", 
+        "googleoauth2", "/attendances", "/feedbacks", "/event_schedule", "/schedule_show"
+      ]
+      illegal_paths = %w[edit delete]
     
-      if contains_illegal_path?(path_string, illegal_paths) || !contains_legal_path?(path_string, legal_paths)
+      if contains_illegal_path?(path_string, 
+                                illegal_paths
+                               ) || !contains_legal_path?(path_string, legal_paths)
+
         sign_out_and_redirect
       end
     end
@@ -82,7 +87,7 @@ class ApplicationController < ActionController::Base
     
     def sign_out_and_redirect
       sign_out_all_scopes
-      redirect_to new_admin_session_path
+      redirect_to(new_admin_session_path)
     end
     
   end

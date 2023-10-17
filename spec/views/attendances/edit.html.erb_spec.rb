@@ -29,18 +29,18 @@ require 'rails_helper'
 
 #   before(:each) do
 #     assign(:attendance, attendance)
-  #   end
+#   end
 
-  # it "renders the edit attendance form" do
-  #   render
+# it "renders the edit attendance form" do
+#   render
 
-  #   assert_select "form[action=?][method=?]", attendance_path(attendance), "post" do
+#   assert_select "form[action=?][method=?]", attendance_path(attendance), "post" do
 
-  #     assert_select "input[name=?]", "attendance[member_id]"
+#     assert_select "input[name=?]", "attendance[member_id]"
 
-  #     assert_select "input[name=?]", "attendance[event_id]"
+#     assert_select "input[name=?]", "attendance[event_id]"
 
-  #     assert_select "input[name=?]", "attendance[attended]"
-  #   end
-    # end
-  # end
+#     assert_select "input[name=?]", "attendance[attended]"
+#   end
+# end
+# end

@@ -82,7 +82,6 @@ RSpec.describe("/attendances", type: :request) do
   #   end
   # end
 
-
   describe "POST /create" do
     context "with valid parameters" do
       # it "creates a new Attendance" do
