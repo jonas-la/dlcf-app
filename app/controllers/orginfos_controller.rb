@@ -65,6 +65,6 @@ class OrginfosController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def orginfo_params
-      params.require(:orginfo).permit(:title, :description)
+      params.require(:orginfo).permit(:title, :description, :image, :file)
     end
 end

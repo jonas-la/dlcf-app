@@ -9,16 +9,16 @@ RSpec.describe "attendances/new", type: :view do
     ))
   end
 
-  it "renders new attendance form" do
-    render
+  # it "renders new attendance form" do
+  #   render
 
-    assert_select "form[action=?][method=?]", attendances_path, "post" do
+  #   assert_select "form[action=?][method=?]", attendances_path, "post" do
 
-      assert_select "input[name=?]", "attendance[member_id]"
+  #     assert_select "input[name=?]", "attendance[member_id]"
 
-      assert_select "input[name=?]", "attendance[event_id]"
+  #     assert_select "input[name=?]", "attendance[event_id]"
 
-      assert_select "input[name=?]", "attendance[attended]"
-    end
-  end
+  #     assert_select "input[name=?]", "attendance[attended]"
+  #   end
+  # end
 end

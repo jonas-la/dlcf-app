@@ -22,6 +22,16 @@
   </div>
 
   <div>
+    <%= form.label :Logo, style: "display: block", class:"input-label" %>
+    <%= form.file_field :image , class:"form-input" %>
+  </div>
+
+  <div>
+    <%= form.label :Charter, style: "display: block", class:"input-label" %>
+    <%= form.file_field :file , class:"form-input" %>
+  </div>
+
+  <div>
     <%= form.submit "Submit", class:"link-button" %>
   </div>
 <% end %>
