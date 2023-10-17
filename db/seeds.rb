@@ -152,9 +152,9 @@ end
 
 # seed database with default image and charter
 org_info = Orginfo.find(1)
-org_info.image.attach(io: File.open('app/assets/images/dlcf_logo.jpg'), filename: 'dlcf_logo.jpg', 
+org_info.image.attach(io: File.open('assets/images/dlcf_logo.jpg'), filename: 'dlcf_logo.jpg', 
                       content_type: 'image/jpg'
 )
-org_info.file.attach(io: File.open('app/assets/pdfs/dlcf_charter.pdf'), 
+org_info.file.attach(io: File.open('assets/pdfs/dlcf_charter.pdf'), 
                      filename: 'dlcf_charter.pdf', content_type: 'application/pdf'
 )
