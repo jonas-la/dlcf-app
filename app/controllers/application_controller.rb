@@ -21,7 +21,7 @@ class ApplicationController < ActionController::Base
       end
       # return true #TODO remove me when Rspec can do this
       # This is the list of routes to not authenticate for
-      skip_auth_paths = [new_account_members_path, create_account_members_path, attendances_url, new_pending_member_path, pending_members_path]
+      skip_auth_paths = [event_schedule_path,new_account_members_path, create_account_members_path, attendances_url, new_pending_member_path, pending_members_path]
       skip_auth_paths.each do |route|
         if request.path.to_s == route
           return true
