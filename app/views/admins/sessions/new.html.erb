@@ -48,6 +48,7 @@
         
         <div class="grid-item">
             <% @officers.each do |officer| %>
+            <% if officer.preferred_name != "Test" %>
                 <div class="center text-tile">
                     <div class="list-tile">
                         <span class="info-title"><%= officer.preferred_name%> <%= officer.last_name%></span>
@@ -58,6 +59,7 @@
                         <span class="info-text"><%= officer.bio %></span>
                     </div>
                 </div>
+            <% end %>
             <% end %>
         </div>
     </div>
