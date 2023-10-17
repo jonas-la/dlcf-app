@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe "orginfos/new", type: :view do
+RSpec.describe("orginfos/new", type: :view) do
   before(:each) do
     assign(:orginfo, Orginfo.new(
       title: "MyString",

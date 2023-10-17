@@ -2,7 +2,7 @@
 
 require 'rails_helper'
 
-RSpec.describe 'New Account Page', type: :feature do
+RSpec.describe('New Account Page', type: :feature) do
   it 'renders the new_account action correctly' do
     visit new_account_members_path
 
@@ -18,8 +18,8 @@ RSpec.describe 'New Account Page', type: :feature do
     # # Check other fields as needed
 
     # # You can check for specific HTML elements or classes.
-    expect(page).to have_selector('.center.text-tile.list-tile')
-    expect(page).to have_selector('.center.bottom-navigation')
+    expect(page).to(have_selector('.center.text-tile.list-tile'))
+    expect(page).to(have_selector('.center.bottom-navigation'))
     
   end
 end

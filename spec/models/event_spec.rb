@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe Event, type: :model do
+RSpec.describe(Event, type: :model) do
   it "is valid with valid attributes" do
     event = Event.new(
       event_name: "Sample Event",
@@ -10,7 +10,7 @@ RSpec.describe Event, type: :model do
       end_time: Time.now + 1.hour,
       description: "A sample event description."
     )
-    expect(event).to be_valid
+    expect(event).to(be_valid)
   end
 
   # it "is not valid without an event name" do
@@ -63,7 +63,7 @@ RSpec.describe Event, type: :model do
       end_time: Time.now + 1.hour,
       description: "A" * 1000  # Assuming a maximum length of 1000 characters
     )
-    expect(event).to be_valid
+    expect(event).to(be_valid)
   end
 
   # You can add more tests based on your specific validation rules and requirements

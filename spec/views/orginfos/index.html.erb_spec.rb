@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe "orginfos/index", type: :view do
+RSpec.describe("orginfos/index", type: :view) do
   before(:each) do
     assign(:orginfos, [
       Orginfo.create!(

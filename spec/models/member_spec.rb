@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe Member, type: :model do
+RSpec.describe(Member, type: :model) do
   it "is valid with valid attributes" do
     member = Member.new(
       first_name: "John",
@@ -12,7 +12,7 @@ RSpec.describe Member, type: :model do
       contact: "123-456-7890",
       role: "Admin"
     )
-    expect(member).to be_valid
+    expect(member).to(be_valid)
   end
 
   it "is not valid without a first name" do
@@ -21,7 +21,7 @@ RSpec.describe Member, type: :model do
       email: "john@gmail.com"
       # Add other required attributes as needed
     )
-    expect(member).to_not be_valid
+    expect(member).to_not(be_valid)
   end
 
   it "is not valid without a last name" do
@@ -30,7 +30,7 @@ RSpec.describe Member, type: :model do
       email: "john@example.com"
       # Add other required attributes as needed
     )
-    expect(member).to_not be_valid
+    expect(member).to_not(be_valid)
   end
 
   it "is not valid without a valid email address" do
@@ -40,7 +40,7 @@ RSpec.describe Member, type: :model do
       email: "invalid_email" # This should be an invalid email format
       # Add other required attributes as needed
     )
-    expect(member).to_not be_valid
+    expect(member).to_not(be_valid)
   end
 
   # Add more validation tests for other attributes as needed

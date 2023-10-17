@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe "attendances/show", type: :view do
+RSpec.describe("attendances/show", type: :view) do
   before(:each) do
     assign(:attendance, Attendance.create!(
       member: Member.create!(
@@ -29,7 +29,7 @@ RSpec.describe "attendances/show", type: :view do
 
   it "renders attributes in <p>" do
     render
-    expect(rendered).to match(//)
-    expect(rendered).to match(//)
+    expect(rendered).to(match(//))
+    expect(rendered).to(match(//))
   end
 end
