@@ -24,7 +24,7 @@ RSpec.describe "attendances/index", type: :view do
           password: "test123",
           end_time: DateTime.now
         ),
-        attended: true
+        # attended: true
       ),
       Attendance.create!(
         member: Member.create!(
@@ -47,7 +47,7 @@ RSpec.describe "attendances/index", type: :view do
           password: "test123",
           end_time: DateTime.now
         ),
-        attended: true
+        # attended: true
       )
     ])
   end
