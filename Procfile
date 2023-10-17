@@ -1,1 +1,1 @@
-release: rails db:migrate && rails db:seed && bundle exec rake assets:precompile
+release: rails db:migrate && rails db:seed
