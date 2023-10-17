@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe "orginfos/edit", type: :view do
+RSpec.describe("orginfos/edit", type: :view) do
   let(:orginfo) {
     Orginfo.create!(
       title: "MyString",

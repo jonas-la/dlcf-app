@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe "pending_members/index", type: :view do
+RSpec.describe("pending_members/index", type: :view) do
   before(:each) do
     assign(:pending_members, [
       PendingMember.create!(
@@ -15,7 +15,8 @@ RSpec.describe "pending_members/index", type: :view do
         last_name: "Last Name",
         email: "Email"
       )
-    ])
+    ]
+    )
   end
 
   it "renders a list of pending_members" do

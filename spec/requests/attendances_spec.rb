@@ -16,9 +16,7 @@ require 'rails_helper'
 #   visit "/auth/#{service}"
 # end
 
-
-
-RSpec.describe "/attendances", type: :request do
+RSpec.describe("/attendances", type: :request) do
   
   # This should return the minimal set of attributes required to create a valid
   # Attendance. As you add validations to Attendance, be sure to
@@ -40,12 +38,11 @@ RSpec.describe "/attendances", type: :request do
   let(:event) { Event.create(
     event_name: 'Tech Conference',
     location: 'Conference Center',
-    start_time: Time.now,
-    end_time: Time.now + 2.hours,
+    start_time: Time.zone.now,
+    end_time: Time.zone.now + 2.hours,
     password: "test123",
     description: 'An exciting tech conference'
   )}
-
 
   let(:valid_attributes) {
     { member_id: member.id, event_id: event.id, attended: true }
@@ -57,22 +54,23 @@ RSpec.describe "/attendances", type: :request do
 
   describe "GET /index" do
     it "renders a successful response" do
-      # puts "Member ID: #{member.id}, Event ID: #{event.id}, valid_attributes: #{valid_attributes}" # Debugging line
+      # puts "Member ID: #{member.id}, Event ID: #{event.id}, valid_attributes: 
+      # {valid_attributes}" # Debugging line
       # puts "attendances_url: #{attendances_url}" # Debugging line
       # login_with_oauth
       # request.env["omniauth.auth"] = OmniAuth.config.mock_auth[:google_oauth2] 
 
-      Attendance.create!( member_id: member.id, event_id: event.id, attended: true )
+      Attendance.create!(member_id: member.id, event_id: event.id, attended: true)
       get attendances_url
-      expect(response).to be_successful
+      expect(response).to(be_successful)
     end
   end
 
   describe "GET /show" do
     it "renders a successful response" do
-      attendance = Attendance.create! valid_attributes
+      attendance = Attendance.create!(valid_attributes)
       get attendance_url(attendance)
-      expect(response).to be_successful
+      expect(response).to(be_successful)
     end
   end
 
@@ -83,15 +81,6 @@ RSpec.describe "/attendances", type: :request do
   #     expect(response).to be_successful
   #   end
   # end
-
-  describe "GET /edit" do
-    it "renders a successful response" do
-      attendance = Attendance.create! valid_attributes
-      # puts "Debug: attendance = #{attendance.inspect}"  # Debug output
-      get attendance_url(attendance)
-      expect(response).to be_successful
-    end
-  end
 
   describe "POST /create" do
     context "with valid parameters" do
@@ -104,19 +93,19 @@ RSpec.describe "/attendances", type: :request do
 
       # end
 
-      #checks where it bounces back to, need to set his to member_index I think?
+      # checks where it bounces back to, need to set his to member_index I think?
       it "redirects to the created attendance" do
         post attendances_url, params: { attendance: valid_attributes }
         # puts "Debug: params = #{response.inspect}"  # Debug output
-        expect(response).to redirect_to('/events/member_index')
+        expect(response).to(redirect_to('/events/member_index'))
       end
     end
 
     context "with invalid parameters" do
       it "does not create a new Attendance" do
         expect {
-          post attendances_url, params: { attendance: invalid_attributes }
-        }.to change(Attendance, :count).by(0)
+          post(attendances_url, params: { attendance: invalid_attributes })
+        }.to(change(Attendance, :count).by(0))
       end
 
     
@@ -136,41 +125,40 @@ RSpec.describe "/attendances", type: :request do
       }
 
       it "updates the requested attendance" do
-        attendance = Attendance.create! valid_attributes
+        attendance = Attendance.create!(valid_attributes)
         patch attendance_url(attendance), params: { attendance: new_attributes }
         attendance.reload
         skip("Add assertions for updated state")
       end
 
       it "redirects to the attendance" do
-        attendance = Attendance.create! valid_attributes
+        attendance = Attendance.create!(valid_attributes)
         patch attendance_url(attendance), params: { attendance: new_attributes }
         attendance.reload
-        expect(response).to redirect_to(attendance_url(attendance))
+        expect(response).to(redirect_to(attendance_url(attendance)))
       end
     end
 
-    context "with invalid parameters" do
-    
-      # Test that the error type is 422...
-      # it "renders a response with 422 status (i.e. to display the 'edit' template)" do
-      #   attendance = Attendance.create! valid_attributes
-      #   patch attendance_url(attendance), params: { attendance: invalid_attributes }
-      #   expect(response).to have_http_status(:unprocessable_entity)
-      # end
-    
-    end
+    # context "with invalid parameters" do
+    #   Test that the error type is 422...
+    #   it "renders a response with 422 status (i.e. to display the 'edit' template)" do
+    #     attendance = Attendance.create! valid_attributes
+    #     patch attendance_url(attendance), params: { attendance: invalid_attributes }
+    #     expect(response).to have_http_status(:unprocessable_entity)
+    #   end
+    # end
   end
 
   describe "DELETE /destroy" do
     it "destroys the requested attendance" do
-      attendance = Attendance.create! valid_attributes
+      attendance = Attendance.create!(valid_attributes)
       expect {
-        delete attendance_url(attendance)
-      }.to change(Attendance, :count).by(-1)
+        delete(attendance_url(attendance))
+      }.to(change(Attendance, :count).by(-1))
     end
 
-    # strightforward to fix, just need to change attendances_url to events something (which is where it should go)
+    # strightforward to fix, just need to change attendances_url 
+    # to events something (which is where it should go)
     # it "redirects to the attendances list" do
     #   attendance = Attendance.create! valid_attributes
     #   delete attendance_url(attendance)

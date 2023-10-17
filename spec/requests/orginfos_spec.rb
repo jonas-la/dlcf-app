@@ -12,7 +12,7 @@ require 'rails_helper'
 # of tools you can use to make these specs even more expressive, but we're
 # sticking to rails and rspec-rails APIs to keep things simple and stable.
 
-RSpec.describe "/orginfos", type: :request do
+RSpec.describe("/orginfos", type: :request) do
   
   # This should return the minimal set of attributes required to create a valid
   # Orginfo. As you add validations to Orginfo, be sure to
@@ -27,32 +27,32 @@ RSpec.describe "/orginfos", type: :request do
 
   describe "GET /index" do
     it "renders a successful response" do
-      Orginfo.create! valid_attributes
+      Orginfo.create!(valid_attributes)
       get orginfos_url
-      expect(response).to be_successful
+      expect(response).to(be_successful)
     end
   end
 
   describe "GET /show" do
     it "renders a successful response" do
-      orginfo = Orginfo.create! valid_attributes
+      orginfo = Orginfo.create!(valid_attributes)
       get orginfo_url(orginfo)
-      expect(response).to be_successful
+      expect(response).to(be_successful)
     end
   end
 
   describe "GET /new" do
     it "renders a successful response" do
       get new_orginfo_url
-      expect(response).to be_successful
+      expect(response).to(be_successful)
     end
   end
 
   describe "GET /edit" do
     it "renders a successful response" do
-      orginfo = Orginfo.create! valid_attributes
+      orginfo = Orginfo.create!(valid_attributes)
       get edit_orginfo_url(orginfo)
-      expect(response).to be_successful
+      expect(response).to(be_successful)
     end
   end
 
@@ -60,27 +60,27 @@ RSpec.describe "/orginfos", type: :request do
     context "with valid parameters" do
       it "creates a new Orginfo" do
         expect {
-          post orginfos_url, params: { orginfo: valid_attributes }
-        }.to change(Orginfo, :count).by(1)
+          post(orginfos_url, params: { orginfo: valid_attributes })
+        }.to(change(Orginfo, :count).by(1))
       end
 
       it "redirects to the created orginfo" do
         post orginfos_url, params: { orginfo: valid_attributes }
-        expect(response).to redirect_to(orginfo_url(Orginfo.last))
+        expect(response).to(redirect_to(orginfo_url(Orginfo.last)))
       end
     end
 
     context "with invalid parameters" do
       it "does not create a new Orginfo" do
         expect {
-          post orginfos_url, params: { orginfo: invalid_attributes }
-        }.to change(Orginfo, :count).by(0)
+          post(orginfos_url, params: { orginfo: invalid_attributes })
+        }.to(change(Orginfo, :count).by(0))
       end
 
     
       it "renders a response with 422 status (i.e. to display the 'new' template)" do
         post orginfos_url, params: { orginfo: invalid_attributes }
-        expect(response).to have_http_status(:unprocessable_entity)
+        expect(response).to(have_http_status(:unprocessable_entity))
       end
     
     end
@@ -93,26 +93,26 @@ RSpec.describe "/orginfos", type: :request do
       }
 
       it "updates the requested orginfo" do
-        orginfo = Orginfo.create! valid_attributes
+        orginfo = Orginfo.create!(valid_attributes)
         patch orginfo_url(orginfo), params: { orginfo: new_attributes }
         orginfo.reload
         skip("Add assertions for updated state")
       end
 
       it "redirects to the orginfo" do
-        orginfo = Orginfo.create! valid_attributes
+        orginfo = Orginfo.create!(valid_attributes)
         patch orginfo_url(orginfo), params: { orginfo: new_attributes }
         orginfo.reload
-        expect(response).to redirect_to(orginfo_url(orginfo))
+        expect(response).to(redirect_to(orginfo_url(orginfo)))
       end
     end
 
     context "with invalid parameters" do
     
       it "renders a response with 422 status (i.e. to display the 'edit' template)" do
-        orginfo = Orginfo.create! valid_attributes
+        orginfo = Orginfo.create!(valid_attributes)
         patch orginfo_url(orginfo), params: { orginfo: invalid_attributes }
-        expect(response).to have_http_status(:unprocessable_entity)
+        expect(response).to(have_http_status(:unprocessable_entity))
       end
     
     end
@@ -120,16 +120,16 @@ RSpec.describe "/orginfos", type: :request do
 
   describe "DELETE /destroy" do
     it "destroys the requested orginfo" do
-      orginfo = Orginfo.create! valid_attributes
+      orginfo = Orginfo.create!(valid_attributes)
       expect {
-        delete orginfo_url(orginfo)
-      }.to change(Orginfo, :count).by(-1)
+        delete(orginfo_url(orginfo))
+      }.to(change(Orginfo, :count).by(-1))
     end
 
     it "redirects to the orginfos list" do
-      orginfo = Orginfo.create! valid_attributes
+      orginfo = Orginfo.create!(valid_attributes)
       delete orginfo_url(orginfo)
-      expect(response).to redirect_to(orginfos_url)
+      expect(response).to(redirect_to(orginfos_url))
     end
   end
 end

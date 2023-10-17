@@ -11,8 +11,6 @@ require 'rspec/rails'
 #   config.include IntegrationSpecHelper, :type => :request
 # end
 
-
-
 # Add additional requires below this line. Rails is not loaded until this point!
 
 # Requires supporting ruby files with custom matchers and macros, etc, in
@@ -35,7 +33,7 @@ require 'rspec/rails'
 begin
   ActiveRecord::Migration.maintain_test_schema!
 rescue ActiveRecord::PendingMigrationError => e
-  abort e.to_s.strip
+  abort(e.to_s.strip)
 end
 RSpec.configure do |config|
   # Remove this line if you're not using ActiveRecord or ActiveRecord fixtures
@@ -49,12 +47,14 @@ RSpec.configure do |config|
   OmniAuth.config.test_mode = true
 
   OmniAuth.config.add_mock(:google_oauth2, {
-  provider: 'google_oauth2',
-  uid: '123456',
-  info: {
-    email: 'jonasaustinland@tamu.edu',
-    name: 'John Doe',
-  },})
+    provider: 'google_oauth2',
+    uid: '123456',
+    info: {
+      email: 'jonasaustinland@tamu.edu',
+      name: 'John Doe'
+    }  
+  }
+  )
 
   
 

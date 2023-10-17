@@ -12,75 +12,75 @@ require 'rails_helper'
 # of tools you can use to make these specs even more expressive, but we're
 # sticking to rails and rspec-rails APIs to keep things simple and stable.
 
-RSpec.describe "/pending_members", type: :request do
+RSpec.describe("/pending_members", type: :request) do
   
   # This should return the minimal set of attributes required to create a valid
   # PendingMember. As you add validations to PendingMember, be sure to
   # adjust the attributes here as well.
-  let(:valid_attributes) {
+  let(:valid_attributes) do
     skip("Add a hash of attributes valid for your model")
-  }
+  end
 
-  let(:invalid_attributes) {
+  let(:invalid_attributes) do
     skip("Add a hash of attributes invalid for your model")
-  }
+  end
 
   describe "GET /index" do
     it "renders a successful response" do
-      PendingMember.create! valid_attributes
+      PendingMember.create!(valid_attributes)
       get pending_members_url
-      expect(response).to be_successful
+      expect(response).to(be_successful)
     end
   end
 
   describe "GET /show" do
     it "renders a successful response" do
-      pending_member = PendingMember.create! valid_attributes
+      pending_member = PendingMember.create!(valid_attributes)
       get pending_member_url(pending_member)
-      expect(response).to be_successful
+      expect(response).to(be_successful)
     end
   end
 
   describe "GET /new" do
     it "renders a successful response" do
       get new_pending_member_url
-      expect(response).to be_successful
+      expect(response).to(be_successful)
     end
   end
 
   describe "GET /edit" do
     it "renders a successful response" do
-      pending_member = PendingMember.create! valid_attributes
+      pending_member = PendingMember.create!(valid_attributes)
       get edit_pending_member_url(pending_member)
-      expect(response).to be_successful
+      expect(response).to(be_successful)
     end
   end
 
   describe "POST /create" do
     context "with valid parameters" do
       it "creates a new PendingMember" do
-        expect {
-          post pending_members_url, params: { pending_member: valid_attributes }
-        }.to change(PendingMember, :count).by(1)
+        expect do
+          post(pending_members_url, params: { pending_member: valid_attributes })
+        end.to(change(PendingMember, :count).by(1))
       end
 
       it "redirects to the created pending_member" do
         post pending_members_url, params: { pending_member: valid_attributes }
-        expect(response).to redirect_to(pending_member_url(PendingMember.last))
+        expect(response).to(redirect_to(pending_member_url(PendingMember.last)))
       end
     end
 
     context "with invalid parameters" do
       it "does not create a new PendingMember" do
-        expect {
-          post pending_members_url, params: { pending_member: invalid_attributes }
-        }.to change(PendingMember, :count).by(0)
+        expect do
+          post(pending_members_url, params: { pending_member: invalid_attributes })
+        end.to(change(PendingMember, :count).by(0))
       end
 
     
       it "renders a response with 422 status (i.e. to display the 'new' template)" do
         post pending_members_url, params: { pending_member: invalid_attributes }
-        expect(response).to have_http_status(:unprocessable_entity)
+        expect(response).to(have_http_status(:unprocessable_entity))
       end
     
     end
@@ -88,31 +88,31 @@ RSpec.describe "/pending_members", type: :request do
 
   describe "PATCH /update" do
     context "with valid parameters" do
-      let(:new_attributes) {
+      let(:new_attributes) do
         skip("Add a hash of attributes valid for your model")
-      }
+      end
 
       it "updates the requested pending_member" do
-        pending_member = PendingMember.create! valid_attributes
+        pending_member = PendingMember.create!(valid_attributes)
         patch pending_member_url(pending_member), params: { pending_member: new_attributes }
         pending_member.reload
         skip("Add assertions for updated state")
       end
 
       it "redirects to the pending_member" do
-        pending_member = PendingMember.create! valid_attributes
+        pending_member = PendingMember.create!(valid_attributes)
         patch pending_member_url(pending_member), params: { pending_member: new_attributes }
         pending_member.reload
-        expect(response).to redirect_to(pending_member_url(pending_member))
+        expect(response).to(redirect_to(pending_member_url(pending_member)))
       end
     end
 
     context "with invalid parameters" do
     
       it "renders a response with 422 status (i.e. to display the 'edit' template)" do
-        pending_member = PendingMember.create! valid_attributes
+        pending_member = PendingMember.create!(valid_attributes)
         patch pending_member_url(pending_member), params: { pending_member: invalid_attributes }
-        expect(response).to have_http_status(:unprocessable_entity)
+        expect(response).to(have_http_status(:unprocessable_entity))
       end
     
     end
@@ -120,16 +120,16 @@ RSpec.describe "/pending_members", type: :request do
 
   describe "DELETE /destroy" do
     it "destroys the requested pending_member" do
-      pending_member = PendingMember.create! valid_attributes
-      expect {
-        delete pending_member_url(pending_member)
-      }.to change(PendingMember, :count).by(-1)
+      pending_member = PendingMember.create!(valid_attributes)
+      expect do
+        delete(pending_member_url(pending_member))
+      end.to(change(PendingMember, :count).by(-1))
     end
 
     it "redirects to the pending_members list" do
-      pending_member = PendingMember.create! valid_attributes
+      pending_member = PendingMember.create!(valid_attributes)
       delete pending_member_url(pending_member)
-      expect(response).to redirect_to(pending_members_url)
+      expect(response).to(redirect_to(pending_members_url))
     end
   end
 end

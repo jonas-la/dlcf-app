@@ -1,1 +1,1 @@
-json.partial! "feedbacks/feedback", feedback: @feedback
+json.partial!("feedbacks/feedback", feedback: @feedback)
