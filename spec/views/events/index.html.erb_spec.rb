@@ -25,7 +25,6 @@ RSpec.describe "events/index", type: :view do
   it "renders a list of events" do
     current_admin = Admin.new()
     current_admin.email = "test@email.com"
-    puts current_admin.email
     render
     cell_selector = Rails::VERSION::STRING >= '7' ? 'div>p' : 'tr>td'
     assert_select cell_selector, text: Regexp.new("Event Name".to_s), count: 2
