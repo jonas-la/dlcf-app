@@ -5,7 +5,7 @@ RSpec.describe "attendances/new", type: :view do
     assign(:attendance, Attendance.new(
       member: nil,
       event: nil,
-      attended: false
+      # attended: false
     ))
   end
 

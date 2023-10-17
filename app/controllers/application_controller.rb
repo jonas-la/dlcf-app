@@ -7,6 +7,9 @@ class ApplicationController < ActionController::Base
     before_action :check_role, if: :is_logged_in?
   
 
+    def is_skipped?
+      return skip_authentication?
+    end
     private
 
     # This will allow the user to skip authentication for certain pages
@@ -102,5 +105,3 @@ class ApplicationController < ActionController::Base
     end
     
   end
-  
-    
