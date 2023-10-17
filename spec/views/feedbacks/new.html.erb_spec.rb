@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe "feedbacks/new", type: :view do
+RSpec.describe("feedbacks/new", type: :view) do
   before(:each) do
     assign(:feedback, Feedback.new(
       satisfaction: 1,

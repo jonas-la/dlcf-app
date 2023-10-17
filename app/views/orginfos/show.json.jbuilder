@@ -1,1 +1,1 @@
-json.partial! "orginfos/orginfo", orginfo: @orginfo
+json.partial!("orginfos/orginfo", orginfo: @orginfo)

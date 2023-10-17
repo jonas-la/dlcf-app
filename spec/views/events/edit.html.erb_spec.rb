@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe "events/edit", type: :view do
+RSpec.describe("events/edit", type: :view) do
   let(:event) {
     Event.create!(
       event_name: "MyString",

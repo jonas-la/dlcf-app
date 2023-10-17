@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe "feedbacks/edit", type: :view do
+RSpec.describe("feedbacks/edit", type: :view) do
   let(:feedback) {
     Feedback.create!(
       satisfaction: 1,
@@ -30,7 +30,6 @@ RSpec.describe "feedbacks/edit", type: :view do
 
       # assert_select "input[name=?]", "feedback[satisfaction]"
       assert_select "select[name='feedback[satisfaction]']"
-
 
       assert_select "input[name=?]", "feedback[critiques]"
 

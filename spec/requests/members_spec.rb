@@ -12,7 +12,7 @@ require 'rails_helper'
 # of tools you can use to make these specs even more expressive, but we're
 # sticking to rails and rspec-rails APIs to keep things simple and stable.
 
-RSpec.describe "/members", type: :request do
+RSpec.describe("/members", type: :request) do
   
   # This should return the minimal set of attributes required to create a valid
   # Member. As you add validations to Member, be sure to
@@ -27,32 +27,32 @@ RSpec.describe "/members", type: :request do
 
   describe "GET /index" do
     it "renders a successful response" do
-      Member.create! valid_attributes
+      Member.create!(valid_attributes)
       get members_url
-      expect(response).to be_successful
+      expect(response).to(be_successful)
     end
   end
 
   describe "GET /show" do
     it "renders a successful response" do
-      member = Member.create! valid_attributes
+      member = Member.create!(valid_attributes)
       get member_url(member)
-      expect(response).to be_successful
+      expect(response).to(be_successful)
     end
   end
 
   describe "GET /new" do
     it "renders a successful response" do
       get new_member_url
-      expect(response).to be_successful
+      expect(response).to(be_successful)
     end
   end
 
   describe "GET /edit" do
     it "renders a successful response" do
-      member = Member.create! valid_attributes
+      member = Member.create!(valid_attributes)
       get edit_member_url(member)
-      expect(response).to be_successful
+      expect(response).to(be_successful)
     end
   end
 
@@ -60,27 +60,27 @@ RSpec.describe "/members", type: :request do
     context "with valid parameters" do
       it "creates a new Member" do
         expect {
-          post members_url, params: { member: valid_attributes }
-        }.to change(Member, :count).by(1)
+          post(members_url, params: { member: valid_attributes })
+        }.to(change(Member, :count).by(1))
       end
 
       it "redirects to the created member" do
         post members_url, params: { member: valid_attributes }
-        expect(response).to redirect_to(member_url(Member.last))
+        expect(response).to(redirect_to(member_url(Member.last)))
       end
     end
 
     context "with invalid parameters" do
       it "does not create a new Member" do
         expect {
-          post members_url, params: { member: invalid_attributes }
-        }.to change(Member, :count).by(0)
+          post(members_url, params: { member: invalid_attributes })
+        }.to(change(Member, :count).by(0))
       end
 
     
       it "renders a response with 422 status (i.e. to display the 'new' template)" do
         post members_url, params: { member: invalid_attributes }
-        expect(response).to have_http_status(:unprocessable_entity)
+        expect(response).to(have_http_status(:unprocessable_entity))
       end
     
     end
@@ -93,26 +93,26 @@ RSpec.describe "/members", type: :request do
       }
 
       it "updates the requested member" do
-        member = Member.create! valid_attributes
+        member = Member.create!(valid_attributes)
         patch member_url(member), params: { member: new_attributes }
         member.reload
         skip("Add assertions for updated state")
       end
 
       it "redirects to the member" do
-        member = Member.create! valid_attributes
+        member = Member.create!(valid_attributes)
         patch member_url(member), params: { member: new_attributes }
         member.reload
-        expect(response).to redirect_to(member_url(member))
+        expect(response).to(redirect_to(member_url(member)))
       end
     end
 
     context "with invalid parameters" do
     
       it "renders a response with 422 status (i.e. to display the 'edit' template)" do
-        member = Member.create! valid_attributes
+        member = Member.create!(valid_attributes)
         patch member_url(member), params: { member: invalid_attributes }
-        expect(response).to have_http_status(:unprocessable_entity)
+        expect(response).to(have_http_status(:unprocessable_entity))
       end
     
     end
@@ -120,16 +120,16 @@ RSpec.describe "/members", type: :request do
 
   describe "DELETE /destroy" do
     it "destroys the requested member" do
-      member = Member.create! valid_attributes
+      member = Member.create!(valid_attributes)
       expect {
-        delete member_url(member)
-      }.to change(Member, :count).by(-1)
+        delete(member_url(member))
+      }.to(change(Member, :count).by(-1))
     end
 
     it "redirects to the members list" do
-      member = Member.create! valid_attributes
+      member = Member.create!(valid_attributes)
       delete member_url(member)
-      expect(response).to redirect_to(members_url)
+      expect(response).to(redirect_to(members_url))
     end
   end
 end

@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe "members/index", type: :view do
+RSpec.describe("members/index", type: :view) do
   before(:each) do
     assign(:members, [
       Member.create!(

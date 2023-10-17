@@ -1,1 +1,1 @@
-json.array! @feedbacks, partial: "feedbacks/feedback", as: :feedback
+json.array!(@feedbacks, partial: "feedbacks/feedback", as: :feedback)

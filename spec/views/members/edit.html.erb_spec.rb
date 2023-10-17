@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe "members/edit", type: :view do
+RSpec.describe("members/edit", type: :view) do
   let(:member) {
     Member.create!(
       first_name: "MyString",
