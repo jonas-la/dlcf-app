@@ -26,11 +26,13 @@
   </p>
 
   <% if  OmniAuth.config.test_mode == false%>
+  <% if  current_admin.nil? == false%>
   <% if Member.find_by(email: current_admin.email).is_admin %>
     <p>
       <strong>Password:</strong>
       <%= event.password %>
     </p>
+  <% end %>
   <% end %>
   <% end %>
 
