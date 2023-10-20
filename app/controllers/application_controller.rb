@@ -27,6 +27,12 @@ class ApplicationController < ActionController::Base
       skip_auth_paths.each do |route|
         return true if request.path.to_s == route
       end
+
+      puts request.path.to_s
+      if request.path.to_s.include?("schedule_show")
+        return true
+      end
+
       return false 
       
     end 
