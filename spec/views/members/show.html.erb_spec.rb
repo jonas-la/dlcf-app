@@ -14,6 +14,8 @@ RSpec.describe("members/show", type: :view) do
       photo_file_name: "Photo File Name",
       role: "Role"
     ))
+    @events_attended = [] # Set up @events_attended as an empty array
+    assign(:events_attended, @events_attended)
   end
 
   it "renders attributes in <p>" do
