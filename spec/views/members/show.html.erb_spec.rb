@@ -38,7 +38,7 @@ RSpec.describe("members/show", type: :view) do
     expect(rendered).to(match(/Photo File Name/))
     expect(rendered).to(match(/Role/))
 
-    # Add expectations for the events attended
+    # Add expectations for the events attended, ie scrum 67
     @events_attended.each do |event|
       expect(rendered).to(match(event.event_name))
       expect(rendered).to(match(event.start_time.strftime('%A, %B %d, %Y at %I:%M %p')))

@@ -24,8 +24,10 @@ class MembersController < ApplicationController
 
   # GET /members/1 or /members/1.json
   def show
+    # gets the events the member attended 
+    # (suprisingly easy, though it required a minor update to the models tell ruby about the relationship)
     @events_attended = @member.events
-    @events_attended ||= [] #makes it an empty list if it can't find anything
+    @events_attended ||= [] #makes it an empty list if it is null (it shouldn't ever be, but still)
     @events_attended = @events_attended.order(start_time: :desc)
   end
 
