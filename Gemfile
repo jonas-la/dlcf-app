@@ -92,4 +92,6 @@ group :test do
   gem "capybara"
   gem "selenium-webdriver"
   gem "webdrivers"
+  gem 'chunky_png'
+  gem 'rqrcode_png'
 end
