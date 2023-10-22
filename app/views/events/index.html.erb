@@ -8,6 +8,16 @@
 
 <body>
   <div clas="mobile-container">
+
+
+
+    <h1>Event QR Code</h1>
+    <% # Generate the QR code with the event's URL %>
+    <% qr = RQRCode::QRCode.new(member_index_events_url(), :size => 7, :level => :h) %>
+    <% # Render the QR code as a PNG image %>
+    <% png = qr.as_png(resize_gte_to: false, resize_exactly_to: 200, border_modules: 4) %>
+    <img src="<%= "data:image/png;base64,#{Base64.strict_encode64(png.to_s)}" %>" alt="Event QR Code">
+
     <div class="grid-item">
       <p style="color: green"><%= notice %></p>
     </div>
@@ -25,7 +35,7 @@
           <%= link_to "Show this Event", event, class: "link-button" %>
         </p>
       </div>
-    <% end %>
+      <% end %>
     </div>
     
     <div class="center bottom-navigation grid-item">
