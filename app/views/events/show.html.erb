@@ -35,6 +35,14 @@
       <%= link_to "Back to events", events_path , class: "link-button"%>
     </div>
 
+    <h1>Event QR Code</h1>
+    <% # Generate the QR code with the event's URL %>
+    <% qr = RQRCode::QRCode.new(events_url(@event), :size => 4, :level => :h) %>
+    <% # Render the QR code as a PNG image %>
+    <% png = qr.to_img %>
+    <% # Adjust the image size as needed %>
+    <img src="<%= "data:image/png;base64,#{Base64.strict_encode64(png.to_s)}" %>" alt="Event QR Code">
+
   </div>
 </body>
 
