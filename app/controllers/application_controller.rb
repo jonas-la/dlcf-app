@@ -71,9 +71,11 @@ class ApplicationController < ActionController::Base
     def handle_member_access(path_string)
       legal_paths = [
         "member", "new_feedback_path", "attendances/new", "/feedbacks/new", 
-        "googleoauth2", "/attendances", "/feedbacks", "/event_schedule", "/schedule_show"
+        "googleoauth2", "/attendances", "/feedbacks", "/event_schedule", "/schedule_show", "edit_account"
       ]
-      illegal_paths = %w[edit delete]
+      # Daniel and  I are looking into what this line does for account edit and delete?
+      #illegal_paths = %w[edit delete]
+      illegal_paths = %w[]
     
       if contains_illegal_path?(path_string, 
                                 illegal_paths

@@ -68,6 +68,13 @@ class MembersController < ApplicationController
 
   # GET /members/1/edit
   def edit
+    
+  end
+
+  # GET /members/1/edit
+  def edit_account
+    user_email = current_admin.email
+    @user = Member.find_by(email: user_email)
   end
 
   # POST /members or /members.json
@@ -98,6 +105,20 @@ class MembersController < ApplicationController
     end
   end
 
+  def update_account
+    user_email = current_admin.email
+    @user = Member.find_by(email: user_email)
+
+    respond_to do |format|
+      if @user.update(member_params)
+        format.html { redirect_to(member_dashboard_index_path, notice: "Member was successfully updated.") }
+        format.json { render(:show, status: :ok, location: @user) }
+      else
+        format.html { render(:edit, status: :unprocessable_entity) }
+        format.json { render(json: @user.errors, status: :unprocessable_entity) }
+      end
+    end
+  end
   # DELETE /members/1 or /members/1.json
   def destroy
     @member.destroy
