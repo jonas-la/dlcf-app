@@ -72,41 +72,6 @@
         font-size: 1.8em;
         margin-top: 15px;
     }
-
-    .pagination {
-        text-align: center;
-        margin: 20px;
-    }
-
-    .sort-buttons {
-        text-align: center;
-        margin: 20px;
-    }
-
-    .sort-button {
-        text-align: center;
-        background-color: #FD8E3C;
-        color:  #000000;
-        border-radius: 4px;
-        cursor: pointer;
-        padding: 5px 10px;
-        text-decoration: none;
-    }
-
-    .sort-button:hover {
-        background-color: #FDA564;
-        color:  #FFFFFF;
-        border: none;
-        border-radius: 4px;
-        padding: 5px 10px;
-        text-align: center;
-        text-decoration: none;
-        cursor: pointer;
-    }
-
-    .search-box {
-        text-align: center;
-    }
 }
   
 
@@ -222,37 +187,7 @@
 
     .pagination {
         text-align: center;
-        margin: 20px;
-    }
-
-    .sort-buttons {
-        text-align: center;
-        margin: 20px;
-    }
-
-    .sort-button {
-        text-align: center;
-        background-color: #FD8E3C;
-        color:  #000000;
-        border-radius: 4px;
-        cursor: pointer;
-        padding: 5px 10px;
-        text-decoration: none;
-    }
-
-    .sort-button:hover {
-        background-color: #FDA564;
-        color:  #FFFFFF;
-        border: none;
-        border-radius: 4px;
-        padding: 5px 10px;
-        text-align: center;
-        text-decoration: none;
-        cursor: pointer;
-    }
-
-    .search-box {
-        text-align: center;
+        color: red;
     }
 }
   
