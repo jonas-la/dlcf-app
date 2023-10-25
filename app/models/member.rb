@@ -4,6 +4,7 @@ class Member < ApplicationRecord
   validates :email, presence: true, uniqueness: true, format: { with: Devise.email_regexp }
   has_many :feedbacks, dependent: :destroy
   has_many :attendances, dependent: :destroy
+  has_many :events, through: :attendances
 
   private
 
