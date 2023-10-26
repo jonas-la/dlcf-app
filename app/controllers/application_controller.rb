@@ -28,7 +28,7 @@ class ApplicationController < ActionController::Base
         return true if request.path.to_s == route
       end
 
-      puts request.path.to_s
+      
       if request.path.to_s.include?("schedule_show")
         return true
       end
