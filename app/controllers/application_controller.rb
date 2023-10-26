@@ -80,9 +80,7 @@ class ApplicationController < ActionController::Base
       ]
       illegal_paths = ["edit","delete"]
     
-      if contains_illegal_path?(path_string, 
-                                illegal_paths
-                               )
+      if contains_illegal_path?(path_string, illegal_paths)
         sign_out_and_redirect
       end
       if (contains_legal_path?(path_string, legal_paths) == false)
