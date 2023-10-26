@@ -21,9 +21,9 @@ class ApplicationController < ActionController::Base
       # return true #TODO remove me when Rspec can do this
       # This is the list of routes to not authenticate for
 
-      puts "!!!Current routeroute:"
-      puts request.path.to_s
-      puts "!!! END"
+      # puts "!!!Current routeroute:"
+      # puts request.path.to_s
+      # puts "!!! END"
       skip_auth_paths = [
         event_schedule_path, new_account_members_path, create_account_members_path, attendances_url, 
         new_pending_member_path, pending_members_path
@@ -91,12 +91,10 @@ class ApplicationController < ActionController::Base
     end
      
     def contains_illegal_path?(path_string, illegal_paths)
-      puts "$$$ contains illegal path $$$"
       illegal_paths.any? { |substring| path_string.include?(substring) }
     end
     
     def contains_legal_path?(path_string, legal_paths)
-      puts "$$$ did not contain legal $$$"
       legal_paths.any? { |substring| path_string.include?(substring) }
     end
     
