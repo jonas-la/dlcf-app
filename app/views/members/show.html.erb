@@ -1,10 +1,13 @@
 <p style="color: green"><%= notice %></p>
-
+<div class="center text-tile">
 <%= render @member %>
 
-<div>
-  <%= link_to "Edit this member", edit_member_path(@member) %> |
-  <%= link_to "Back to members", members_path %>
+</div>
 
-  <%= button_to "Destroy this member", @member, method: :delete %>
+<div class="center bottom-navigation">
+  <%= link_to "Edit this member", edit_member_path(@member), class:"link-button" %> 
+  <%= button_to "Delete this member", @member, method: :delete, class:"link-button" %>
+  <%= link_to "Back to members", members_path, class:"link-button"%>
+
+  
 </div>
