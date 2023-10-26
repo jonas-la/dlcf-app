@@ -33,7 +33,7 @@ class FeedbacksController < ApplicationController
     respond_to do |format|
       if @feedback.save
         format.html do
- redirect_to(feedback_url(@feedback), notice: "Feedback was successfully created.")
+ redirect_to(feedback_url(@feedback), notice: "Feedback was successfully submitted.")
         end
         format.json { render(:show, status: :created, location: @feedback) }
       else
@@ -63,7 +63,7 @@ class FeedbacksController < ApplicationController
     @feedback.destroy
 
     respond_to do |format|
-      format.html { redirect_to(feedbacks_url, notice: "Feedback was successfully destroyed.") }
+      format.html { redirect_to(feedbacks_url, notice: "Feedback was successfully deleted.") }
       format.json { head(:no_content) }
     end
   end
