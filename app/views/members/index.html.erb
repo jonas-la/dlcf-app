@@ -6,16 +6,17 @@
 <h1>Current Members</h1>
 
 </div>
+<br>
 
-<div class="center text-tile grid-item">
+<div class="text-tile grid-item">
 <table>
   <thead>
     <tr>
-      <th> <%= link_to 'First Name', members_path(sort_by: 'first_name') %> </th>
-      <th> <%= link_to 'Preferred Name', members_path(sort_by: 'preferred_name') %> </th>
-      <th> <%= link_to 'Last Name', members_path(sort_by: 'last_name') %> </th>
-      <th> <%= link_to 'Email', members_path(sort_by: 'email') %> </th>
-      <th> <%= link_to 'Role', members_path(sort_by: 'role') %> </th>
+      <th> <%= link_to 'First Name', members_path(sort_by: 'first_name') , class: "link-button" %> </th>
+      <th> <%= link_to 'Preferred Name', members_path(sort_by: 'preferred_name'), class: "link-button" %> </th>
+      <th> <%= link_to 'Last Name', members_path(sort_by: 'last_name'), class: "link-button" %> </th>
+      <th> <%= link_to 'Email', members_path(sort_by: 'email'), class: "link-button" %> </th>
+      <th> <%= link_to 'Role', members_path(sort_by: 'role'), class: "link-button" %> </th>
       <th>Details</th>
       <!-- Add more table headers for additional member attributes -->
     </tr>
@@ -29,7 +30,7 @@
           <td><%= member.last_name %></td>
           <td><%= member.email %></td>
           <td><%= member.role %></td>
-          <td><%= link_to "More info", member %></td>
+          <td><%= link_to "More info", member, class: "link-button"%></td>
           <!-- Add more table cells for additional member attributes -->
         </tr>
       <% end %>
@@ -42,9 +43,16 @@
 <%= link_to "New member", new_member_path, class: "link-button" %>
 </div>
 
+<br>
+<br>
+<br>
+
 <div class="center text-tile grid-item">
 <h1>Former Members</h1>
+</div>
+<br>
 
+<div class="text-tile grid-item">
 <table>
   <thead>
     <tr>
@@ -66,7 +74,7 @@
           <td><%= member.last_name %></td>
           <td><%= member.email %></td>
           <td><%= member.role %></td>
-          <td><%= link_to "More info", member %></td>
+          <td><%= link_to "More info", member, class: "link-button" %></td>
           <!-- Add more table cells for additional member attributes -->
         </tr>
       <% end %>
