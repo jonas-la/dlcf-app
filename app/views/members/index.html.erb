@@ -1,7 +1,13 @@
 <p style="color: green"><%= notice %></p>
 
+<body>
+<div class="center text-tile grid-item">
+
 <h1>Current Members</h1>
 
+</div>
+
+<div class="center text-tile grid-item">
 <table>
   <thead>
     <tr>
@@ -30,19 +36,23 @@
     <% end %>
   </tbody>
 </table>
+</div>
 
-<%= link_to "New member", new_member_path %>
+<div class="center bottom-navigation">
+<%= link_to "New member", new_member_path, class: "link-button" %>
+</div>
 
+<div class="center text-tile grid-item">
 <h1>Former Members</h1>
 
 <table>
   <thead>
     <tr>
-      <th> <%= link_to 'First Name', members_path(sort_by: 'first_name') %> </th>
-      <th> <%= link_to 'preferred name', members_path(sort_by: 'preferred_name') %> </th>
-      <th> <%= link_to 'Last Name', members_path(sort_by: 'last_name') %> </th>
-      <th> <%= link_to 'Email', members_path(sort_by: 'email') %> </th>
-      <th> <%= link_to 'Role', members_path(sort_by: 'role') %> </th>
+      <th> <%= link_to 'First Name', members_path(sort_by: 'first_name') , class: "link-button"%> </th>
+      <th> <%= link_to 'preferred name', members_path(sort_by: 'preferred_name') , class: "link-button" %> </th>
+      <th> <%= link_to 'Last Name', members_path(sort_by: 'last_name'), class: "link-button" %> </th>
+      <th> <%= link_to 'Email', members_path(sort_by: 'email'), class: "link-button" %> </th>
+      <th> <%= link_to 'Role', members_path(sort_by: 'role'), class: "link-button" %> </th>
       <th>Details</th>
       <!-- Add more table headers for additional member attributes -->
     </tr>
@@ -63,9 +73,13 @@
     <% end %>
   </tbody>
 </table>
+</div>
 
 <div class="center bottom-navigation">
 
   <%= link_to 'Back to Dashboard', officer_dashboard_index_path , class: "link-button" %>
 
 </div>
+
+
+</body>
