@@ -9,27 +9,35 @@
         </div>
         
         <div class="text-tile body-item event-container grid-item">
-            <ul class="event-list">
-                <div class="event-item">
-                    <div class="input-label">Name</div>
-                    <div class="input-label">Date</div>
-                    <div class="input-label">Location</div>
-                    <div class="input-label">Show Event</div>
-                </div>
-
-                <% @events.each do |event| %>
-                    <li>
+           
+             <% @events.each do |event| %>
+                   
                         <div class="event-item">
+                        <div>
+                            <div class="input-label">Name</div>
+
                             <div class="input-label"><%= event.event_name %></div>
-                            <div class="input-label"><%= event.start_time.strftime("%B %d, %Y %I:%M %p") %></div>
-                            <div class="input-label"><%= event.location %></div>
+                            </div>
+
                             <div>
+                             <div class="input-label">Date</div>
+                            <div class="input-label"><%= event.start_time.strftime("%B %d, %Y %I:%M %p") %></div>
+                            </div>
+
+                            <div>
+                             <div class="input-label">Location</div>
+                            <div class="input-label"><%= event.location %></div>
+                            </div>
+                            <div>
+                             <div class="input-label">Show event</div>
                                 <%= link_to "Show this event", schedule_show_event_path(event), class: "link-button" %>
                             </div>
                         </div>
-                    </li>
+                    
                 <% end %>
-            </ul>
+
+               
+            
         </div> 
 
         <div class="back-button">

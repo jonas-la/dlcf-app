@@ -1,6 +1,7 @@
 .main-body-container {
-    display: grid;
-    grid-template-rows: auto auto;
+    /* display: grid; */
+    /* grid-template-rows: auto auto; */
+    color: black;
 }
 
 .body-item {
@@ -17,13 +18,16 @@
 }
 
 .event-item {
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr 1fr;
+    /* display: grid; */
+
+    /* grid-template-rows: 1fr 1fr 1fr 1fr; */
     margin: 20px;
+    color: red;
 }
 
 .event-list {
-    list-style-type: none;
+    /* list-style-type: none; */
+    color: blue;
 }
 
 .back-button {
