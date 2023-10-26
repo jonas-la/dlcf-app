@@ -8,11 +8,22 @@
             <h1>Event Schedule</h1>
         </div>
         
-        <div class="text-tile body-item event-container grid-item">
-           
-             <% @events.each do |event| %>
+        <div class="grid-item">
+      <% @events.each do |event| %>
+      <div class="center text-tile list-tile input-label">
+        <%= render event %>
+        
+        <p>
+           <%= link_to "Show this event", schedule_show_event_path(event), class: "link-button" %>
+        </p>
+      </div>
+    <% end %>
+    </div>
+        <%
+=begin%>
+ <% @events.each do |event| %>
                    
-                        <div class="event-item">
+                        <div class="text-tile body-item event-container grid-item">
                         <div>
                             <div class="input-label">Name</div>
 
@@ -34,11 +45,9 @@
                             </div>
                         </div>
                     
-                <% end %>
-
-               
-            
-        </div> 
+                <% end %> 
+<%
+=end%>
 
         <div class="back-button">
             <% if @user == nil %>

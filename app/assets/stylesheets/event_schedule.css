@@ -17,12 +17,10 @@
     border-style: solid;
 }
 
-.event-item {
-    /* display: grid; */
 
-    /* grid-template-rows: 1fr 1fr 1fr 1fr; */
-    margin: 20px;
-    color: red;
+.event-tile{
+    color: black;
+    width: 100px;
 }
 
 .event-list {
