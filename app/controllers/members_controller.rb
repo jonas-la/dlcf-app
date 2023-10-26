@@ -2,6 +2,8 @@ class MembersController < ApplicationController
   before_action :set_member, only: %i[ show edit update destroy ]
 
   # GET /members or /members.json
+
+  
   def index
     @members = Member.all   
 
@@ -29,6 +31,7 @@ class MembersController < ApplicationController
   # GET /members/new
   def new
     @member = Member.new
+
 
   end
 
