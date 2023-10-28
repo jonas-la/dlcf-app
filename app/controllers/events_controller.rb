@@ -13,6 +13,10 @@ class EventsController < ApplicationController
         @events = Event.order(created_at: :asc).paginate(page: params[:page], per_page: 7)
       when 'created_at_desc'
         @events = Event.order(created_at: :desc).paginate(page: params[:page], per_page: 7)
+      when 'date_asc'
+        @events = Event.order(start_time: :asc).paginate(page: params[:page], per_page: 7)
+      when 'date_desc'
+        @events = Event.order(start_time: :desc).paginate(page: params[:page], per_page: 7)
       when 'event_name_asc'
         @events = Event.order(event_name: :asc).paginate(page: params[:page], per_page: 7)
       when 'event_name_desc'
@@ -43,10 +47,10 @@ class EventsController < ApplicationController
     else
       case params[:sort_by]
         
-      when 'created_at_asc'
-        @events = Event.order(created_at: :asc).paginate(page: params[:page], per_page: 7)
-      when 'created_at_desc'
-        @events = Event.order(created_at: :desc).paginate(page: params[:page], per_page: 7)
+      when 'date_asc'
+        @events = Event.order(start_time: :asc).paginate(page: params[:page], per_page: 7)
+      when 'date_desc'
+        @events = Event.order(start_time: :desc).paginate(page: params[:page], per_page: 7)
       when 'event_name_asc'
         @events = Event.order(event_name: :asc).paginate(page: params[:page], per_page: 7)
       when 'event_name_desc'

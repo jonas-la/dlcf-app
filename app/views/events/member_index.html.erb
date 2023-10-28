@@ -3,7 +3,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Deeper Life Campus Fellowship</title>
-    <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
@@ -30,8 +29,8 @@
 
     <div class="grid-item sort-buttons">
       <p>Sort By:</p>
-      <%= link_to 'Created At (ASC)', member_index_events_path(sort_by: 'created_at_asc'), class: 'sort-button' %>
-      <%= link_to 'Created At (DESC)', member_index_events_path(sort_by: 'created_at_desc'), class: 'sort-button' %>
+      <%= link_to 'Date (ASC)', member_index_events_path(sort_by: 'date_asc'), class: 'sort-button' %>
+      <%= link_to 'Date (DESC)', member_index_events_path(sort_by: 'date_desc'), class: 'sort-button' %>
       <%= link_to 'Event Name (ASC)', member_index_events_path(sort_by: 'event_name_asc'), class: 'sort-button' %>
       <%= link_to 'Event Name (DESC)', member_index_events_path(sort_by: 'event_name_desc'), class: 'sort-button' %>
     </div>
@@ -46,7 +45,7 @@
         <%= render event %>
         
         <p>
-          <%= link_to "Show this Event", event, class: "link-button" %>
+          <%= link_to "Show this Event", member_show_event_path(event, member_id: @user.id), class: "link-button" %>
 
           <% if Attendance.find_by(event_id: event.id, member_id: @user.id) %> 
             <div>Signed in</div>

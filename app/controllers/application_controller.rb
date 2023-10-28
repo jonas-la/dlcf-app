@@ -55,6 +55,8 @@ class ApplicationController < ActionController::Base
       user_email = current_admin.email
       @user = Member.find_by(email: user_email)
       path_string = request.path.to_s
+
+      puts path_string
     
       if @user.is_admin
         handle_admin_access(path_string)
@@ -76,7 +78,7 @@ class ApplicationController < ActionController::Base
 
       legal_paths = [
         "member", "new_feedback_path", "attendances/new", "/feedbacks/new", 
-        "googleoauth2", "/attendances", "/feedbacks", "/event_schedule", "/schedule_show", "member_index_events_path", "created_at_asc", "member_index","/events/member_index", "/events/style.css"
+        "googleoauth2", "/attendances", "/feedbacks", "/event_schedule", "/schedule_show", "member_index_events_path", "created_at_asc", "member_index","/events/member_index", "/events/style.css", "events/member_show"
       ]
       illegal_paths = ["edit","delete"]
     

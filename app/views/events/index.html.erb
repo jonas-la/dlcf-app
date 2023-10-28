@@ -3,7 +3,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Deeper Life Campus Fellowship</title>
-    <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
@@ -33,6 +32,8 @@
       <p>Sort By:</p>
       <%= link_to 'Created At (ASC)', events_path(sort_by: 'created_at_asc'), class: 'sort-button' %>
       <%= link_to 'Created At (DESC)', events_path(sort_by: 'created_at_desc'), class: 'sort-button' %>
+      <%= link_to 'Date (ASC)', events_path(sort_by: 'date_asc'), class: 'sort-button' %>
+      <%= link_to 'Date (DESC)', events_path(sort_by: 'date_desc'), class: 'sort-button' %>
       <%= link_to 'Event Name (ASC)', events_path(sort_by: 'event_name_asc'), class: 'sort-button' %>
       <%= link_to 'Event Name (DESC)', events_path(sort_by: 'event_name_desc'), class: 'sort-button' %>
     </div>
