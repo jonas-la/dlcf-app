@@ -42,6 +42,7 @@ Rails.application.routes.draw do
   get '', to: 'custom_pages#show'
   get '/event_schedule', to: 'events#event_schedule', as: "event_schedule"
 
+
   devise_for :admins, controllers: { omniauth_callbacks: 'admins/omniauth_callbacks' }
     devise_scope :admin do
       get 'admins/sign_in', to: 'admins/sessions#new', as: :new_admin_session
