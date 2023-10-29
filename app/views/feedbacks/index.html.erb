@@ -1,17 +1,48 @@
-<p style="color: green"><%= notice %></p>
-<div class="center text-tile">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Deeper Life Campus Fellowship</title>
+</head>
 
-<h1>Feedbacks</h1>
 
-<div id="feedbacks">
-  <% @feedbacks.each do |feedback| %>
-    <%= render feedback %>
-    <p>
-      <%= link_to "Show this feedback", feedback %>
-    </p>
-  <% end %>
-</div>
+<div class="mobile-container">
+  <div class="grid-item">
+    <p style="color: green"><%= notice %></p>
+  </div>
 
-<%= link_to "Back to dashboard", officer_dashboard_index_path , class: "link-button" %>
+  <div class="center text-tile">
+    <h1>Feedbacks</h1>
+  </div>
+
+  <div class="center bottom-navigation grid-item">
+    <%= link_to 'Back to Dashboard', officer_dashboard_index_path , class: "link-button" %>
+  </div>
+
+  <div class="grid-item sort-buttons">
+      <p>Sort By:</p>
+      <%= link_to 'Satisfaction (ASC)', feedbacks_path(sort_by: 'satisfaction_asc'), class: 'sort-button' %>
+      <%= link_to 'Satisfaction (DESC)', feedbacks_path(sort_by: 'satisfaction_desc'), class: 'sort-button' %>
+  </div>
+
+  <div class="grid-item pagination">
+      <%= will_paginate @feedbacks %>
+  </div>
+  
+  <div class="grid-item">
+    <% @feedbacks.each do |feedback| %>
+      <div class="center text-tile list-tile input-label">
+        <%= render feedback %>
+
+        <p>
+          <%= link_to "Show this feedback", feedback, class: "link-button" %>
+        </p>
+      </div>
+    <% end %>
+  </div>
+
+  <div class="grid-item pagination">
+      <%= will_paginate @feedbacks %>
+  </div>
 
 </div>
