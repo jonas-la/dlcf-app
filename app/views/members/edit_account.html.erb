@@ -1,5 +1,6 @@
 <h1>Editing account</h1>
-
+# indirectly render form by rendering elements of form within html file
+# Hides restricted fields so user cannot edit them
 <%= form_for @user, url: update_account_members_path do |form| %>
   <% if @user.errors.any? %>
     <div style="color: red">
@@ -33,6 +34,7 @@
     <%= form.text_field :email %>
   </div>
 
+  #Delete member option
   <div>
     <%= form.label :is_member, "Account Active? (Warning: Turning this off deletes your account)",  style: "display: block" %>
     <%= form.check_box :is_member, class: "member-checkbox" %> 
@@ -71,6 +73,7 @@
   <%= link_to "Back to dashboard", member_dashboard_index_path %>
 </div>
 
+#  add delete warning pop-up
 <script>
   document.addEventListener("DOMContentLoaded", function () {
     const memberCheckbox = document.querySelector(".member-checkbox");

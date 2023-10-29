@@ -25,9 +25,13 @@ class MembersController < ApplicationController
   # GET /members/1 or /members/1.json
   def show
     # gets the events the member attended 
-    # (suprisingly easy, though it required a minor update to the models tell ruby about the relationship)
+    # (suprisingly easy, though it required 
+    # a minor update to the models tell ruby 
+    # about the relationship)
     @events_attended = @member.events
-    @events_attended ||= [] #makes it an empty list if it is null (it shouldn't ever be, but still)
+    # makes it an empty list if it is null
+    # (it shouldn't ever be, but still)
+    @events_attended ||= [] 
     @events_attended = @events_attended.order(start_time: :desc)
   end
 
@@ -111,7 +115,9 @@ class MembersController < ApplicationController
 
     respond_to do |format|
       if @user.update(member_params)
-        format.html { redirect_to(member_dashboard_index_path, notice: "Member was successfully updated.") }
+        format.html do
+ redirect_to(member_dashboard_index_path, notice: "Member was successfully updated.")
+        end
         format.json { render(:show, status: :ok, location: @user) }
       else
         format.html { render(:edit, status: :unprocessable_entity) }
@@ -119,6 +125,7 @@ class MembersController < ApplicationController
       end
     end
   end
+
   # DELETE /members/1 or /members/1.json
   def destroy
     @member.destroy

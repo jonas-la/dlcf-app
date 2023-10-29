@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe("members/edit_account", type: :view) do
-  let(:member) {
+  let(:member) do
     Member.create!(
       first_name: "MyString",
       preferred_name: "MyString",
@@ -14,7 +14,7 @@ RSpec.describe("members/edit_account", type: :view) do
       photo_file_name: "MyString",
       role: "MyString"
     )
-  }
+  end
 
   before(:each) do
     assign(:member, member)
@@ -26,9 +26,9 @@ RSpec.describe("members/edit_account", type: :view) do
     @user = Member.find_by(email: current_admin.email)
     render
 
-
+    # Make sure to change action to update_account_members_path 
+    # for the form action as per the html file created in views
     assert_select "form[action=?][method=?]", update_account_members_path, "post" do
-
       assert_select "input[name=?]", "member[first_name]"
 
       assert_select "input[name=?]", "member[preferred_name]"

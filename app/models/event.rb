@@ -3,7 +3,7 @@ class Event < ApplicationRecord
   validates :start_time, presence: true
   validates :end_time, presence: true
   validates :password, presence: true
-  has_many :attendances
+  has_many :attendances, dependent: :destroy
   has_many :members, through: :attendances
   
   # Custom validation to check if start_time is before end_time

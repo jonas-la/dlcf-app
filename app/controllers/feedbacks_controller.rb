@@ -6,15 +6,15 @@ class FeedbacksController < ApplicationController
     user_email = current_admin.email
     @user = Member.find_by(email: user_email)
 
-    case params[:sort_by]
+    @feedbacks = case params[:sort_by]
 
-    when 'satisfaction_asc'
-      @feedbacks = Feedback.order(satisfaction: :asc).paginate(page: params[:page], per_page: 7)
-    when 'satisfaction_desc'
-      @feedbacks = Feedback.order(satisfaction: :desc).paginate(page: params[:page], per_page: 7)
-    else
-      @feedbacks = Feedback.order(id: :desc).paginate(page: params[:page], per_page: 7)
-    end
+                 when 'satisfaction_asc'
+      Feedback.order(satisfaction: :asc).paginate(page: params[:page], per_page: 7)
+                 when 'satisfaction_desc'
+      Feedback.order(satisfaction: :desc).paginate(page: params[:page], per_page: 7)
+                 else
+      Feedback.order(id: :desc).paginate(page: params[:page], per_page: 7)
+                 end
   end
 
   # GET /feedbacks/1 or /feedbacks/1.json
