@@ -4,11 +4,11 @@
 <h1>Information</h1>
 </div>
 <div id="orginfos" class="center text-tile">
-  <% @orginfos.each do |orginfo| %>
-    <%= render orginfo %>
-    <p>
-      <%= link_to "View this", orginfo , class: "link-button" %>
-    </p>
+  <% if @orginfos.any? %>
+  <%= render @orginfos.first %>
+  <p>
+    <%= link_to "View this", @orginfos.first, class: "link-button" %>
+  </p>
   <% end %>
 </div>
 
