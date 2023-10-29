@@ -5,25 +5,27 @@ class EventsController < ApplicationController
   def index
     if params[:search_query].present?
       @search_query = params[:search_query]
-      @events = Event.where('event_name LIKE ?', "%#{@search_query}%").paginate(page: params[:page], per_page: 10)
+      @events = Event.where('event_name LIKE ?', "%#{@search_query}%").paginate(
+        page: params[:page], per_page: 10
+      )
     else
-      case params[:sort_by]
+      @events = case params[:sort_by]
 
-      when 'created_at_asc'
-        @events = Event.order(created_at: :asc).paginate(page: params[:page], per_page: 7)
-      when 'created_at_desc'
-        @events = Event.order(created_at: :desc).paginate(page: params[:page], per_page: 7)
-      when 'date_asc'
-        @events = Event.order(start_time: :asc).paginate(page: params[:page], per_page: 7)
-      when 'date_desc'
-        @events = Event.order(start_time: :desc).paginate(page: params[:page], per_page: 7)
-      when 'event_name_asc'
-        @events = Event.order(event_name: :asc).paginate(page: params[:page], per_page: 7)
-      when 'event_name_desc'
-        @events = Event.order(event_name: :desc).paginate(page: params[:page], per_page: 7)
-      else
-        @events = Event.order(id: :desc).paginate(page: params[:page], per_page: 7)
-      end
+                when 'created_at_asc'
+        Event.order(created_at: :asc).paginate(page: params[:page], per_page: 7)
+                when 'created_at_desc'
+        Event.order(created_at: :desc).paginate(page: params[:page], per_page: 7)
+                when 'date_asc'
+        Event.order(start_time: :asc).paginate(page: params[:page], per_page: 7)
+                when 'date_desc'
+        Event.order(start_time: :desc).paginate(page: params[:page], per_page: 7)
+                when 'event_name_asc'
+        Event.order(event_name: :asc).paginate(page: params[:page], per_page: 7)
+                when 'event_name_desc'
+        Event.order(event_name: :desc).paginate(page: params[:page], per_page: 7)
+                else
+        Event.order(id: :desc).paginate(page: params[:page], per_page: 7)
+                end
     end
   end
 
@@ -43,21 +45,23 @@ class EventsController < ApplicationController
     # render("member_index")
     if params[:search_query].present?
       @search_query = params[:search_query]
-      @events = Event.where('event_name LIKE ?', "%#{@search_query}%").paginate(page: params[:page], per_page: 10)
+      @events = Event.where('event_name LIKE ?', "%#{@search_query}%").paginate(
+        page: params[:page], per_page: 10
+      )
     else
-      case params[:sort_by]
+      @events = case params[:sort_by]
         
-      when 'date_asc'
-        @events = Event.order(start_time: :asc).paginate(page: params[:page], per_page: 7)
-      when 'date_desc'
-        @events = Event.order(start_time: :desc).paginate(page: params[:page], per_page: 7)
-      when 'event_name_asc'
-        @events = Event.order(event_name: :asc).paginate(page: params[:page], per_page: 7)
-      when 'event_name_desc'
-        @events = Event.order(event_name: :desc).paginate(page: params[:page], per_page: 7)
-      else
-        @events = Event.order(id: :desc).paginate(page: params[:page], per_page: 7)
-      end
+                when 'date_asc'
+        Event.order(start_time: :asc).paginate(page: params[:page], per_page: 7)
+                when 'date_desc'
+        Event.order(start_time: :desc).paginate(page: params[:page], per_page: 7)
+                when 'event_name_asc'
+        Event.order(event_name: :asc).paginate(page: params[:page], per_page: 7)
+                when 'event_name_desc'
+        Event.order(event_name: :desc).paginate(page: params[:page], per_page: 7)
+                else
+        Event.order(id: :desc).paginate(page: params[:page], per_page: 7)
+                end
     end
 
     user_email = current_admin.email

@@ -1,10 +1,13 @@
-<%= form_with(model: member) do |form| %>
-  <% if member.errors.any? %>
+<h1>Editing account</h1>
+# indirectly render form by rendering elements of form within html file
+# Hides restricted fields so user cannot edit them
+<%= form_for @user, url: update_account_members_path do |form| %>
+  <% if @user.errors.any? %>
     <div style="color: red">
-      <h2><%= pluralize(member.errors.count, "error") %> prohibited this member from being saved:</h2>
+      <h2><%= pluralize(@user.errors.count, "error") %> prohibited this member from being saved:</h2>
 
       <ul>
-        <% member.errors.each do |error| %>
+        <% @user.errors.each do |error| %>
           <li><%= error.full_message %></li>
         <% end %>
       </ul>
@@ -31,15 +34,14 @@
     <%= form.text_field :email %>
   </div>
 
-  #delete member action
+  #Delete member option
   <div>
-    <%= form.label :is_member,"Account Active? (Warning: Turning this off deletes your account)", style: "display: block" %>
+    <%= form.label :is_member, "Account Active? (Warning: Turning this off deletes your account)",  style: "display: block" %>
     <%= form.check_box :is_member, class: "member-checkbox" %> 
   </div>
 
   <div>
-    <%= form.label :is_admin, style: "display: block" %>
-    <%= form.check_box :is_admin %>
+    <%= form.hidden_field :is_admin, style: "display: block" %>
   </div>
 
   <div>
@@ -53,19 +55,23 @@
   </div>
 
   <div>
-    <%= form.label :photo_file_name, style: "display: block" %>
-    <%= form.text_field :photo_file_name %>
+    <%= form.hidden_field :photo_file_name, style: "display: block" %>
   </div>
 
   <div>
-    <%= form.label :role, style: "display: block" %>
-    <%= form.text_field :role %>
+    <%= form.hidden_field :role, style: "display: block" %>
   </div>
 
   <div>
     <%= form.submit %>
   </div>
 <% end %>
+
+<br>
+
+<div>
+  <%= link_to "Back to dashboard", member_dashboard_index_path %>
+</div>
 
 #  add delete warning pop-up
 <script>

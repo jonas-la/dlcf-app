@@ -28,6 +28,8 @@ Rails.application.routes.draw do
     collection do
       get 'new_account'
       post 'create_account' # Add this line
+      get 'edit_account' 
+      patch 'update_account'
     end
   end
   resources :pending_members do
