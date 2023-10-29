@@ -16,7 +16,8 @@
 
   <p>
     <strong>Member:</strong>
-    <%= feedback.member_id %>
+    <% member = Member.find(feedback.member_id) if feedback.member_id %>
+    <%= member.first_name %> <%= member.last_name %>
   </p>
 
 </div>

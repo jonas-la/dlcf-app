@@ -4,32 +4,40 @@
 </head>
 <body>
     <div class="main-body-container">
-        <div class="body-item header-container">
+        <div class="body-item header-container text-tile">
             <h1>Event Schedule</h1>
         </div>
         
-        <div class="body-item event-container">
-            <ul class="event-list">
-                <div class="event-item">
-                    <div><h2>Name</h2></div>
-                    <div><h2>Date</h2></div>
-                    <div><h2>Location</h2></div>
-                    <div><h2>Show Event</h2></div>
-                </div>
-
-                <% @events.each do |event| %>
-                    <li>
+        <div class="text-tile body-item event-container grid-item">
+           
+             <% @events.each do |event| %>
+                   
                         <div class="event-item">
-                            <div><%= event.event_name %></div>
-                            <div><%= event.start_time %></div>
-                            <div><%= event.location %></div>
+                        <div>
+                            <div class="input-label">Name</div>
+
+                            <div class="input-label"><%= event.event_name %></div>
+                            </div>
+
                             <div>
+                             <div class="input-label">Date</div>
+                            <div class="input-label"><%= event.start_time.strftime("%B %d, %Y %I:%M %p") %></div>
+                            </div>
+
+                            <div>
+                             <div class="input-label">Location</div>
+                            <div class="input-label"><%= event.location %></div>
+                            </div>
+                            <div>
+                             <div class="input-label">Show event</div>
                                 <%= link_to "Show this event", schedule_show_event_path(event), class: "link-button" %>
                             </div>
                         </div>
-                    </li>
+                    
                 <% end %>
-            </ul>
+
+               
+            
         </div> 
 
         <div class="back-button">
