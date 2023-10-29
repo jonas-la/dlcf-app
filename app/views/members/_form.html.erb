@@ -32,8 +32,8 @@
   </div>
 
   <div>
-    <%= form.label :is_member, style: "display: block" %>
-    <%= form.check_box :is_member %>
+    <%= form.label :is_member,"Account Active? (Warning: Turning this off deletes your account)", style: "display: block" %>
+    <%= form.check_box :is_member, class: "member-checkbox" %> 
   </div>
 
   <div>
@@ -65,3 +65,19 @@
     <%= form.submit %>
   </div>
 <% end %>
+
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    const memberCheckbox = document.querySelector(".member-checkbox");
+
+    memberCheckbox.addEventListener("change", function () {
+      if (!this.checked) {
+        const confirmation = confirm("Are you sure you want to delete your account? \nOnly an organization officer can recover your account.");
+        if (!confirmation) {
+          // If the user cancels the confirmation, prevent unchecking the checkbox.
+          this.checked = true;
+        }
+      }
+    });
+  });
+</script>

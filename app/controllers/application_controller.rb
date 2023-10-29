@@ -58,7 +58,14 @@ class ApplicationController < ActionController::Base
 
       puts path_string
     
-      if @user.is_admin
+      # if @user.is_admin
+      #   handle_admin_access(path_string)
+      # else
+      #   handle_member_access(path_string)
+      # end
+      if !@user.is_member #if they are not member
+        sign_out_and_redirect
+      elsif @user.is_admin
         handle_admin_access(path_string)
       else
         handle_member_access(path_string)
