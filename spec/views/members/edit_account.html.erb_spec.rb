@@ -7,7 +7,7 @@ RSpec.describe("members/edit_account", type: :view) do
       preferred_name: "MyString",
       last_name: "MyString",
       email: "MyString@gmail.com",
-      is_member: false,
+      is_member: true,
       is_admin: false,
       bio: "MyText",
       contact: "MyString",
@@ -21,9 +21,13 @@ RSpec.describe("members/edit_account", type: :view) do
   end
 
   it "renders the edit member form" do
+    current_admin = Admin.new
+    current_admin.email = "MyString@gmail.com"
+    @user = Member.find_by(email: current_admin.email)
     render
 
-    assert_select "form[action=?][method=?]", edit_account_members_path, "post" do
+
+    assert_select "form[action=?][method=?]", update_account_members_path, "post" do
 
       assert_select "input[name=?]", "member[first_name]"
 
