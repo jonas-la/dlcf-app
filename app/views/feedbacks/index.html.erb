@@ -21,7 +21,8 @@
   </div>
 
   <div class="grid-item sort-buttons">
-      <p>Sort By:</p>
+      <div class="input-label">Sort By:</div>
+      <br>
       <%= link_to 'Satisfaction (ASC)', feedbacks_path(sort_by: 'satisfaction_asc'), class: 'sort-button' %>
       <%= link_to 'Satisfaction (DESC)', feedbacks_path(sort_by: 'satisfaction_desc'), class: 'sort-button' %>
   </div>
