@@ -31,12 +31,9 @@
     <%= form.text_field :email, class:"form-input" %>
   </div>
 
-  #delete member action
   <div>
-
-    <%= form.label :is_member,"Account Active? (Warning: Turning this off deletes your account)", style: "display: block" %>
-    <%= form.check_box :is_member, class: "member-checkbox" %> 
-
+    <%= form.label "Current Member", style: "display: block", class:"input-label" %>
+    <%= form.check_box :is_member, class:"checkbox"%>
   </div>
 
   <div>
@@ -46,22 +43,22 @@
 
   <div>
     <%= form.label :role, style: "display: block", class:"input-label" %>
-    <%= form.text_field :role, class:"form-input", value: "Member" %>
+    <%= form.text_field :role, class:"form-input" %>
   </div>
 
   <div>
     <%= form.label "BIO (Officer Only)", style: "display: block", class:"input-label" %>
-    <%= form.text_area :bio, class:"form-input", value: "" %>
+    <%= form.text_area :bio, class:"form-input" %>
   </div>
 
   <div>
     <%= form.label "Contact email (Officer Only)", style: "display: block", class:"input-label" %>
-    <%= form.text_field :contact, class:"form-input", value: "" %>
+    <%= form.text_field :contact, class:"form-input" %>
   </div>
 
   <div>
     <%= form.label "Profile picture name (Officer Only)", style: "display: block", class:"input-label" %>
-    <%= form.text_field :photo_file_name, class:"form-input", value: "" %>
+    <%= form.text_field :photo_file_name, class:"form-input" %>
   </div>
 
 
@@ -71,20 +68,3 @@
     <%= form.submit "Submit", class:"link-button" %>
   </div>
 <% end %>
-
-#  add delete warning pop-up
-<script>
-  document.addEventListener("DOMContentLoaded", function () {
-    const memberCheckbox = document.querySelector(".member-checkbox");
-
-    memberCheckbox.addEventListener("change", function () {
-      if (!this.checked) {
-        const confirmation = confirm("Are you sure you want to delete your account? \nOnly an organization officer can recover your account.");
-        if (!confirmation) {
-          // If the user cancels the confirmation, prevent unchecking the checkbox.
-          this.checked = true;
-        }
-      }
-    });
-  });
-</script>

@@ -19,17 +19,31 @@
     <%= member.email %>
   </p>
 
-  <!--
     <p>
-      <strong>Is member:</strong>
-      <%= member.is_member %>
+    <% if member.is_member %>
+      <strong>Current Member</strong>
+    <% else %>
+      <strong>Past Member</strong>
+    <% end %>
+      
     </p>
 
     <p>
-      <strong>Is admin:</strong>
-      <%= member.is_admin %>
+      <% if member.is_admin %>
+      <strong>Officer</strong>
+    <% else %>
+      <strong>Member</strong>
+    <% end %>
     </p>
 
+    
+
+    <p>
+    <strong>Role:</strong>
+    <%= member.role %>
+  </p>
+
+    <% if member.is_admin %>
     <p>
       <strong>Bio:</strong>
       <%= member.bio %>
@@ -44,11 +58,10 @@
       <strong>Photo file name:</strong>
       <%= member.photo_file_name %>
     </p>
-  -->
 
-  <p>
-    <strong>Role:</strong>
-    <%= member.role %>
-  </p>
+    <% end %>
+
+
+  
 
 </div>

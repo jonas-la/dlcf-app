@@ -26,7 +26,7 @@ class OrginfosController < ApplicationController
     respond_to do |format|
       if @orginfo.save
         format.html do
- redirect_to(orginfo_url(@orginfo), notice: "Orginfo was successfully created.")
+ redirect_to(orginfo_url(@orginfo), notice: "Organization info successfully created.")
         end
         format.json { render(:show, status: :created, location: @orginfo) }
       else
@@ -41,7 +41,7 @@ class OrginfosController < ApplicationController
     respond_to do |format|
       if @orginfo.update(orginfo_params)
         format.html do
- redirect_to(orginfo_url(@orginfo), notice: "Orginfo was successfully updated.")
+ redirect_to(orginfo_url(@orginfo), notice: "Organization info was successfully updated.")
         end
         format.json { render(:show, status: :ok, location: @orginfo) }
       else
@@ -56,7 +56,7 @@ class OrginfosController < ApplicationController
     @orginfo.destroy
 
     respond_to do |format|
-      format.html { redirect_to(orginfos_url, notice: "Orginfo was successfully destroyed.") }
+      format.html { redirect_to(orginfos_url, notice: "Organization info was successfully destroyed.") }
       format.json { head(:no_content) }
     end
   end
