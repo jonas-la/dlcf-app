@@ -9,5 +9,16 @@
   <%= button_to "Delete this member", @member, method: :delete, class:"link-button" %>
   <%= link_to "Back to members", members_path, class:"link-button"%>
 
-  
+
+  <%= button_to "Destroy this member", @member, method: :delete %>
+
+  <!-- Events attended code/loop -->
+  <p class="info-text officer-title info-title ">Events attended</p>
+  <% @events_attended.each do |event| %>
+    <div>
+      <!-- Render event name and start time -->
+      <%= "#{event.event_name} on #{event.start_time.strftime('%A, %B %d, %Y at %I:%M %p')}" %>
+    </div>
+  <% end %>
+
 </div>

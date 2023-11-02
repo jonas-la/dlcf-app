@@ -3,9 +3,18 @@ class FeedbacksController < ApplicationController
 
   # GET /feedbacks or /feedbacks.json
   def index
-    @feedbacks = Feedback.all
     user_email = current_admin.email
     @user = Member.find_by(email: user_email)
+
+    @feedbacks = case params[:sort_by]
+
+                 when 'satisfaction_asc'
+      Feedback.order(satisfaction: :asc).paginate(page: params[:page], per_page: 7)
+                 when 'satisfaction_desc'
+      Feedback.order(satisfaction: :desc).paginate(page: params[:page], per_page: 7)
+                 else
+      Feedback.order(id: :desc).paginate(page: params[:page], per_page: 7)
+                 end
   end
 
   # GET /feedbacks/1 or /feedbacks/1.json

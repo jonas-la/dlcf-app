@@ -3,12 +3,16 @@
 <div class="center text-tile">
 <h1>Information</h1>
 
-<div id="orginfos>
-    <%= render @orginfos.first %>
-    <p>
-      <%= link_to "View this", @orginfos.first , class: "link-button" %>
-    </p>
 </div>
+# Only need to render 1 org_info instance that will be edited
+<div id="orginfos" class="center text-tile">
+  <% if @orginfos.any? %>
+  <%= render @orginfos.first %>
+  <p>
+    <%= link_to "View this", @orginfos.first, class: "link-button" %>
+  </p>
+  <% end %>
+
 </div>
 
  <div class="center bottom-navigation">

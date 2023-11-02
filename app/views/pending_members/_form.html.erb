@@ -31,7 +31,20 @@
     <%= form.text_field :email, class:"form-input" %>
   </div>
 
-  <div class="submit-form-button">
-    <%= form.submit "Submit", class:"link-button" %>
+
+  <div>
+    <input type="checkbox" id="enableSubmit" />
+    <%= form.submit "Submit", disabled: true, id: "submitForm" %>
+
   </div>
+
 <% end %>
+
+<script>
+  const enableSubmitCheckbox = document.getElementById("enableSubmit");
+  const submitButton = document.getElementById("submitForm");
+
+  enableSubmitCheckbox.addEventListener("change", function() {
+    submitButton.disabled = !this.checked;
+  });
+</script>

@@ -16,8 +16,10 @@
 
   <p>
     <strong>Member:</strong>
-    <div><%= Member.find(feedback.member_id).preferred_name %> <%= Member.find(feedback.member_id).last_name %></div>
-    <div><%= Member.find(feedback.member_id).email %></div>
+
+    <div><%= Member.find(feedback.member_id).preferred_name if feedback.member_id %> <%= Member.find(feedback.member_id).last_name if feedback.member_id %></div>
+    <div><%= Member.find(feedback.member_id).email if feedback.member_id %></div>
+
   </p>
 
 </div>

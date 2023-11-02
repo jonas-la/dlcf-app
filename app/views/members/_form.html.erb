@@ -31,9 +31,12 @@
     <%= form.text_field :email, class:"form-input" %>
   </div>
 
+  #delete member action
   <div>
-    <%= form.label "Current Member", style: "display: block", class:"input-label" %>
-    <%= form.check_box :is_member, {class:"checkbox", checked: true } %>
+
+    <%= form.label :is_member,"Account Active? (Warning: Turning this off deletes your account)", style: "display: block" %>
+    <%= form.check_box :is_member, class: "member-checkbox" %> 
+
   </div>
 
   <div>
@@ -68,3 +71,20 @@
     <%= form.submit "Submit", class:"link-button" %>
   </div>
 <% end %>
+
+#  add delete warning pop-up
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    const memberCheckbox = document.querySelector(".member-checkbox");
+
+    memberCheckbox.addEventListener("change", function () {
+      if (!this.checked) {
+        const confirmation = confirm("Are you sure you want to delete your account? \nOnly an organization officer can recover your account.");
+        if (!confirmation) {
+          // If the user cancels the confirmation, prevent unchecking the checkbox.
+          this.checked = true;
+        }
+      }
+    });
+  });
+</script>
