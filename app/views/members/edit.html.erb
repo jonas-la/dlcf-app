@@ -1,12 +1,13 @@
+<div class="center text-tile">
 <h1>Editing member</h1>
 
-<%= render "form", member: @member %>
+<%= render "editform", member: @member %>
 
-<br>
+</div>
 
-<div>
-  <%= link_to "Show this member", @member %> |
-  <%= link_to "Back to members", members_path %>
+<div class="center bottom-navigation">
+  <%= link_to "Show this member", @member , class:"link-button" %> 
+  <%= link_to "Back to members", members_path , class:"link-button" %>
 </div>
 
 

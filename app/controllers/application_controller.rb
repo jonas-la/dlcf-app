@@ -21,9 +21,11 @@ class ApplicationController < ActionController::Base
       # return true #TODO remove me when Rspec can do this
       # This is the list of routes to not authenticate for
 
+
       # puts "!!!Current routeroute:"
       # puts request.path.to_s
       # puts "!!! END"
+
       skip_auth_paths = [
         event_schedule_path, new_account_members_path, 
         create_account_members_path, attendances_url, 
@@ -34,7 +36,9 @@ class ApplicationController < ActionController::Base
       end
 
       
+
       return true if request.path.to_s.include?("schedule_show")
+
 
       return false 
       
@@ -72,6 +76,8 @@ class ApplicationController < ActionController::Base
         "member_dashboard", "new_feedback_path", "attendances/new", 
         "/feedbacks/new", "member_index", "member_show"
       ]
+
+      
       
       sign_out_and_redirect if contains_illegal_path?(path_string, illegal_paths)
     end
