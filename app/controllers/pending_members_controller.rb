@@ -24,7 +24,7 @@ class PendingMembersController < ApplicationController
     respond_to do |format|
       if @pending_member.save
         format.html do
-          redirect_to(new_admin_session_url, notice: "Pending member was successfully created.")
+          redirect_to(new_admin_session_url, notice: "Pending Account Created.")
         end
         format.json { render(:show, status: :created, location: @pending_member) }
       else
@@ -40,7 +40,7 @@ class PendingMembersController < ApplicationController
       if @pending_member.update(pending_member_params)
         format.html do
           redirect_to(pending_member_url(@pending_member), 
-                      notice: "Pending member was successfully updated."
+                      notice: "Pending account updated."
                      )
         end
         format.json { render(:show, status: :ok, location: @pending_member) }
@@ -57,7 +57,7 @@ class PendingMembersController < ApplicationController
 
     respond_to do |format|
       format.html do
-        redirect_to(pending_members_url, notice: "Pending member was successfully destroyed.")
+        redirect_to(pending_members_url, notice: "Pending member ignored.")
       end
       format.json { head(:no_content) }
     end

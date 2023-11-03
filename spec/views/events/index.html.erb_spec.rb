@@ -9,7 +9,7 @@ RSpec.describe("events/index", type: :view) do
         description: "Description",
         start_time: DateTime.now,
         password: "test123",
-        end_time: DateTime.now
+        end_time: DateTime.now + 2.hours
       ),
       Event.create!(
         event_name: "Event Name",
@@ -17,7 +17,7 @@ RSpec.describe("events/index", type: :view) do
         description: "Description",
         start_time: DateTime.now,
         password: "test123",
-        end_time: DateTime.now
+        end_time: DateTime.now + 2.hours
       )
     ])
   end

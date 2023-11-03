@@ -1,0 +1,102 @@
+
+<div class="center text-tile">
+  <h1>Editing account</h1>
+
+<%= form_for @user, url: update_account_members_path do |form| %>
+  <% if @user.errors.any? %>
+    <div style="color: red">
+      <h2><%= pluralize(@user.errors.count, "error") %> prohibited this member from being saved:</h2>
+
+      <ul>
+        <% @user.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div>
+    <%= form.label :first_name, style: "display: block" %>
+    <%= form.text_field :first_name , class:"form-input" %>
+  </div>
+
+  <div>
+    <%= form.label :preferred_name, style: "display: block" %>
+    <%= form.text_field :preferred_name , class:"form-input" %>
+  </div>
+
+  <div>
+    <%= form.label :last_name, style: "display: block" %>
+    <%= form.text_field :last_name , class:"form-input" %>
+  </div>
+
+  <div>
+    <%= form.label :email, style: "display: block" %>
+    <%= form.text_field :email , class:"form-input" %>
+  </div>
+
+<br>
+  <div>
+  <%= form.label "Account is active (unchecking this deletes your account)", style: "display: block" %>
+    <%= form.check_box :is_member, class: "member-checkbox" %> 
+  </div>
+  <br>
+
+  <div>
+    <%= form.hidden_field :is_admin, style: "display: block" %>
+  </div>
+
+  <div>
+
+    <%= form.hidden_field :bio, class:"form-input"%>
+  </div>
+
+  <div>
+    <%= form.hidden_field :contact, class:"form-input"%>
+  </div>
+
+  <div>
+    <%= form.hidden_field :photo_file_name, style: "display: block" %>
+  </div>
+
+  <div>
+    <%= form.hidden_field :role, style: "display: block" %>
+  </div>
+
+  
+  <div class="submit-form-button">
+   <%= form.submit "Submit", class:"link-button" %>
+  </div>
+
+  <div >
+   <%= form.button "Delete Account", class:"link-button", id: "delete-account-btn" %>
+  </div>
+
+  
+
+<% end %>
+
+</div>
+
+
+<br>
+
+<div  class="center bottom-navigation">
+  <%= link_to "Back to dashboard", member_dashboard_index_path , class:"link-button" %>
+</div>
+
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    const memberCheckbox = document.querySelector(".member-checkbox");
+
+    memberCheckbox.addEventListener("change", function () {
+      if (!this.checked) {
+        const confirmation = confirm("Are you sure you want to delete your account? \nOnly an organization officer can recover your account.");
+        if (!confirmation) {
+          // If the user cancels the confirmation, prevent unchecking the checkbox.
+          this.checked = true;
+        }
+      }
+    });
+  });
+</script>

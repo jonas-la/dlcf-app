@@ -3,7 +3,30 @@ class EventsController < ApplicationController
 
   # GET /events or /events.json
   def index
-    @events = Event.all
+    if params[:search_query].present?
+      @search_query = params[:search_query]
+      @events = Event.where('event_name LIKE ?', "%#{@search_query}%").paginate(
+        page: params[:page], per_page: 10
+      )
+    else
+      @events = case params[:sort_by]
+
+                when 'created_at_asc'
+        Event.order(created_at: :asc).paginate(page: params[:page], per_page: 7)
+                when 'created_at_desc'
+        Event.order(created_at: :desc).paginate(page: params[:page], per_page: 7)
+                when 'date_asc'
+        Event.order(start_time: :asc).paginate(page: params[:page], per_page: 7)
+                when 'date_desc'
+        Event.order(start_time: :desc).paginate(page: params[:page], per_page: 7)
+                when 'event_name_asc'
+        Event.order(event_name: :asc).paginate(page: params[:page], per_page: 7)
+                when 'event_name_desc'
+        Event.order(event_name: :desc).paginate(page: params[:page], per_page: 7)
+                else
+        Event.order(id: :desc).paginate(page: params[:page], per_page: 7)
+                end
+    end
   end
 
   # GET /events/1 or /events/1.json
@@ -20,7 +43,26 @@ class EventsController < ApplicationController
 
   def member_index
     # render("member_index")
-    @events = Event.all
+    if params[:search_query].present?
+      @search_query = params[:search_query]
+      @events = Event.where('event_name LIKE ?', "%#{@search_query}%").paginate(
+        page: params[:page], per_page: 10
+      )
+    else
+      @events = case params[:sort_by]
+        
+                when 'date_asc'
+        Event.order(start_time: :asc).paginate(page: params[:page], per_page: 7)
+                when 'date_desc'
+        Event.order(start_time: :desc).paginate(page: params[:page], per_page: 7)
+                when 'event_name_asc'
+        Event.order(event_name: :asc).paginate(page: params[:page], per_page: 7)
+                when 'event_name_desc'
+        Event.order(event_name: :desc).paginate(page: params[:page], per_page: 7)
+                else
+        Event.order(id: :desc).paginate(page: params[:page], per_page: 7)
+                end
+    end
 
     user_email = current_admin.email
     @user = Member.find_by(email: user_email)
@@ -29,6 +71,44 @@ class EventsController < ApplicationController
 
   def member_show
     @event = Event.find(params[:id])
+  end
+
+
+  def duplicate_event
+    @event = Event.new
+    @old_event = Event.find(params[:id])
+    @event.event_name = @old_event.event_name
+    @event.location = @old_event.location
+    @event.start_time = @old_event.start_time
+    @event.end_time = @old_event.end_time
+    @event.description = @old_event.description
+    @event.password = @old_event.password
+  end
+  
+  
+  def duplicate_event_create
+    @duplicating_event = params[:event][:duplicate]
+    @event = Event.new(event_params)
+  
+    
+  
+  
+    respond_to do |format|
+      if @event.save
+        if @duplicating_event
+          puts "Duplicated event!"
+          format.html { redirect_to(event_url(@event), notice: "Duplication") }
+          format.json { render(:show, status: :created, location: @event) }
+        else
+          puts "Did not duplicate event"
+          format.html { redirect_to(event_url(@event), notice: "Event was successfully created.") }
+          format.json { render(:show, status: :created, location: @event) }
+        end
+      else
+        format.html { render(:new, status: :unprocessable_entity) }
+        format.json { render(json: @event.errors, status: :unprocessable_entity) }
+      end
+    end
   end
 
   def schedule_show
@@ -42,6 +122,7 @@ class EventsController < ApplicationController
   # GET /events/new
   def new
     @event = Event.new
+    @duplicating_event = false
   end
 
   # GET /events/1/edit
@@ -50,12 +131,23 @@ class EventsController < ApplicationController
 
   # POST /events or /events.json
   def create
+    @duplicating_event = params[:event][:duplicate]
     @event = Event.new(event_params)
+
+    
+
 
     respond_to do |format|
       if @event.save
-        format.html { redirect_to(event_url(@event), notice: "Event was successfully created.") }
-        format.json { render(:show, status: :created, location: @event) }
+        if @duplicating_event
+          puts "Duplicated event!"
+          format.html { redirect_to( duplicate_event_event_path(@event), notice: "Event was successfully created. \n Created duplicate.") }
+          # format.json { render(:show, status: :created, location: @event) }
+        else
+          puts "Did not duplicate event"
+          format.html { redirect_to(event_url(@event), notice: "Event was successfully created.") }
+          format.json { render(:show, status: :created, location: @event) }
+        end
       else
         format.html { render(:new, status: :unprocessable_entity) }
         format.json { render(json: @event.errors, status: :unprocessable_entity) }
@@ -65,10 +157,18 @@ class EventsController < ApplicationController
 
   # PATCH/PUT /events/1 or /events/1.json
   def update
+    @duplicating_event = params[:event][:duplicate]
     respond_to do |format|
       if @event.update(event_params)
-        format.html { redirect_to(event_url(@event), notice: "Event was successfully updated.") }
-        format.json { render(:show, status: :ok, location: @event) }
+        if @duplicating_event
+          puts "Duplicated event!"
+          format.html { redirect_to( duplicate_event_event_path(@event), notice: "Event was successfully created. \n Created duplicate.") }
+          # format.json { render(:show, status: :created, location: @event) }
+        else
+          puts "Did not duplicate event"
+          format.html { redirect_to(event_url(@event), notice: "Event was successfully created.") }
+          format.json { render(:show, status: :created, location: @event) }
+        end
       else
         format.html { render(:edit, status: :unprocessable_entity) }
         format.json { render(json: @event.errors, status: :unprocessable_entity) }
@@ -99,3 +199,4 @@ class EventsController < ApplicationController
       )
     end
 end
+
