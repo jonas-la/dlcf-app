@@ -6,7 +6,7 @@ RSpec.describe("pending_members/edit", type: :view) do
       first_name: "MyString",
       preferred_name: "MyString",
       last_name: "MyString",
-      email: "MyString"
+      email: "MyString@email.com"
     )
   end
 

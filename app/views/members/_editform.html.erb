@@ -1,0 +1,70 @@
+<%= form_with(model: member) do |form| %>
+  <% if member.errors.any? %>
+    <div style="color: red">
+      <h2><%= pluralize(member.errors.count, "error") %> prohibited this member from being saved:</h2>
+
+      <ul>
+        <% member.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div>
+    <%= form.label :first_name, style: "display: block", class:"input-label" %>
+    <%= form.text_field :first_name, class:"form-input" %>
+  </div>
+
+  <div>
+    <%= form.label :preferred_name, style: "display: block", class:"input-label" %>
+    <%= form.text_field :preferred_name, class:"form-input" %>
+  </div>
+
+  <div>
+    <%= form.label :last_name, style: "display: block", class:"input-label" %>
+    <%= form.text_field :last_name, class:"form-input" %>
+  </div>
+
+  <div>
+    <%= form.label :email, style: "display: block", class:"input-label" %>
+    <%= form.text_field :email, class:"form-input" %>
+  </div>
+
+  <div>
+    <%= form.label "Current Member", style: "display: block", class:"input-label" %>
+    <%= form.check_box :is_member, class:"checkbox"%>
+  </div>
+
+  <div>
+    <%= form.label "Officer", style: "display: block", class:"input-label" %>
+    <%= form.check_box :is_admin, class:"form-input" %>
+  </div>
+
+  <div>
+    <%= form.label :role, style: "display: block", class:"input-label" %>
+    <%= form.text_field :role, class:"form-input" %>
+  </div>
+
+  <div>
+    <%= form.label "BIO (Officer Only)", style: "display: block", class:"input-label" %>
+    <%= form.text_area :bio, class:"form-input" %>
+  </div>
+
+  <div>
+    <%= form.label "Contact email (Officer Only)", style: "display: block", class:"input-label" %>
+    <%= form.text_field :contact, class:"form-input" %>
+  </div>
+
+  <div>
+    <%= form.label "Profile picture name (Officer Only)", style: "display: block", class:"input-label" %>
+    <%= form.text_field :photo_file_name, class:"form-input" %>
+  </div>
+
+
+  
+
+  <div class="submit-form-button">
+    <%= form.submit "Submit", class:"link-button" %>
+  </div>
+<% end %>

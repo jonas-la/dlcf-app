@@ -1,8 +1,8 @@
-<div id="<%= dom_id event %>">
-  <p>
-    <strong>Event name:</strong>
+<div id="<%= dom_id event %>", class="center text-tile">
+  
+  <div class="input-label">
     <%= event.event_name %>
-  </p>
+  </div>
 
   <p>
     <strong>Location:</strong>
@@ -10,20 +10,22 @@
   </p>
 
   <p>
-    <strong>Start time:</strong>
+    <strong>Description:</strong>
+    <%= event.description %>
+  </p>
+
+  <p>
+    <strong>Start:</strong>
 <%= event.start_time.strftime("%B %d, %Y %I:%M %p") %>
 
   </p>
 
   <p>
-    <strong>End time:</strong>
+    <strong>End:</strong>
     <%= event.end_time.strftime("%B %d, %Y %I:%M %p") %>
   </p>
 
-  <p>
-    <strong>Description:</strong>
-    <%= event.description %>
-  </p>
+
 
   <% if  OmniAuth.config.test_mode == false%>
   <% if  current_admin.nil? == false%>
