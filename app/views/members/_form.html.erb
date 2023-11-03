@@ -31,13 +31,18 @@
     <%= form.text_field :email, class:"form-input" %>
   </div>
 
-  #delete member action
-  <div>
+  <%
+=begin%>
+ <div>
 
     <%= form.label :is_member,"Account Active? (Warning: Turning this off deletes your account)", style: "display: block" %>
     <%= form.check_box :is_member, class: "member-checkbox" %> 
 
-  </div>
+  </div> 
+<%
+=end%>
+
+  <%= form.hidden_field :is_member, value: true %>
 
   <div>
     <%= form.label "Officer", style: "display: block", class:"input-label" %>
@@ -63,8 +68,6 @@
     <%= form.label "Profile picture name (Officer Only)", style: "display: block", class:"input-label" %>
     <%= form.text_field :photo_file_name, class:"form-input", value: "" %>
   </div>
-
-
   
 
   <div class="submit-form-button">
@@ -72,7 +75,7 @@
   </div>
 <% end %>
 
-#  add delete warning pop-up
+
 <script>
   document.addEventListener("DOMContentLoaded", function () {
     const memberCheckbox = document.querySelector(".member-checkbox");
