@@ -80,6 +80,7 @@ class MembersController < ApplicationController
 
   # GET /members/1/edit
   def edit_account
+   
     user_email = current_admin.email
     @user = Member.find_by(email: user_email)
   end
@@ -113,6 +114,7 @@ class MembersController < ApplicationController
   end
 
   def update_account
+    params.require(:member).permit(:is_member)
     user_email = current_admin.email
     @user = Member.find_by(email: user_email)
 
