@@ -21,6 +21,8 @@ Rails.application.routes.draw do
     member do
       get 'member_show'
       get 'schedule_show'
+      get 'duplicate_event'
+      post 'duplicate_event_create'
     end
   end
   resources :feedbacks
