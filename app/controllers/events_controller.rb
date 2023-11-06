@@ -95,7 +95,7 @@ class EventsController < ApplicationController
   
     respond_to do |format|
       if @event.save
-        if @duplicating_event
+        if (@duplicating_event == "true")
           puts "Duplicated event!"
           format.html { redirect_to( duplicate_event_event_path(@event), notice: "Event was successfully created. \n Created duplicate.") }
         else
@@ -134,16 +134,15 @@ class EventsController < ApplicationController
     # @duplicating_event = false
     @event = Event.new(event_params)
 
+
     
 
 
     respond_to do |format|
-      puts "Duplicating event was >>"
-      puts @duplicate_event
-      puts "Duplicating event was ^^"
       if @event.save
-        if @duplicating_event
+        if (@duplicating_event == "true")
           puts "Duplicated event!"
+          puts @duplicating_event
           format.html { redirect_to( duplicate_event_event_path(@event), notice: "Event was successfully created. \n Created duplicate.") }
           # format.json { render(:show, status: :created, location: @event) }
         else
@@ -163,7 +162,7 @@ class EventsController < ApplicationController
     @duplicating_event = params[:event][:duplicate]
     respond_to do |format|
       if @event.update(event_params)
-        if @duplicating_event
+        if (@duplicating_event == "true")
           puts "Duplicated event!"
           format.html { redirect_to( duplicate_event_event_path(@event), notice: "Event was successfully created. \n Created duplicate.") }
           # format.json { render(:show, status: :created, location: @event) }
