@@ -95,10 +95,9 @@ class EventsController < ApplicationController
   
     respond_to do |format|
       if @event.save
-        if @duplicating_event
+        if (@duplicating_event == "true")
           puts "Duplicated event!"
-          format.html { redirect_to(event_url(@event), notice: "Duplication") }
-          format.json { render(:show, status: :created, location: @event) }
+          format.html { redirect_to( duplicate_event_event_path(@event), notice: "Event was successfully created. \n Created duplicate.") }
         else
           puts "Did not duplicate event"
           format.html { redirect_to(event_url(@event), notice: "Event was successfully created.") }
@@ -132,15 +131,18 @@ class EventsController < ApplicationController
   # POST /events or /events.json
   def create
     @duplicating_event = params[:event][:duplicate]
+    # @duplicating_event = false
     @event = Event.new(event_params)
+
 
     
 
 
     respond_to do |format|
       if @event.save
-        if @duplicating_event
+        if (@duplicating_event == "true")
           puts "Duplicated event!"
+          puts @duplicating_event
           format.html { redirect_to( duplicate_event_event_path(@event), notice: "Event was successfully created. \n Created duplicate.") }
           # format.json { render(:show, status: :created, location: @event) }
         else
@@ -160,13 +162,13 @@ class EventsController < ApplicationController
     @duplicating_event = params[:event][:duplicate]
     respond_to do |format|
       if @event.update(event_params)
-        if @duplicating_event
+        if (@duplicating_event == "true")
           puts "Duplicated event!"
           format.html { redirect_to( duplicate_event_event_path(@event), notice: "Event was successfully created. \n Created duplicate.") }
           # format.json { render(:show, status: :created, location: @event) }
         else
           puts "Did not duplicate event"
-          format.html { redirect_to(event_url(@event), notice: "Event was successfully created.") }
+          format.html { redirect_to(event_url(@event), notice: "Event was successfully updated.") }
           format.json { render(:show, status: :created, location: @event) }
         end
       else

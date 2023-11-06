@@ -41,13 +41,15 @@
     <%= form.text_field :password, class:"form-input" %>
   </div>
 
+   <%= form.hidden_field :duplicate, value: false, id:"duplicate-form-id" %>
+
  
 
   <div class="submit-form-button">
     <%= form.submit "Submit", class:"link-button" %>
   </div>
 
-   <%= form.hidden_field :duplicate, value: false, id:"duplicate-form-id" %>
+  
 
   
 
