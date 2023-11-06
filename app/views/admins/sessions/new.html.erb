@@ -12,7 +12,7 @@
 
             <div>
                 <% if  OmniAuth.config.test_mode == false %>
-                <%= image_tag("/assets/dlcf_logo-d16a2c8a22ef43fb7d7e7459c93141037b0f19df65d9c82f1b23722bbf9dac6b.jpg", alt:"TEST", style: "width: 200px; height: 200px; margin: 20px") %>
+                <%= image_tag(@org_info.image, alt:"TEST", style: "width: 200px; height: 200px; margin: 20px") %>
                 
                 <% end %>
             </div>
@@ -33,7 +33,7 @@
 
             <div>
                 <% if  OmniAuth.config.test_mode == false%>
-                <%= link_to "View Charter", "/assets/dlcf_charter-03398f43685a0a1c5ddbf44c7b6a9b495d9fdac7d632a91075699828d7a9423b.pdf", target: "_blank", class: "link-button", style: "margin: 20px" %>
+                <%= link_to "View Charter", @org_info.file, target: "_blank", class: "link-button", style: "margin: 20px" %>
                 <% end %>
             </div>
 
