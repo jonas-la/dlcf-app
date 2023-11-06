@@ -12,26 +12,39 @@
   <% end %>
 
   <div>
-    <%= form.label :first_name, style: "display: block" %>
-    <%= form.text_field :first_name %>
+    <%= form.label :first_name, style: "display: block", class:"input-label" %>
+    <%= form.text_field :first_name, class:"form-input" %>
   </div>
 
   <div>
-    <%= form.label :preferred_name, style: "display: block" %>
-    <%= form.text_field :preferred_name %>
+    <%= form.label :preferred_name, style: "display: block", class:"input-label" %>
+    <%= form.text_field :preferred_name, class:"form-input" %>
   </div>
 
   <div>
-    <%= form.label :last_name, style: "display: block" %>
-    <%= form.text_field :last_name %>
+    <%= form.label :last_name, style: "display: block", class:"input-label" %>
+    <%= form.text_field :last_name, class:"form-input" %>
   </div>
 
   <div>
-    <%= form.label :email, style: "display: block" %>
-    <%= form.text_field :email %>
+    <%= form.label :email, style: "display: block", class:"input-label" %>
+    <%= form.text_field :email, class:"form-input" %>
   </div>
 
+
   <div>
-    <%= form.submit %>
+    <input type="checkbox" id="enableSubmit" class="checkbox" />
+    <%= form.submit "Submit", disabled: true, id: "submitForm", class:"link-button" %>
+
   </div>
+
 <% end %>
+
+<script>
+  const enableSubmitCheckbox = document.getElementById("enableSubmit");
+  const submitButton = document.getElementById("submitForm");
+
+  enableSubmitCheckbox.addEventListener("change", function() {
+    submitButton.disabled = !this.checked;
+  });
+</script>

@@ -14,9 +14,11 @@
  *= require_self
  */
  
+ /*
  body{
   background-color: #7AB4C1;
   color: #FFFFFF;
+  
  }
 
  #satisfaction-dropdown{
@@ -114,7 +116,7 @@
 }
 
  .link-button{
-   background-color: #FD8E3C;
+   background-color: blue;
    color:  #000000;
    border: none;
    border-radius: 4px;
@@ -151,3 +153,4 @@
   }
 
 
+*/

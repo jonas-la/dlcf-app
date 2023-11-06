@@ -10,20 +10,22 @@
   </p>
 
   <p>
-    <strong>Start time:</strong>
+    <strong>Description:</strong>
+    <%= event.description %>
+  </p>
+
+  <p>
+    <strong>Start:</strong>
 <%= event.start_time.strftime("%B %d, %Y %I:%M %p") %>
 
   </p>
 
   <p>
-    <strong>End time:</strong>
+    <strong>End:</strong>
     <%= event.end_time.strftime("%B %d, %Y %I:%M %p") %>
   </p>
 
-  <p>
-    <strong>Description:</strong>
-    <%= event.description %>
-  </p>
+
 
   <% if  OmniAuth.config.test_mode == false%>
   <% if  current_admin.nil? == false%>

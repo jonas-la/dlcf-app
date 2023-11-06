@@ -21,11 +21,14 @@ class ApplicationController < ActionController::Base
       # return true #TODO remove me when Rspec can do this
       # This is the list of routes to not authenticate for
 
+
       # puts "!!!Current routeroute:"
       # puts request.path.to_s
       # puts "!!! END"
+
       skip_auth_paths = [
-        event_schedule_path, new_account_members_path, create_account_members_path, attendances_url, 
+        event_schedule_path, new_account_members_path, 
+        create_account_members_path, attendances_url, 
         new_pending_member_path, pending_members_path
       ]
       skip_auth_paths.each do |route|
@@ -33,9 +36,9 @@ class ApplicationController < ActionController::Base
       end
 
       
-      if request.path.to_s.include?("schedule_show")
-        return true
-      end
+
+      return true if request.path.to_s.include?("schedule_show")
+
 
       return false 
       
@@ -56,9 +59,12 @@ class ApplicationController < ActionController::Base
       @user = Member.find_by(email: user_email)
       path_string = request.path.to_s
 
-      puts path_string
     
-      if @user.is_admin
+      # restricts members/admins who are not current members
+      # will redirect them to landing page without the proper creditionals
+      if !@user.is_member 
+        sign_out_and_redirect
+      elsif @user.is_admin
         handle_admin_access(path_string)
       else
         handle_member_access(path_string)
@@ -70,22 +76,30 @@ class ApplicationController < ActionController::Base
         "member_dashboard", "new_feedback_path", "attendances/new", 
         "/feedbacks/new", "member_index", "member_show"
       ]
+
+      
       
       sign_out_and_redirect if contains_illegal_path?(path_string, illegal_paths)
     end
     
     def handle_member_access(path_string)
-
       legal_paths = [
         "member", "new_feedback_path", "attendances/new", "/feedbacks/new", 
-        "googleoauth2", "/attendances", "/feedbacks", "/event_schedule", "/schedule_show", "member_index_events_path", "created_at_asc", "member_index","/events/member_index", "/events/style.css", "events/member_show"
+        "googleoauth2", "/attendances", "/feedbacks", "/event_schedule", 
+        "/schedule_show", "edit_account", "member_index_events_path", 
+        "created_at_asc", "member_index", "/events/member_index", 
+        "/events/style.css", "events/member_show"
       ]
-      illegal_paths = ["edit","delete"]
+      illegal_paths = []
+      # ["edit","delete"]
+      # Ln.88 needs to be fixed later. Daniel and Mark removed
+      # this for account edit/delete
+      # so ask them
     
-      if contains_illegal_path?(path_string, illegal_paths)
-        sign_out_and_redirect
-      end
-      if (contains_legal_path?(path_string, legal_paths) == false)
+      if contains_illegal_path?(path_string, 
+                                illegal_paths
+                               ) || !contains_legal_path?(path_string, legal_paths)
+
         sign_out_and_redirect
       end
     end

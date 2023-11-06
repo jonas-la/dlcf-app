@@ -12,56 +12,82 @@
   <% end %>
 
   <div>
-    <%= form.label :first_name, style: "display: block" %>
-    <%= form.text_field :first_name %>
+    <%= form.label :first_name, style: "display: block", class:"input-label" %>
+    <%= form.text_field :first_name, class:"form-input" %>
   </div>
 
   <div>
-    <%= form.label :preferred_name, style: "display: block" %>
-    <%= form.text_field :preferred_name %>
+    <%= form.label :preferred_name, style: "display: block", class:"input-label" %>
+    <%= form.text_field :preferred_name, class:"form-input" %>
   </div>
 
   <div>
-    <%= form.label :last_name, style: "display: block" %>
-    <%= form.text_field :last_name %>
+    <%= form.label :last_name, style: "display: block", class:"input-label" %>
+    <%= form.text_field :last_name, class:"form-input" %>
   </div>
 
   <div>
-    <%= form.label :email, style: "display: block" %>
-    <%= form.text_field :email %>
+    <%= form.label :email, style: "display: block", class:"input-label" %>
+    <%= form.text_field :email, class:"form-input" %>
+  </div>
+
+  <%
+=begin%>
+ <div>
+
+    <%= form.label :is_member,"Account Active? (Warning: Turning this off deletes your account)", style: "display: block" %>
+    <%= form.check_box :is_member, class: "member-checkbox" %> 
+
+  </div> 
+<%
+=end%>
+
+  <%= form.hidden_field :is_member, value: true %>
+
+  <div>
+    <%= form.label "Officer", style: "display: block", class:"input-label" %>
+    <%= form.check_box :is_admin, class:"checkbox" %>
   </div>
 
   <div>
-    <%= form.label :is_member, style: "display: block" %>
-    <%= form.check_box :is_member %>
+    <%= form.label :role, style: "display: block", class:"input-label" %>
+    <%= form.text_field :role, class:"form-input", value: "Member" %>
   </div>
 
   <div>
-    <%= form.label :is_admin, style: "display: block" %>
-    <%= form.check_box :is_admin %>
+    <%= form.label "BIO (Officer Only)", style: "display: block", class:"input-label" %>
+    <%= form.text_area :bio, class:"form-input", value: "" %>
   </div>
 
   <div>
-    <%= form.label :bio, style: "display: block" %>
-    <%= form.text_area :bio %>
+    <%= form.label "Contact email (Officer Only)", style: "display: block", class:"input-label" %>
+    <%= form.text_field :contact, class:"form-input", value: "" %>
   </div>
 
   <div>
-    <%= form.label :contact, style: "display: block" %>
-    <%= form.text_field :contact %>
+    <%= form.label "Profile picture name (Officer Only)", style: "display: block", class:"input-label" %>
+    <%= form.text_field :photo_file_name, class:"form-input", value: "" %>
   </div>
+  
 
-  <div>
-    <%= form.label :photo_file_name, style: "display: block" %>
-    <%= form.text_field :photo_file_name %>
-  </div>
-
-  <div>
-    <%= form.label :role, style: "display: block" %>
-    <%= form.text_field :role %>
-  </div>
-
-  <div>
-    <%= form.submit %>
+  <div class="submit-form-button">
+    <%= form.submit "Submit", class:"link-button" %>
   </div>
 <% end %>
+
+
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    const memberCheckbox = document.querySelector(".member-checkbox");
+
+    memberCheckbox.addEventListener("change", function () {
+      if (!this.checked) {
+        const confirmation = confirm("Are you sure you want to delete your account? \nOnly an organization officer can recover your account.");
+        if (!confirmation) {
+          // If the user cancels the confirmation, prevent unchecking the checkbox.
+          this.checked = true;
+        }
+      }
+    });
+  });
+</script>
