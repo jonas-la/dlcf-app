@@ -1,12 +1,15 @@
 <p style="color: green"><%= notice %></p>
 
+<div class="center text-tile">
 <%= render @attendance %>
 
-<div>
+
   
-  <%= link_to "Back to event", event_path(@attendance.event_id) %>
+  
   <div style="margin-top: 10px;"></div>
   
 
-  <%= button_to "Destroy this attendance", @attendance, method: :delete %>
+  <%= button_to "Remove this attendance", @attendance, method: :delete , class: "link-button" %>
+
+  <%= link_to "Back to event", event_path(@attendance.event_id), class: "link-button" %>
 </div>

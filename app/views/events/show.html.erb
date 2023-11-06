@@ -21,7 +21,7 @@
       <% @attendees_raw.each do |attendee| %>
           <p>
             <%= Member.find_by(id: attendee.member_id).first_name + " " + Member.find_by(id: attendee.member_id).last_name + " " %> 
-            <%= link_to 'Delete?', attendance_path(attendee) %>
+            <%= link_to 'Remove', attendance_path(attendee), class: "link-button" %>
           </p>
         <!-- Access other attributes of the attendee as needed -->
       <% end %>
@@ -30,7 +30,7 @@
 
     <div class="center bottom-navigation grid-item">
       <%= link_to "Edit this event", edit_event_path(@event) , class: "link-button"%> 
-      <%= button_to "Destroy this event", @event, method: :delete , class: "link-button"%>
+      <%= button_to "Delete this event", @event, method: :delete , class: "link-button"%>
       <%= link_to "Back to events", events_path , class: "link-button"%>
     </div>
 
