@@ -34,12 +34,12 @@
 
   <div>
     <%= form.label "Officer", style: "display: block", class:"input-label" %>
-    <%= form.check_box :is_admin, class:"form-input" %>
+    <%= form.check_box :is_admin, class:"checkbox" %>
   </div>
 
   <div>
     <%= form.label :role, style: "display: block", class:"input-label" %>
-    <%= form.text_field :role, value: "Member", class:"form-input" %>
+    <%= form.text_field :role, value: "Member", class:"checkbox" %>
   </div>
   <%= form.hidden_field :is_member, value: true %>
   <%= form.hidden_field :bio, value: "" %>
