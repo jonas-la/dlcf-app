@@ -2,6 +2,7 @@ require 'rails_helper'
 
 RSpec.describe('admins/sessions/new.html.erb', type: :view) do
   it 'displays the expected content' do
+
     assign(:org_info,
            instance_double('org_info',
                            image: 'app/assets/images/dlcf_logo.jpg',

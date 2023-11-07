@@ -2,6 +2,8 @@ class MembersController < ApplicationController
   before_action :set_member, only: %i[ show edit update destroy ]
 
   # GET /members or /members.json
+
+  
   def index
     @members = Member.all   
 
@@ -24,11 +26,21 @@ class MembersController < ApplicationController
 
   # GET /members/1 or /members/1.json
   def show
+    # gets the events the member attended 
+    # (suprisingly easy, though it required 
+    # a minor update to the models tell ruby 
+    # about the relationship)
+    @events_attended = @member.events
+    # makes it an empty list if it is null
+    # (it shouldn't ever be, but still)
+    @events_attended ||= [] 
+    @events_attended = @events_attended.order(start_time: :desc)
   end
 
   # GET /members/new
   def new
     @member = Member.new
+
 
   end
 
@@ -63,6 +75,14 @@ class MembersController < ApplicationController
 
   # GET /members/1/edit
   def edit
+    
+  end
+
+  # GET /members/1/edit
+  def edit_account
+   
+    user_email = current_admin.email
+    @user = Member.find_by(email: user_email)
   end
 
   # POST /members or /members.json
@@ -93,14 +113,41 @@ class MembersController < ApplicationController
     end
   end
 
-  # DELETE /members/1 or /members/1.json
-  def destroy
-    @member.destroy
+  def update_account
+    params.require(:member).permit(:is_member)
+    user_email = current_admin.email
+    @user = Member.find_by(email: user_email)
 
     respond_to do |format|
-      format.html { redirect_to(members_url, notice: "Member was successfully destroyed.") }
-      format.json { head(:no_content) }
+      if @user.update(member_params)
+        format.html do
+ redirect_to(member_dashboard_index_path, notice: "Member was successfully updated.")
+        end
+        format.json { render(:show, status: :ok, location: @user) }
+      else
+        format.html { render(:edit, status: :unprocessable_entity) }
+        format.json { render(json: @user.errors, status: :unprocessable_entity) }
+      end
     end
+  end
+
+  # DELETE /members/1 or /members/1.json
+  def destroy
+  
+    if @member.destroy
+      respond_to do |format|
+        format.html { redirect_to(members_url, notice: "Member was successfully destroyed.") }
+        format.json { head(:no_content) }
+      end
+    else
+      # Can't delete dclftest@gmail.com account
+      # Can't delete dlcftest@gmail.com account
+      # Yes the emails are different 
+      respond_to do |format|
+        format.html { redirect_to(members_url, notice: "This account can't be destroyed.") }
+        format.json { head(:no_content) }
+      end
+    end   
   end
 
   private

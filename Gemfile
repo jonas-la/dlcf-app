@@ -34,8 +34,14 @@ gem 'omniauth-google-oauth2'
 #for email format matching
 gem 'devise'
 
+
 # for qr code generation
 gem 'rqrcode'
+
+# for paging
+gem 'will_paginate'
+
+
 
 # Use Redis adapter to run Action Cable in production
 # gem "redis", "~> 4.0"

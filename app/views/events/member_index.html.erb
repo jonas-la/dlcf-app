@@ -1,35 +1,65 @@
-<p style="color: green"><%= notice %></p>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Deeper Life Campus Fellowship</title>
+</head>
 
-
-<div class="center text-tile">
-<h1>Events</h1>
-
-</div>
-
-
-
-  <% @events.each do |event| %>
-  
-  <div class="center text-tile list-tile">
-    <%= render event %>
-    
-    <p>
-      <%= link_to "Show this event", member_show_event_path(event), class: "link-button" %>
-
-      
-      <% if Attendance.find_by(event_id: event.id, member_id: @user.id) %> 
-      <div>Signed in</div>
-      <% else %>
-      <%= link_to 'Sign In', new_attendance_path(event_id: event.id), class: "link-button" %>
-      <% end %>
-      
-    </p>
+<body>
+  <div clas="mobile-container">
+    <div class="grid-item">
+      <p style="color: green"><%= notice %></p>
     </div>
-  <% end %>
-  
+    
+    <div class="center text-tile grid-item">
+      <h1>Events</h1>
+    </div>
 
-  <div class="center bottom-navigation">
+    <div class="center bottom-navigation grid-item">
+      <%= link_to 'Back to Dashboard', member_dashboard_index_path , class: "link-button" %>
+    </div>
 
-  <%= link_to 'Back to Dashboard', member_dashboard_index_path , class: "link-button" %>
+    <div class="grid-item search-box">
+      <h2>Search Events</h2>
+      <%= form_tag(member_index_events_path, method: 'get') do %>
+        <%= text_field_tag :search_query, params[:search_query], placeholder: 'Search by Event Name' %>
+        <%= submit_tag 'Search', class: 'sort-button' %>
+      <% end %>
+    </div>
 
+    <div class="grid-item sort-buttons">
+      <p>Sort By:</p>
+      <%= link_to 'Date (ASC)', member_index_events_path(sort_by: 'date_asc'), class: 'sort-button' %>
+      <%= link_to 'Date (DESC)', member_index_events_path(sort_by: 'date_desc'), class: 'sort-button' %>
+      <%= link_to 'Event Name (ASC)', member_index_events_path(sort_by: 'event_name_asc'), class: 'sort-button' %>
+      <%= link_to 'Event Name (DESC)', member_index_events_path(sort_by: 'event_name_desc'), class: 'sort-button' %>
+    </div>
+
+    <div class="grid-item pagination">
+        <%= will_paginate @events %>
+    </div>
+
+    <div class="grid-item">
+      <% @events.each do |event| %>
+      <div class="center text-tile list-tile input-label">
+        <%= render event %>
+        
+        <p>
+          <%= link_to "Show this Event", member_show_event_path(event, member_id: @user.id), class: "link-button" %>
+
+          <% if Attendance.find_by(event_id: event.id, member_id: @user.id) %> 
+            <div>Signed in</div>
+          <% else %>
+            <%= link_to 'Sign In', new_attendance_path(event_id: event.id), class: "link-button" %>
+          <% end %>
+        </p>
+
+      </div>
+      <% end %>
+
+      <div class="grid-item pagination">
+        <%= will_paginate @events %>
+      </div>
+    </div>
   </div>
+</body>

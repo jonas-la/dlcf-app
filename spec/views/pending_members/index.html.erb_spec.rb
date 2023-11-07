@@ -7,13 +7,13 @@ RSpec.describe("pending_members/index", type: :view) do
         first_name: "First Name",
         preferred_name: "Preferred Name",
         last_name: "Last Name",
-        email: "Email"
+        email: "Email@email.com"
       ),
       PendingMember.create!(
         first_name: "First Name",
         preferred_name: "Preferred Name",
         last_name: "Last Name",
-        email: "Email"
+        email: "Email2@email.com"
       )
     ]
     )
