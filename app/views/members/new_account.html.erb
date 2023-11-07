@@ -33,21 +33,21 @@
   </div>
 
   <div>
-    <%= form.label :is_admin, style: "display: block" %>
-    <%= form.check_box :is_admin %>
+    <%= form.label "Officer", style: "display: block", class:"input-label" %>
+    <%= form.check_box :is_admin, class:"checkbox" %>
   </div>
 
   <div>
-    <%= form.label :role, style: "display: block" %>
-    <%= form.text_field :role, value: "Member" %>
+    <%= form.label :role, style: "display: block", class:"input-label" %>
+    <%= form.text_field :role, value: "Member", class:"form-input" %>
   </div>
   <%= form.hidden_field :is_member, value: true %>
   <%= form.hidden_field :bio, value: "" %>
   <%= form.hidden_field :contact, value: "" %>
   <%= form.hidden_field :photo_file_name, value: "" %>
 
-  <div>
-    <%= form.submit %>
+  <div class="submit-form-button">
+    <%= form.submit "Submit", class:"link-button" %>
   </div>
 <% end %>
 

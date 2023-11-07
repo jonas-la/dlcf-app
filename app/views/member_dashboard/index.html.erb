@@ -6,7 +6,7 @@
     <link rel="stylesheet" href="style.css">
 </head>
 
-<body>
+<body class="dashboard-body">
     <div class="center text-tile mobile-container">
         <div class="grid-item">
             <h2>You're Logged into the Member Dashboard</h2>
@@ -19,7 +19,10 @@
         <div class="grid-item">
             <%= link_to "Events", member_index_events_path , class: "link-button"%>
             <%= link_to "Create Feedback", new_feedback_path,  class: "link-button" %>
+            
+            <%= link_to "Edit Profile",  edit_account_members_path , class: "link-button"%>
             <%= link_to "Sign Out", destroy_admin_session_path , class: "link-button"%>
+
         </div>
         
         <div class="center text-tile grid-item">
@@ -44,6 +47,7 @@
         
         <div class="grid-item">
             <% @officers.each do |officer| %>
+            <% if officer.preferred_name != "Test" %>
                 <div class="center text-tile">
                     <div class="list-tile">
                         <span class="info-title"><%= officer.preferred_name%> <%= officer.last_name%></span>
@@ -55,6 +59,7 @@
                         <span class="info-text"><%= officer.bio %></span>
                     </div>
                 </div>
+            <% end %>
             <% end %>
         </div>
     </div>

@@ -3,10 +3,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Deeper Life Campus Fellowship</title>
-    <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
+
   <div clas="mobile-container">
 
 
@@ -18,12 +18,40 @@
     <% png = qr.as_png(resize_gte_to: false, resize_exactly_to: 200, border_modules: 4) %>
     <img src="<%= "data:image/png;base64,#{Base64.strict_encode64(png.to_s)}" %>" alt="Event QR Code">
 
+
     <div class="grid-item">
       <p style="color: green"><%= notice %></p>
     </div>
     
     <div class="center text-tile grid-item">
       <h1>Events</h1>
+    </div>
+
+    <div class="center bottom-navigation grid-item">
+      <%= link_to "New event", new_event_path,  class: "link-button" %>
+      <%= link_to 'Back to Dashboard', officer_dashboard_index_path , class: "link-button" %>
+    </div>
+
+    <div class="grid-item search-box">
+      <h2>Search Events</h2>
+      <%= form_tag(events_path, method: 'get') do %>
+        <%= text_field_tag :search_query, params[:search_query], placeholder: 'Search by Event Name' %>
+        <%= submit_tag 'Search', class: 'sort-button' %>
+      <% end %>
+    </div>
+
+    <div class="grid-item sort-buttons">
+      <p>Sort By:</p>
+      <%= link_to 'Created At (ASC)', events_path(sort_by: 'created_at_asc'), class: 'sort-button' %>
+      <%= link_to 'Created At (DESC)', events_path(sort_by: 'created_at_desc'), class: 'sort-button' %>
+      <%= link_to 'Date (ASC)', events_path(sort_by: 'date_asc'), class: 'sort-button' %>
+      <%= link_to 'Date (DESC)', events_path(sort_by: 'date_desc'), class: 'sort-button' %>
+      <%= link_to 'Event Name (ASC)', events_path(sort_by: 'event_name_asc'), class: 'sort-button' %>
+      <%= link_to 'Event Name (DESC)', events_path(sort_by: 'event_name_desc'), class: 'sort-button' %>
+    </div>
+
+    <div class="grid-item pagination">
+        <%= will_paginate @events %>
     </div>
 
     <div class="grid-item">
@@ -36,11 +64,18 @@
         </p>
       </div>
       <% end %>
+
     </div>
     
     <div class="center bottom-navigation grid-item">
       <%= link_to "New event", new_event_path,  class: "link-button" %>
       <%= link_to 'Back to Dashboard', officer_dashboard_index_path , class: "link-button" %>
+
+
+      <div class="grid-item pagination">
+        <%= will_paginate @events %>
+      </div>
+
     </div>
   </div>
 </body>

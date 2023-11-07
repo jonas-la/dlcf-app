@@ -1,22 +1,25 @@
 <div id="<%= dom_id feedback %>">
   <p>
     <strong>Satisfaction:</strong>
-    <%= feedback.satisfaction %>
+    <div><%= feedback.satisfaction %> / 5</div>
   </p>
 
   <p>
     <strong>Critiques:</strong>
-    <%= feedback.critiques %>
+    <div><%= feedback.critiques %></div>
   </p>
 
   <p>
     <strong>New ideas:</strong>
-    <%= feedback.new_ideas %>
+    <div><%= feedback.new_ideas %></div>
   </p>
 
   <p>
     <strong>Member:</strong>
-    <%= feedback.member_id %>
+
+    <div><%= Member.find(feedback.member_id).preferred_name if feedback.member_id %> <%= Member.find(feedback.member_id).last_name if feedback.member_id %></div>
+    <div><%= Member.find(feedback.member_id).email if feedback.member_id %></div>
+
   </p>
 
 </div>

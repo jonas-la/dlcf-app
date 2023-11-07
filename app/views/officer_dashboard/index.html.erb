@@ -3,10 +3,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Deeper Life Campus Fellowship</title>
-    <link rel="stylesheet" href="style.css">
 </head>
 
-<body>
+<body class="dashboard-body">
     <div class="center text-tile mobile-container">
         <div class="grid-item">
             <h2>You're Logged into the Officer Dashboard</h2>
@@ -51,6 +50,7 @@
         
         <div class="grid-item">
             <% @officers.each do |officer| %>
+            <% if officer.preferred_name != "Test" %>
                 <div class="center text-tile">
                 <div class="list-tile">
                     <span class="info-title"><%= officer.preferred_name%> <%= officer.last_name%></span>
@@ -64,6 +64,7 @@
                 </div>
 
                 </div>
+            <% end %>
             <% end %>
         </div>
     </div>

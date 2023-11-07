@@ -1,0 +1,80 @@
+<%= form_with(model: @event, url: duplicate_event_create_event_path) do |form| %>
+  <% if @event.errors.any? %>
+    <div style="color: red">
+      <h2><%= pluralize(event.errors.count, "error") %> prohibited this event from being saved:</h2>
+
+      <ul>
+        <% @event.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div>
+    <%= form.label :event_name, style: "display: block", class:"input-label" %>
+    <%= form.text_field :event_name, class:"form-input" %>
+  </div>
+
+  <div>
+    <%= form.label :location, style: "display: block", class:"input-label" %>
+    <%= form.text_field :location, class:"form-input" %>
+  </div>
+
+  <div>
+    <%= form.label :start_time, style: "display: block", class:"input-label" %>
+    <%= form.datetime_field :start_time, class:"form-input" %>
+  </div>
+
+  <div>
+    <%= form.label :end_time, style: "display: block", class:"input-label" %>
+    <%= form.datetime_field :end_time, class:"form-input" %>
+  </div>
+
+  <div>
+    <%= form.label :description, style: "display: block", class:"input-label" %>
+    <%= form.text_field :description, class:"form-input" %>
+  </div>
+
+  <div>
+    <%= form.label :password, style: "display: block", class:"input-label" %>
+    <%= form.text_field :password, class:"form-input" %>
+  </div>
+
+   <%= form.hidden_field :duplicate, value: false, id:"duplicate-form-id" %>
+
+ 
+
+  <div class="submit-form-button">
+    <%= form.submit "Submit", class:"link-button" %>
+  </div>
+
+  
+
+  
+
+  <div class="submit-form-button">
+    <%= form.button "Submit and duplicate", class:"link-button", id: "duplicate-button" %>
+  </div>
+<% end %>
+
+
+ <script>
+  document.addEventListener("DOMContentLoaded", function () {
+    const duplicateButton = document.getElementById("duplicate-button");
+    const eventForm = document.getElementById("event-form");
+    const duplicateHiddenForm = document.getElementById("duplicate-form-id");
+
+    duplicateButton.addEventListener("click", function () {
+      // Set the duplicating parameter to true
+      duplicateHiddenForm.value = true;
+      eventForm.addEventListener("submit", function () {
+        duplicateHiddenForm.value = true;
+      });
+
+      // Submit the form
+      eventForm.submit();
+    });
+  });
+</script> 
+
