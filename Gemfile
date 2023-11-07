@@ -34,8 +34,13 @@ gem 'omniauth-google-oauth2'
 #for email format matching
 gem 'devise'
 
+
+# for qr code generation
+gem 'rqrcode'
+
 # for paging
 gem 'will_paginate'
+
 
 
 # Use Redis adapter to run Action Cable in production
@@ -93,4 +98,6 @@ group :test do
   gem "capybara"
   gem "selenium-webdriver"
   gem "webdrivers"
+  gem 'chunky_png'
+  gem 'rqrcode_png'
 end

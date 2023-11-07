@@ -38,7 +38,7 @@
 <br>
   <div>
   <%= form.label "Account is active (unchecking this deletes your account)", style: "display: block" %>
-    <%= form.check_box :is_member, class: "member-checkbox" %> 
+    <%= form.check_box :is_member, class: "checkbox" %> 
   </div>
   <br>
 
@@ -68,10 +68,6 @@
    <%= form.submit "Submit", class:"link-button" %>
   </div>
 
-  <div >
-   <%= form.button "Delete Account", class:"link-button", id: "delete-account-btn" %>
-  </div>
-
   
 
 <% end %>
@@ -87,7 +83,7 @@
 
 <script>
   document.addEventListener("DOMContentLoaded", function () {
-    const memberCheckbox = document.querySelector(".member-checkbox");
+    const memberCheckbox = document.querySelector(".checkbox");
 
     memberCheckbox.addEventListener("change", function () {
       if (!this.checked) {

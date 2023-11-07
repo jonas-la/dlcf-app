@@ -133,12 +133,21 @@ class MembersController < ApplicationController
 
   # DELETE /members/1 or /members/1.json
   def destroy
-    @member.destroy
-
-    respond_to do |format|
-      format.html { redirect_to(members_url, notice: "Member was successfully destroyed.") }
-      format.json { head(:no_content) }
-    end
+  
+    if @member.destroy
+      respond_to do |format|
+        format.html { redirect_to(members_url, notice: "Member was successfully destroyed.") }
+        format.json { head(:no_content) }
+      end
+    else
+      # Can't delete dclftest@gmail.com account
+      # Can't delete dlcftest@gmail.com account
+      # Yes the emails are different 
+      respond_to do |format|
+        format.html { redirect_to(members_url, notice: "This account can't be destroyed.") }
+        format.json { head(:no_content) }
+      end
+    end   
   end
 
   private

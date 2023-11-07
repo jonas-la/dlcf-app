@@ -1,6 +1,8 @@
 /* Mobile Styles */
 @media screen and (max-width: 768px) {
 
+
+
     .large-text {
         font-size: 60px;
         color: green;
@@ -11,6 +13,12 @@
         color: #FFFFFF;
     }
 
+    .dashboard-body {
+        background-color: #10545F;
+        color: #FFFFFF;
+        text-align: center;
+    }
+
     .mobile-container {
         display: grid;
         grid-template-rows: auto auto auto auto auto;
@@ -19,6 +27,12 @@
     .grid-item {
         margin: 5px;
         text-align: center;
+    }
+
+
+    .link-button-padding{
+        padding: 15px 32px;
+        /* margin: 20px 20px; */
     }
 
     .link-button {
@@ -36,6 +50,40 @@
         font-weight: normal;
         font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
     }
+
+    .link-button:disabled {
+        background-color:  #3b3b3b;
+        color:  #000000;
+        border: none;
+        border-radius: 4px;
+        padding: 15px 32px;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 60px;
+        margin: 4px 2px;
+        cursor: pointer;
+        font-weight: normal;
+        font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    }
+
+    .link-button:hover:disabled{
+        background-color:  #3b3b3b;
+        color:  #000000;
+        border: none;
+        border-radius: 4px;
+        padding: 15px 32px;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 60px;
+        margin: 4px 2px;
+        cursor: pointer;
+        font-weight: normal;
+        font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    }
+
+
 
 
     .link-button:hover {
@@ -132,6 +180,7 @@
         cursor: pointer;
         padding: 5px 10px;
         text-decoration: none;
+        border: none;
     }
 
     .sort-button:hover {
@@ -176,29 +225,24 @@
       }
 
       .checkbox{
-        margin: 8px;
-        display: inline-block;
-        width: 20%;
-        max-width: 400px;
-        padding: 10px;
-        border: 1px solid #ccc;
-        border-radius: 4px;
-        font-family: Arial, sans-serif;
-        font-size: 1.2em;
-        color: #000;
-        background-color: #fff;
-        box-shadow: 0 2px 4px #000;
-        transition: border-color 0.3s, box-shadow 0.3s;
+        height: 25px;
+        width: 25px;
+        border-color: #FD8E3C;
+        
        }
       
        .checkbox:focus {
+        background-color: #FD8E3C;
         border-color: #FD8E3C;
-        box-shadow: 0 6px 10px #FD8E3C;
+        box-shadow: 0 2px 4px #FD8E3C;
+        transition: border-color 0.3s, box-shadow 0.3s;
       }
       
       .checkbox:hover {
+        background-color: #FD8E3C;
         border-color: #FD8E3C;
-        box-shadow: 0 6px 10px #FD8E3C;
+        box-shadow: 0 2px 4px #FD8E3C;
+        transition: border-color 0.3s, box-shadow 0.3s;
       }
 
 }
@@ -212,6 +256,11 @@
         font-size: 4em;
     }
     body {
+        background-color: #7AB4C1;
+        color: #FFFFFF;
+    }
+
+    .dashboard-body {
         background-color: #7AB4C1;
         color: #FFFFFF;
     }
@@ -298,6 +347,40 @@
         cursor: pointer;
     }
 
+    .link-button:disabled {
+        background-color:  #3b3b3b;
+        color:  #000000;
+        border: none;
+        border-radius: 4px;
+        padding: 15px 32px;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 60px;
+        margin: 4px 2px;
+        cursor: pointer;
+        font-weight: normal;
+        font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    }
+
+    .link-button:hover:disabled{
+        background-color:  #3b3b3b;
+        color:  #000000;
+        border: none;
+        border-radius: 4px;
+        padding: 15px 32px;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 60px;
+        margin: 4px 2px;
+        cursor: pointer;
+        font-weight: normal;
+        font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    }
+
+
+
     .link-button:hover {
         background-color: #FDA564;
         color:  #FFFFFF;
@@ -366,6 +449,7 @@
         background-color: #FD8E3C;
         color:  #000000;
         border-radius: 4px;
+        border: none;
         cursor: pointer;
         padding: 5px 10px;
         text-decoration: none;
@@ -413,29 +497,24 @@
       }
 
       .checkbox{
-        margin: 8px;
-        display: inline-block;
-        width: 20%;
-        max-width: 400px;
-        padding: 10px;
-        border: 1px solid #ccc;
-        border-radius: 4px;
-        font-family: Arial, sans-serif;
-        font-size: 1.2em;
-        color: #000;
-        background-color: #fff;
-        box-shadow: 0 2px 4px #000;
-        transition: border-color 0.3s, box-shadow 0.3s;
+        height: 25px;
+        width: 25px;
+        border-color: #FD8E3C;
+        
        }
       
        .checkbox:focus {
+        background-color: #FD8E3C;
         border-color: #FD8E3C;
-        box-shadow: 0 6px 10px #FD8E3C;
+        box-shadow: 0 2px 4px #FD8E3C;
+        transition: border-color 0.3s, box-shadow 0.3s;
       }
       
       .checkbox:hover {
+        background-color: #FD8E3C;
         border-color: #FD8E3C;
-        box-shadow: 0 6px 10px #FD8E3C;
+        box-shadow: 0 2px 4px #FD8E3C;
+        transition: border-color 0.3s, box-shadow 0.3s;
       }
 
 }

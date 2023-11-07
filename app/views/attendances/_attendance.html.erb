@@ -1,12 +1,12 @@
 <div id="<%= dom_id attendance %>">
-  <p>
+  <div class="input-label">
     <strong>Member:</strong>
     <%=  Member.find_by(id: attendance.member_id).preferred_name %>
-  </p>
+  </div>
 
-  <p>
+  <div class="input-label">
     <strong>Event:</strong>
     <%= Event.find_by(id: attendance.event_id).event_name %>
-  </p>
+  </div>
 
 </div>
