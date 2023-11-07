@@ -64,10 +64,16 @@
     <%= form.text_field :contact, class:"form-input", value: "" %>
   </div>
 
-  <div>
+  <%
+=begin%>
+ <div>
     <%= form.label "Profile picture name (Officer Only)", style: "display: block", class:"input-label" %>
     <%= form.text_field :photo_file_name, class:"form-input", value: "" %>
-  </div>
+  </div> 
+<%
+=end%>
+
+  <%= form.hidden_field :photo_file_name, value: "" %>
   
 
   <div class="submit-form-button">
