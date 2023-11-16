@@ -4,21 +4,22 @@
 
 <%= form_for @attendance, url: create2_attendances_path do |f| %>
   <div class="field">
-    <div class> Event: <%= @event.event_name %> </div>
+    <div class="input-label"> Event: <%= @event.event_name %> </div>
     <%= f.hidden_field :event_id, value: @event.id %>
   </div>
 
-  <div class="field">
-    <%= f.label :member_id %>
-    <%= f.collection_select(:member_id, Member.all, :id, Proc.new { |member| "#{member.first_name} '#{member.preferred_name}' #{member.last_name}" }) %>
+  <div class="field" >
+     <%= f.label "Select Member", style: "display: block", class:"input-label" %>
+    <%= f.collection_select(:member_id, Member.all, :id, Proc.new { |member| "#{member.first_name} '#{member.preferred_name}' #{member.last_name}" }, {} , { id: "satisfaction-dropdown" }) %>
   </div>
+
   
   <div>
     <%= f.hidden_field :attended, value: true %>
   </div> 
 
   <div class="actions">
-    <%= f.submit "Create Attendance" %>
+    <%= f.submit "Create Attendance", class: "link-button" %>
   </div>
 <% end %>
 

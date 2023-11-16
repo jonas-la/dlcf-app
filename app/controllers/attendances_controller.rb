@@ -31,6 +31,8 @@ class AttendancesController < ApplicationController
     # Rails.logger.debug(" - Debugging: @attendance new2")
     @event = Event.find(params[:event])
     @attendance = Attendance.new
+
+    @feedback = Feedback.new
     # @event = Event.find(params[:event_id])
   end
 

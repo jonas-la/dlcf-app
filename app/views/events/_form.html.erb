@@ -41,9 +41,40 @@
     <%= form.text_field :password, class:"form-input" %>
   </div>
 
+
+  <%= form.hidden_field :duplicate, value: false, id:"duplicate-form-id" %>
  
 
   <div class="submit-form-button">
     <%= form.submit "Submit", class:"link-button" %>
   </div>
+
+   
+
+  
+
+  <div class="submit-form-button">
+    <%= form.button "Submit and duplicate", class:"link-button", id: "duplicate-button" %>
+  </div>
 <% end %>
+
+
+ <script>
+  document.addEventListener("DOMContentLoaded", function () {
+    const duplicateButton = document.getElementById("duplicate-button");
+    const eventForm = document.getElementById("event-form");
+    const duplicateHiddenForm = document.getElementById("duplicate-form-id");
+
+    duplicateButton.addEventListener("click", function () {
+      // Set the duplicating parameter to true
+      duplicateHiddenForm.value = true;
+      eventForm.addEventListener("submit", function () {
+        duplicateHiddenForm.value = true;
+      });
+
+      // Submit the form
+      eventForm.submit();
+    });
+  });
+</script> 
+
