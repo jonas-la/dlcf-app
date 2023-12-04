@@ -1,0 +1,48 @@
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Deeper Life Campus Fellowship</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body class="dashboard-body">
+    <div class="center text-tile mobile-container">
+        <div body-item header-container text-tile>
+            <h1>USER DOCUMENATION</h1>
+        </div>
+
+        <div>
+            <%= image_tag(@org_info.image, style: "width: 200px; height: 200px; margin: 20px") %>
+        </div>
+
+        <div class="grid-item">
+            <h2>Home Page</h2>
+            <p>The home page is where you will find buttons to navigate to the different pages on the website.
+                Here you can look at the organizations events, give feedback, edit your profile, and view some general
+                information. You can also view the organizations charter as well as a schedule of upcoming events.</p>
+        </div>
+
+        <div class="grid-item">
+            <h2>Events</h2>
+            <p>The events page is where you will find all upcoming events as well as events that have already occured.
+                You can search for a specific event by name or you can sort them by name or date.</p>
+        </div>
+
+        <div class="grid-item">
+            <h2>Feedback</h2>
+            <p>Here you can provide feedback to your organization. You can provide them with a satisfaction level, a detailed critique, and 
+                any new innovative ideas you have for the organization! </p>
+        </div>
+
+        <div class="grid-item">
+            <h2>Edit Profile</h2>
+            <p>Here you can edit your account details such as your name or email.</p>
+        </div>
+
+        <div class="grid-item">
+            <%= link_to "Back", member_dashboard_index_path , class: "link-button"%>
+        </div>
+        
+    </div>
+</body>
