@@ -88,7 +88,7 @@ class ApplicationController < ActionController::Base
         "googleoauth2", "/attendances", "/feedbacks", "/event_schedule", 
         "/schedule_show", "edit_account", "member_index_events_path", 
         "created_at_asc", "member_index", "/events/member_index", 
-        "/events/style.css", "events/member_show"
+        "/events/style.css", "events/member_show", "/user_documentation"
       ]
       illegal_paths = []
       # ["edit","delete"]

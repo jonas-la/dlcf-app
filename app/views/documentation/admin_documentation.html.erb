@@ -1,0 +1,61 @@
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Deeper Life Campus Fellowship</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body class="dashboard-body">
+    <div class="center text-tile mobile-container">
+        <div body-item header-container text-tile>
+            <h1>ADMIN DOCUMENATION</h1>
+        </div>
+
+        <div>
+            <%= image_tag(@org_info.image, style: "width: 200px; height: 200px; margin: 20px") %>
+        </div>
+
+        <div class="grid-item">
+            <h2>Home Page</h2>
+            <p>The home page is where you will find buttons to navigate to the different pages on the website.
+                Here you can look at the organizations events, give feedback, edit your profile, and view some general
+                information. You can also view the organizations charter as well as a schedule of upcoming events.</p>
+        </div>
+
+        <div class="grid-item">
+            <h2>Events</h2>
+            <p>This page is where you can create, edit or duplicate events for members to see and sign in to. You can also see who has joined the events, and allows you to sign people into them manually if you wish.</p>
+        </div>
+
+        <div class="grid-item">
+            <h2>Members</h2>
+            <p>This page is where you can create or edit members' accounts. And also allow you to promote new admins. There is also the role field, which is entirely cosmetic, mainly there to help differentiate between different officers. Note: there is a super admin, which can't be deleted. This is so a malicious admin can't take over the site.</p>
+        </div>
+
+        <div class="grid-item">
+            <h2>Pending Members</h2>
+            <p>The number is how many pending members there are. This is where you can accept pending members to be real members, which gives them access to the member page.</p>
+        </div>
+
+        <div class="grid-item">
+            <h2>Org Info</h2>
+            <p>This is where you can edit the publicly available organization info, which shows up on the dashboard of users.</p>
+        </div>
+
+        <div class="grid-item">
+            <h2>Feedback</h2>
+            <p>You can see the feedback the members have for the website and the organization as a whole.</p>
+        </div>
+
+        <div class="grid-item">
+            <h2>Edit Profile</h2>
+            <p>This is where you can edit your own profile, which for admins includes information that will be put on the user dashboard so others can see it, and get to know the officers.</p>
+        </div>
+
+        <div class="grid-item">
+            <%= link_to "Back", officer_dashboard_index_path , class: "link-button"%>
+        </div>
+        
+    </div>
+</body>
