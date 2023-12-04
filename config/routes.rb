@@ -45,6 +45,8 @@ Rails.application.routes.draw do
 
   get '', to: 'custom_pages#show'
   get '/event_schedule', to: 'events#event_schedule', as: "event_schedule"
+  get '/user_documentation', to: 'documentation#user_documentation', as: "user_documentation"
+  get '/admin_documentation', to: 'documentation#admin_documentation', as: "admin_documentation"
 
 
   devise_for :admins, controllers: { omniauth_callbacks: 'admins/omniauth_callbacks' }

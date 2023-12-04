@@ -9,4 +9,5 @@ class MemberDashboardController < ApplicationController
     # user_email = current_admin.email
     # @user = Member.find_by(email: user_email)
   end
+
 end
