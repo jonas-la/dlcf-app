@@ -73,7 +73,6 @@ class EventsController < ApplicationController
     @event = Event.find(params[:id])
   end
 
-
   def duplicate_event
     @event = Event.new
     @old_event = Event.find(params[:id])
@@ -83,8 +82,7 @@ class EventsController < ApplicationController
     @event.end_time = @old_event.end_time
     @event.description = @old_event.description
     @event.password = @old_event.password
-  end
-  
+  end  
   
   def duplicate_event_create
     @duplicating_event = params[:event][:duplicate]
@@ -95,11 +93,15 @@ class EventsController < ApplicationController
   
     respond_to do |format|
       if @event.save
-        if (@duplicating_event == "true")
-          puts "Duplicated event!"
-          format.html { redirect_to( duplicate_event_event_path(@event), notice: "Event was successfully created. \n Created duplicate.") }
+        if @duplicating_event == "true"
+          puts("Duplicated event!")
+          format.html do
+ redirect_to(duplicate_event_event_path(@event), 
+             notice: "Event was successfully created. \n Created duplicate."
+            )
+          end
         else
-          puts "Did not duplicate event"
+          puts("Did not duplicate event")
           format.html { redirect_to(event_url(@event), notice: "Event was successfully created.") }
           format.json { render(:show, status: :created, location: @event) }
         end
@@ -134,19 +136,21 @@ class EventsController < ApplicationController
     # @duplicating_event = false
     @event = Event.new(event_params)
 
-
     
-
 
     respond_to do |format|
       if @event.save
-        if (@duplicating_event == "true")
-          puts "Duplicated event!"
-          puts @duplicating_event
-          format.html { redirect_to( duplicate_event_event_path(@event), notice: "Event was successfully created. \n Created duplicate.") }
+        if @duplicating_event == "true"
+          puts("Duplicated event!")
+          puts(@duplicating_event)
+          format.html do
+ redirect_to(duplicate_event_event_path(@event), 
+             notice: "Event was successfully created. \n Created duplicate."
+            )
+          end
           # format.json { render(:show, status: :created, location: @event) }
         else
-          puts "Did not duplicate event"
+          puts("Did not duplicate event")
           format.html { redirect_to(event_url(@event), notice: "Event was successfully created.") }
           format.json { render(:show, status: :created, location: @event) }
         end
@@ -162,12 +166,16 @@ class EventsController < ApplicationController
     @duplicating_event = params[:event][:duplicate]
     respond_to do |format|
       if @event.update(event_params)
-        if (@duplicating_event == "true")
-          puts "Duplicated event!"
-          format.html { redirect_to( duplicate_event_event_path(@event), notice: "Event was successfully created. \n Created duplicate.") }
+        if @duplicating_event == "true"
+          puts("Duplicated event!")
+          format.html do
+ redirect_to(duplicate_event_event_path(@event), 
+             notice: "Event was successfully created. \n Created duplicate."
+            )
+          end
           # format.json { render(:show, status: :created, location: @event) }
         else
-          puts "Did not duplicate event"
+          puts("Did not duplicate event")
           format.html { redirect_to(event_url(@event), notice: "Event was successfully updated.") }
           format.json { render(:show, status: :created, location: @event) }
         end
@@ -201,4 +209,3 @@ class EventsController < ApplicationController
       )
     end
 end
-

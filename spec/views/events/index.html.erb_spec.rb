@@ -1,6 +1,5 @@
 require 'rails_helper'
 
-
 # RSpec.describe("events/index", type: :view) do
 #   before(:each) do
 #     assign(:events, [
@@ -33,4 +32,3 @@ require 'rails_helper'
 #     assert_select cell_selector, text: Regexp.new("Description".to_s), count: 2
 #   end
 # end
-

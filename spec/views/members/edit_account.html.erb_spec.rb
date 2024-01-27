@@ -41,7 +41,7 @@ RSpec.describe("members/edit_account", type: :view) do
 
       assert_select "input[name=?]", "member[is_admin]"
 
-      #assert_select "textarea[name=?]", "member[bio]"
+      # assert_select "textarea[name=?]", "member[bio]"
 
       assert_select "input[name=?]", "member[contact]"
 

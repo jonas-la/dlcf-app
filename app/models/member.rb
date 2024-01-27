@@ -13,10 +13,11 @@ class Member < ApplicationRecord
   def set_default_role
     self.role ||= "Member"
   end
+
   def prevent_deletion
     # prevent deletion of super officer
     # This is done for security / ensure that account won
-    if self.email == "dclftest@gmail.com" || self.email == "dlcftest@gmail.com"
+    if email == "dclftest@gmail.com" || email == "dlcftest@gmail.com"
       errors.add(:base, "This member cannot be deleted.")
       throw(:abort)
     end

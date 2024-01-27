@@ -56,7 +56,9 @@ class OrginfosController < ApplicationController
     @orginfo.destroy
 
     respond_to do |format|
-      format.html { redirect_to(orginfos_url, notice: "Organization info was successfully destroyed.") }
+      format.html do
+ redirect_to(orginfos_url, notice: "Organization info was successfully destroyed.")
+      end
       format.json { head(:no_content) }
     end
   end

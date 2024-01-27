@@ -23,7 +23,6 @@ require 'rails_helper'
 #     ])
 #   end
 
-
 #   it "renders a list of feedbacks" do
 #     render
 #     cell_selector = Rails::VERSION::STRING >= '7' ? 'div>p' : 'tr>td'

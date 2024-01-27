@@ -18,7 +18,7 @@ RSpec.describe("members/show", type: :view) do
     # Set up @events_attended as an array of events
     @events_attended = [
       Event.create(event_name: "Event 1", start_time: Time.now),
-      Event.create(event_name: "Event 2", start_time: Time.now + 1.day),
+      Event.create(event_name: "Event 2", start_time: Time.now + 1.day)
     ]
 
     assign(:member, @member)

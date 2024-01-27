@@ -21,7 +21,6 @@ class ApplicationController < ActionController::Base
       # return true #TODO remove me when Rspec can do this
       # This is the list of routes to not authenticate for
 
-
       # puts "!!!Current routeroute:"
       # puts request.path.to_s
       # puts "!!! END"
@@ -38,7 +37,6 @@ class ApplicationController < ActionController::Base
       
 
       return true if request.path.to_s.include?("schedule_show")
-
 
       return false 
       
